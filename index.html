@@ -1,61 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ghostline — Call Management SaaS</title>
-  <meta name="description" content="Ghostline is a subscription-based SaaS platform providing virtual number and call management services." />
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; color:#111; background:#fff;}
-    .wrap{max-width:900px; margin:0 auto; padding:40px 20px;}
-    .card{border:1px solid #e6e6e6; border-radius:16px; padding:24px; margin:16px 0;}
-    h1{font-size:34px; margin:0 0 10px;}
-    h2{font-size:18px; margin:0 0 8px;}
-    p{line-height:1.5; margin:8px 0;}
-    ul{line-height:1.6;}
-    a{color:#0b5fff; text-decoration:none;}
-    .muted{color:#555;}
-    .footer{margin-top:28px; font-size:14px; color:#555;}
-    .pill{display:inline-block; padding:6px 10px; border:1px solid #e6e6e6; border-radius:999px; font-size:13px; margin-right:8px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GhostNumber</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#3b82f6,#6366f1);
+  color:white;
+  text-align:center;
+}
+
+.container{
+  padding:60px 20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:42px;
+  margin:10px 0;
+}
+
+p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+.phone{
+  margin:40px auto;
+  width:260px;
+  background:white;
+  color:black;
+  border-radius:30px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 26px;
+  background:#22c55e;
+  color:white;
+  text-decoration:none;
+  border-radius:12px;
+  font-weight:600;
+}
+
+.section{
+  background:white;
+  color:black;
+  padding:60px 20px;
+}
+
+.features{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  max-width:400px;
+  margin:auto;
+}
+
+.card{
+  padding:16px;
+  border-radius:12px;
+  border:1px solid #eee;
+}
+
+.footer{
+  padding:30px;
+  font-size:12px;
+  opacity:0.7;
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="pill">Subscription SaaS</div>
-    <div class="pill">Call management</div>
-    <div class="pill">Virtual numbers</div>
 
-    <h1>Ghostline</h1>
-    <p class="muted">A subscription-based SaaS platform providing virtual number and call management services.</p>
+<div class="container">
+  <div class="logo">👻 GhostNumber</div>
 
-    <div class="card">
-      <h2>What Ghostline does</h2>
-      <ul>
-        <li>Provides a virtual number for receiving calls</li>
-        <li>Call routing / forwarding to your real phone</li>
-        <li>Call logs & basic call history inside the app</li>
-        <li>Monthly subscription plans</li>
-      </ul>
-    </div>
+  <h1>Private Calls.<br>Real Control.</h1>
+  <p>Make calls without exposing your personal number.</p>
 
-    <div class="card">
-      <h2>How it works</h2>
-      <p>Users subscribe to a monthly plan and receive access to the service. Calls to the virtual number can be forwarded to the user’s phone and managed inside the application.</p>
-    </div>
+  <a href="https://app.ghostnumber.app" class="btn">
+    Start Calling
+  </a>
 
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Email: support@ghostline.app</p>
-    </div>
-
-    <div class="card">
-      <h2>Legal</h2>
-      <p>This is a software service provided on a subscription basis. Users must comply with applicable laws.</p>
-    </div>
-
-    <div class="footer">
-      © 2026 Ghostline
-    </div>
+  <div class="phone">
+    <strong>📞 Web Call</strong>
+    <p>Call anyone using your Ghost Number</p>
   </div>
+</div>
+
+<div class="section">
+  <h2>Features</h2>
+
+  <div class="features">
+    <div class="card">📱 Virtual US Numbers</div>
+    <div class="card">🔒 Privacy Protection</div>
+    <div class="card">📞 Call Forwarding</div>
+    <div class="card">⚡ Pay-as-you-go</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>How it works</h2>
+  <p>We call you → You answer → We connect the destination</p>
+</div>
+
+<div class="footer">
+  © 2026 GhostNumber<br>
+  support@ghostnumber.app
+</div>
+
 </body>
 </html>
