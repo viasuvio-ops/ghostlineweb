@@ -9,69 +9,76 @@
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:#0b0b0f;
+  background:linear-gradient(135deg,#3b82f6,#6366f1);
   color:white;
-}
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-.hero{
   text-align:center;
+}
+
+.container{
   padding:60px 20px;
 }
-.hero h1{
-  font-size:36px;
-  margin-bottom:10px;
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:20px;
 }
-.hero p{
-  color:#aaa;
-  font-size:16px;
+
+h1{
+  font-size:42px;
+  margin:10px 0;
 }
+
+p{
+  font-size:18px;
+  opacity:0.9;
+}
+
+.phone{
+  margin:40px auto;
+  width:260px;
+  background:white;
+  color:black;
+  border-radius:30px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
 .btn{
   display:inline-block;
   margin-top:20px;
-  padding:12px 20px;
-  background:#007aff;
-  border-radius:25px;
-  text-decoration:none;
+  padding:14px 26px;
+  background:#22c55e;
   color:white;
-  font-weight:bold;
-}
-.section{
-  margin-top:60px;
-}
-.section h2{
-  color:#007aff;
-}
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-.card{
-  background:#15151c;
-  padding:20px;
-  border-radius:16px;
-}
-img{
-  width:100%;
-  border-radius:16px;
-}
-.footer{
-  margin-top:60px;
-  text-align:center;
-  color:#777;
-}
-.footer a{
-  color:#007aff;
   text-decoration:none;
+  border-radius:12px;
+  font-weight:600;
 }
-@media(max-width:768px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+
+.section{
+  background:white;
+  color:black;
+  padding:60px 20px;
+}
+
+.features{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  max-width:400px;
+  margin:auto;
+}
+
+.card{
+  padding:16px;
+  border-radius:12px;
+  border:1px solid #eee;
+}
+
+.footer{
+  padding:30px;
+  font-size:12px;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -79,81 +86,40 @@ img{
 <body>
 
 <div class="container">
+  <div class="logo">👻 GhostNumber</div>
 
-  <div class="hero">
-    <h1>👻 Private Calling with GhostNumber</h1>
-    <p>Make calls without exposing your personal number.</p>
-    <a href="https://app.ghostnumber.app" class="btn">Start Calling</a>
+  <h1>Private Calls.<br>Real Control.</h1>
+  <p>Make calls without exposing your personal number.</p>
+
+  <a href="https://app.ghostnumber.app" class="btn">
+    Start Calling
+  </a>
+
+  <div class="phone">
+    <strong>📞 Web Call</strong>
+    <p>Call anyone using your Ghost Number</p>
   </div>
+</div>
 
-  <div class="section grid">
-    <div>
-      <h2>How it works</h2>
-      <p>
-      GhostNumber uses a secure bridge system.  
-      We call your phone first, then connect the destination.
-      </p>
-      <p>
-      Your real number stays hidden.
-      </p>
-    </div>
+<div class="section">
+  <h2>Features</h2>
 
-    <div>
-      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" />
-    </div>
+  <div class="features">
+    <div class="card">📱 Virtual US Numbers</div>
+    <div class="card">🔒 Privacy Protection</div>
+    <div class="card">📞 Call Forwarding</div>
+    <div class="card">⚡ Pay-as-you-go</div>
   </div>
+</div>
 
-  <div class="section grid">
-    <div>
-      <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5" />
-    </div>
+<div class="section">
+  <h2>How it works</h2>
+  <p>We call you → You answer → We connect the destination</p>
+</div>
 
-    <div>
-      <h2>Virtual Numbers</h2>
-      <p>
-      Get your own Ghost Number and control your calls.
-      </p>
-      <p>
-      Numbers are assigned via telecom providers and may change based on availability.
-      </p>
-    </div>
-  </div>
-
-  <div class="section grid">
-    <div>
-      <h2>Billing</h2>
-      <p>
-      Calls are billed by usage.  
-      Minimum charges and connection time may apply.
-      </p>
-      <p>
-      No refunds for used minutes.
-      </p>
-    </div>
-
-    <div>
-      <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" />
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Legal & Trust</h2>
-    <p>
-    GhostNumber complies with telecom laws and GDPR where applicable.
-    </p>
-    <p>
-    Emergency services are NOT supported.
-    </p>
-  </div>
-
-  <div class="footer">
-    <p>
-      <a href="/privacy">Privacy</a> • 
-      <a href="/terms">Terms</a>
-    </p>
-    <p>© GhostNumber</p>
-  </div>
-
+<div class="footer">
+  © 2026 GhostNumber<br>
+  support@ghostnumber.app
 </div>
 
 </body>
