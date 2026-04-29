@@ -4,19 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>GhostNumber — Private Calling Made Simple</title>
-<meta name="description" content="Get your own Ghost Number, make private calls, manage billing, call history and quiet hours in one simple web app.">
+<meta name="description" content="Get your own Ghost Number, protect your personal phone number, and manage calls, billing and call history in one simple web app.">
 
 <style>
 :root{
   --blue:#1478ff;
   --green:#35d66b;
-  --dark:#101828;
-  --text:#111827;
+  --text:#101828;
   --muted:#667085;
   --line:#e5e7eb;
-  --bg:#f8fbff;
+  --soft:#f6f9ff;
 }
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -24,28 +22,35 @@ body{
   background:linear-gradient(180deg,#ffffff,#f4f8ff);
   color:var(--text);
 }
-
 a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
 .container{max-width:1180px;margin:auto;padding:0 22px}
 
 .nav{
-  position:sticky;top:0;z-index:10;
-  background:rgba(255,255,255,.85);
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.88);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--line);
 }
 .nav-inner{
-  height:74px;display:flex;align-items:center;justify-content:space-between;
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
 }
-.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900;color:var(--blue)}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-size:22px;font-weight:900;color:var(--blue);
+}
 .logo img{width:42px;height:42px;border-radius:12px}
-.nav-links{display:flex;gap:22px;color:#475467;font-weight:650}
+.nav-links{display:flex;gap:20px;color:#475467;font-weight:700;font-size:14px}
 .nav-actions{display:flex;gap:10px}
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  padding:14px 22px;border-radius:999px;font-weight:850;
-  transition:.25s ease;border:1px solid transparent;
+  padding:14px 22px;border-radius:999px;font-weight:900;
+  border:1px solid transparent;transition:.25s ease;
 }
 .btn:hover{transform:translateY(-2px)}
 .primary{
@@ -54,20 +59,19 @@ a{text-decoration:none;color:inherit}
   box-shadow:0 16px 40px rgba(20,120,255,.22);
 }
 .secondary{
-  background:white;border-color:var(--line);color:var(--dark);
+  background:white;border-color:var(--line);color:var(--text);
 }
 
 .hero{
-  padding:74px 0 46px;
+  padding:74px 0 44px;
   display:grid;
   grid-template-columns:1.05fr .95fr;
   gap:46px;
   align-items:center;
 }
 .badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 14px;border-radius:999px;
-  background:#eef7ff;color:#0b67d8;font-weight:850;
+  display:inline-flex;padding:9px 14px;border-radius:999px;
+  background:#eef7ff;color:#0b67d8;font-weight:900;
 }
 h1{
   margin:18px 0 16px;
@@ -79,25 +83,13 @@ h1{
   font-size:20px;line-height:1.65;color:var(--muted);max-width:620px;
 }
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;color:#475467;font-weight:650}
+.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;color:#475467;font-weight:700}
 .trust span:before{content:"✓ ";color:var(--green);font-weight:900}
 
-.hero-visual{
-  position:relative;
-}
 .hero-visual img{
   width:100%;
   border-radius:34px;
-  box-shadow:0 30px 90px rgba(20,120,255,.22);
-}
-.float-card{
-  position:absolute;
-  left:-20px;bottom:28px;
-  background:white;border:1px solid var(--line);
-  padding:16px 18px;border-radius:20px;
-  box-shadow:0 18px 50px rgba(0,0,0,.12);
-  font-weight:850;
-  animation:float 4s ease-in-out infinite;
+  box-shadow:0 30px 90px rgba(20,120,255,.20);
 }
 
 .section{padding:64px 0}
@@ -107,18 +99,22 @@ h1{
   margin:0 0 12px;
   letter-spacing:-.045em;
 }
-.section-head p{color:var(--muted);font-size:18px;max-width:720px;margin:auto;line-height:1.7}
+.section-head p{
+  color:var(--muted);
+  font-size:18px;
+  max-width:760px;
+  margin:auto;
+  line-height:1.7;
+}
 
-.grid-3{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
-}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .card{
-  background:white;border:1px solid var(--line);
-  border-radius:28px;padding:26px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:26px;
   box-shadow:0 18px 55px rgba(16,24,40,.06);
-  transition:.25s ease;
 }
-.card:hover{transform:translateY(-5px)}
 .icon{
   width:54px;height:54px;border-radius:18px;
   display:grid;place-items:center;font-size:26px;
@@ -129,87 +125,108 @@ h1{
 .card p{color:var(--muted);line-height:1.7;margin:0}
 
 .showcase{
-  display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
 }
 .phone-shot{
-  background:#101828;
-  padding:18px;border-radius:32px;
-  box-shadow:0 22px 70px rgba(16,24,40,.14);
+  background:white;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:32px;
+  box-shadow:0 22px 70px rgba(16,24,40,.10);
 }
-.phone-shot img{width:100%;border-radius:24px}
+.phone-shot img{border-radius:24px;width:100%}
 .copy h2{font-size:44px;letter-spacing:-.045em;margin:0 0 14px}
 .copy p{color:var(--muted);font-size:18px;line-height:1.8}
 
-.steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step{
-  padding:28px;border-radius:28px;background:#fff;
+  padding:28px;
+  border-radius:28px;
+  background:white;
   border:1px solid var(--line);
+  box-shadow:0 18px 55px rgba(16,24,40,.05);
 }
 .num{
   width:46px;height:46px;border-radius:50%;
   background:var(--blue);color:white;
-  display:grid;place-items:center;font-weight:900;margin-bottom:18px;
+  display:grid;place-items:center;
+  font-weight:900;margin-bottom:18px;
 }
 
 .pricing{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  display:grid;
+  grid-template-columns:1.1fr .95fr .95fr;
+  gap:22px;
 }
 .price{
-  background:white;border:1px solid var(--line);
-  border-radius:30px;padding:30px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:30px;
   box-shadow:0 18px 55px rgba(16,24,40,.06);
 }
-.price.gold{
-  border:2px solid #f59e0b;
-  transform:scale(1.03);
-  background:linear-gradient(180deg,#fffaf0,#ffffff);
+.price.main{
+  border:2px solid var(--blue);
+  background:linear-gradient(180deg,#f0f7ff,#ffffff);
 }
 .label{
-  display:inline-block;padding:8px 12px;border-radius:999px;
-  background:#eef2ff;color:#344054;font-weight:900;font-size:13px;
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#eef2ff;
+  color:#344054;
+  font-weight:900;
+  font-size:13px;
 }
 .price h3{font-size:30px;margin:20px 0 6px}
 .money{font-size:44px;font-weight:950;margin:0 0 12px}
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
 .pill{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:#475467;font-weight:750}
-.price .btn{width:100%;margin-top:12px}
+.note{
+  margin-top:12px;
+  padding:14px;
+  border-radius:18px;
+  background:#fff8e6;
+  border:1px solid #f5d47a;
+  color:#7a4b00;
+  font-weight:700;
+  line-height:1.5;
+}
 
 .cta{
   text-align:center;
   background:linear-gradient(135deg,#1478ff,#35d66b);
-  color:white;border-radius:38px;padding:54px 22px;
+  color:white;
+  border-radius:38px;
+  padding:54px 22px;
   box-shadow:0 30px 80px rgba(20,120,255,.22);
 }
 .cta h2{font-size:48px;margin:0 0 12px;letter-spacing:-.045em}
 .cta p{font-size:18px;opacity:.92;max-width:720px;margin:0 auto 26px;line-height:1.7}
 .cta .btn{background:white;color:#101828}
 
-footer{
-  padding:38px 0;color:#667085;
-}
+footer{padding:38px 0;color:#667085}
 .footer-inner{
-  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  border-top:1px solid var(--line);padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:24px;
 }
-.footer-links{display:flex;gap:18px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
 
 .reveal{opacity:0;transform:translateY(22px);transition:.7s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
 
 @media(max-width:900px){
   .nav-links{display:none}
   .hero,.showcase{grid-template-columns:1fr}
   .grid-3,.steps,.pricing{grid-template-columns:1fr}
-  .hero{padding-top:44px}
-  .price.gold{transform:none}
-  .float-card{display:none}
+  h1{font-size:46px}
 }
 </style>
 </head>
@@ -219,7 +236,7 @@ footer{
 <nav class="nav">
   <div class="container nav-inner">
     <a class="logo" href="/">
-      <img src="icon-512.png" alt="GhostNumber logo">
+      <img src="icon-192.png" alt="GhostNumber logo">
       GhostNumber
     </a>
 
@@ -245,40 +262,42 @@ footer{
     <div class="badge">👻 Private calling made simple</div>
     <h1>Call with your own Ghost Number.</h1>
     <p>
-      Protect your personal phone number, manage calls, view history, control billing,
-      and use your virtual number from one clean web app.
+      Protect your personal phone number, get a virtual Ghost Number, manage calls,
+      view call history, control billing, and set quiet hours in one clean web app.
     </p>
 
     <div class="hero-actions">
-      <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Start free trial</a>
+      <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Start with Ghost Number + 60</a>
       <a class="btn secondary" href="https://app.ghostnumber.app/login.html">Open app</a>
     </div>
 
     <div class="trust">
       <span>5 free trial minutes</span>
-      <span>No app install required</span>
-      <span>Works from browser</span>
+      <span>Starter package includes number</span>
+      <span>No mobile app required</span>
     </div>
   </div>
 
   <div class="hero-visual reveal show">
     <img src="feature-ghostnumber-1024x500.png" alt="GhostNumber banner">
-    <div class="float-card">📞 Private calls. Real control.</div>
   </div>
 </section>
 
 <section id="features" class="section">
   <div class="section-head reveal">
     <h2>Everything you need in one app</h2>
-    <p>GhostNumber gives you a private number experience with call routing, history, contacts, billing and quiet hours.</p>
+    <p>
+      GhostNumber gives you a private number experience with call routing,
+      call history, billing, contacts, quiet hours, and support.
+    </p>
   </div>
 
   <div class="grid-3">
-    <div class="card reveal"><div class="icon">📱</div><h3>Virtual number</h3><p>Use your Ghost Number for supported inbound and outbound calling.</p></div>
-    <div class="card reveal"><div class="icon">🔒</div><h3>Privacy first</h3><p>Make calls without exposing your personal number directly.</p></div>
+    <div class="card reveal"><div class="icon">📱</div><h3>Virtual Ghost Number</h3><p>Get your own number for supported inbound and outbound calling.</p></div>
+    <div class="card reveal"><div class="icon">🔒</div><h3>Privacy first</h3><p>Make supported calls without exposing your personal phone number directly.</p></div>
     <div class="card reveal"><div class="icon">📞</div><h3>Web call</h3><p>Start calls from the browser and connect through your verified phone.</p></div>
-    <div class="card reveal"><div class="icon">🧾</div><h3>Billing control</h3><p>See available minutes, validity, package status and top-ups.</p></div>
-    <div class="card reveal"><div class="icon">📜</div><h3>Call history</h3><p>Track missed, incoming and outgoing calls in a clear interface.</p></div>
+    <div class="card reveal"><div class="icon">🧾</div><h3>Billing control</h3><p>See available minutes, validity dates, package status, and top-ups.</p></div>
+    <div class="card reveal"><div class="icon">📜</div><h3>Call history</h3><p>Track missed, incoming, and outgoing calls in a clear interface.</p></div>
     <div class="card reveal"><div class="icon">🌙</div><h3>Quiet hours</h3><p>Set Do Not Disturb windows when you do not want to be disturbed.</p></div>
   </div>
 </section>
@@ -290,8 +309,8 @@ footer{
   <div class="copy reveal">
     <h2>A clean dashboard for your private number</h2>
     <p>
-      Open Web Call, check billing, manage payment, view support, and control Do Not Disturb
-      from one simple dashboard.
+      Open Web Call, check billing, manage payment, view support, and control
+      Do Not Disturb from one simple dashboard.
     </p>
     <br>
     <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
@@ -301,13 +320,16 @@ footer{
 <section id="how" class="section">
   <div class="section-head reveal">
     <h2>How it works</h2>
-    <p>The call flow is simple: verify, choose your number package, then call through GhostNumber.</p>
+    <p>
+      First you verify your phone and start with the package that includes your Ghost Number.
+      After your number is active, you can add more minutes.
+    </p>
   </div>
 
   <div class="steps">
-    <div class="step reveal"><div class="num">1</div><h3>Verify your phone</h3><p>Confirm your real phone number by SMS before using calling features.</p></div>
-    <div class="step reveal"><div class="num">2</div><h3>Get your Ghost Number</h3><p>Choose a package and receive your virtual number for supported calls.</p></div>
-    <div class="step reveal"><div class="num">3</div><h3>Start calling</h3><p>GhostNumber calls your verified phone, then bridges the destination.</p></div>
+    <div class="step reveal"><div class="num">1</div><h3>Verify your phone</h3><p>Confirm your real phone number by SMS before using free trial and paid calling features.</p></div>
+    <div class="step reveal"><div class="num">2</div><h3>Buy Starter Number + 60</h3><p>Your first paid package includes your Ghost Number and 60 minutes.</p></div>
+    <div class="step reveal"><div class="num">3</div><h3>Add minutes later</h3><p>After you have an active Ghost Number, you can top up with 60, 120, or 300 minutes.</p></div>
   </div>
 </section>
 
@@ -315,7 +337,8 @@ footer{
   <div class="copy reveal">
     <h2>Built for real usage</h2>
     <p>
-      Keep your call history organized, manage contacts, monitor billing, and add minutes when your balance gets low.
+      Keep your call history organized, manage contacts, monitor billing,
+      and add minutes when your balance gets low.
     </p>
   </div>
 
@@ -326,43 +349,55 @@ footer{
 
 <section id="pricing" class="section">
   <div class="section-head reveal">
-    <h2>Simple minute packages</h2>
-    <p>Choose a package, add minutes, and refresh your account validity.</p>
+    <h2>Simple packages</h2>
+    <p>
+      Start with the number package first. Top-ups are available only after you already have an active Ghost Number.
+    </p>
   </div>
 
   <div class="pricing">
-    <div class="price reveal">
-      <span class="label">SILVER</span>
-      <h3>SignUp 60</h3>
+    <div class="price main reveal">
+      <span class="label">FIRST PACKAGE</span>
+      <h3>Starter Number + 60</h3>
       <div class="money">$15</div>
-      <p>Light usage package for quick private calling.</p>
-      <div class="pills"><span class="pill">+60 minutes</span><span class="pill">45-day renewal</span></div>
-      <a class="btn secondary" href="https://app.ghostnumber.app/signup.html">Start</a>
+      <p>Includes your Ghost Number and 60 minutes. This is the first package required to activate paid calling.</p>
+      <div class="pills">
+        <span class="pill">Ghost Number included</span>
+        <span class="pill">+60 minutes</span>
+        <span class="pill">45-day validity</span>
+      </div>
+      <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Get your Ghost Number</a>
     </div>
 
-    <div class="price gold reveal">
-      <span class="label">GOLD · BEST VALUE</span>
+    <div class="price reveal">
+      <span class="label">TOP-UP AFTER NUMBER</span>
       <h3>Pro 120</h3>
       <div class="money">$25</div>
-      <p>Recommended for regular users who call more often.</p>
-      <div class="pills"><span class="pill">+120 minutes</span><span class="pill">Best value</span></div>
-      <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Choose Pro</a>
+      <p>Available only after your Ghost Number is active. Adds minutes to your existing balance.</p>
+      <div class="pills">
+        <span class="pill">+120 minutes</span>
+        <span class="pill">For active users only</span>
+      </div>
+      <div class="note">You need an active Ghost Number before buying this top-up.</div>
     </div>
 
     <div class="price reveal">
-      <span class="label">PLATINUM</span>
+      <span class="label">TOP-UP AFTER NUMBER</span>
       <h3>Max 300</h3>
       <div class="money">$40</div>
-      <p>More minutes for frequent calling and longer use.</p>
-      <div class="pills"><span class="pill">+300 minutes</span><span class="pill">Heavy usage</span></div>
-      <a class="btn secondary" href="https://app.ghostnumber.app/signup.html">Start</a>
+      <p>Available only after your Ghost Number is active. Best for heavier call usage.</p>
+      <div class="pills">
+        <span class="pill">+300 minutes</span>
+        <span class="pill">For active users only</span>
+      </div>
+      <div class="note">You need an active Ghost Number before buying this top-up.</div>
     </div>
   </div>
 </section>
 
 <section class="section showcase">
   <div class="phone-shot reveal">
-    <img src="call history.jpeg" alt="GhostNumber call history">
+    <img src="call history.jpg" alt="GhostNumber call history">
   </div>
   <div class="phone-shot reveal">
     <img src="manage payment.jpeg" alt="GhostNumber add minutes">
@@ -372,8 +407,10 @@ footer{
 <section class="section">
   <div class="cta reveal">
     <h2>Ready to protect your number?</h2>
-    <p>Create your account, test the free trial, and start using your Ghost Number today.</p>
-    <a class="btn" href="https://app.ghostnumber.app/signup.html">Start free trial</a>
+    <p>
+      Create your account, verify your phone, test the free trial, and activate your Ghost Number with the starter package.
+    </p>
+    <a class="btn" href="https://app.ghostnumber.app/signup.html">Start with Ghost Number + 60</a>
   </div>
 </section>
 
