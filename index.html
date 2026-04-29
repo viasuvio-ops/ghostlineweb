@@ -1,974 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GhostNumber — Private Calls. Real Control.</title>
-  <meta name="description" content="Get your own virtual number, protect your privacy, and make calls without exposing your personal phone number." />
-  <style>
-    :root{
-      --bg:#f5f7fb;
-      --text:#0f172a;
-      --muted:#64748b;
-      --line:rgba(15,23,42,0.08);
-      --card:rgba(255,255,255,0.72);
-      --card-strong:#ffffff;
-      --blue:#1d4ed8;
-      --blue2:#3b82f6;
-      --indigo:#6366f1;
-      --green:#22c55e;
-      --shadow:0 20px 60px rgba(31,41,55,.12);
-      --radius:24px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,.28), transparent 30%),
-        radial-gradient(circle at top right, rgba(99,102,241,.18), transparent 26%),
-        linear-gradient(180deg,#eff4ff 0%, #f8fafc 35%, #ffffff 100%);
-      overflow-x:hidden;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-
-    .container{
-      width:min(1180px, calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(12px);
-      background:rgba(255,255,255,.55);
-      border-bottom:1px solid rgba(255,255,255,.45);
-    }
-
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      font-size:18px;
-      letter-spacing:-0.02em;
-    }
-
-    .brand-badge{
-      width:34px;
-      height:34px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--blue2),var(--indigo));
-      display:grid;
-      place-items:center;
-      color:#fff;
-      box-shadow:0 10px 24px rgba(59,130,246,.28);
-      font-size:18px;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:22px;
-      color:#334155;
-      font-size:14px;
-    }
-
-    .nav-actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 20px;
-      border-radius:16px;
-      font-weight:700;
-      transition:.25s ease;
-      border:1px solid transparent;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-    }
-
-    .btn-primary{
-      color:#fff;
-      background:linear-gradient(135deg,var(--blue2),var(--indigo));
-      box-shadow:0 16px 34px rgba(59,130,246,.30);
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,.7);
-      border-color:var(--line);
-      color:var(--text);
-    }
-
-    .hero{
-      padding:72px 0 34px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:44px;
-      align-items:center;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.72);
-      border:1px solid rgba(15,23,42,.08);
-      color:#334155;
-      font-size:13px;
-      font-weight:700;
-      box-shadow:var(--shadow);
-    }
-
-    .eyebrow-dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:var(--green);
-      box-shadow:0 0 0 6px rgba(34,197,94,.12);
-    }
-
-    h1{
-      margin:18px 0 14px;
-      font-size:clamp(40px, 6vw, 74px);
-      line-height:.96;
-      letter-spacing:-0.05em;
-      max-width:760px;
-    }
-
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.7;
-      max-width:620px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      margin-top:28px;
-      flex-wrap:wrap;
-    }
-
-    .hero-notes{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-top:18px;
-      color:#475569;
-      font-size:14px;
-    }
-
-    .hero-notes span::before{
-      content:"✓";
-      color:var(--green);
-      margin-right:8px;
-      font-weight:800;
-    }
-
-    .visual-wrap{
-      position:relative;
-      min-height:620px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .glow{
-      position:absolute;
-      inset:auto;
-      width:420px;
-      height:420px;
-      border-radius:999px;
-      background:radial-gradient(circle, rgba(59,130,246,.22), rgba(99,102,241,.08), transparent 70%);
-      filter:blur(10px);
-      animation:floatGlow 5.5s ease-in-out infinite;
-    }
-
-    .phone-shell{
-      position:relative;
-      width:320px;
-      border-radius:34px;
-      padding:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
-      border:1px solid rgba(255,255,255,.65);
-      box-shadow:
-        0 32px 70px rgba(76, 81, 191, .20),
-        inset 0 1px 0 rgba(255,255,255,.85);
-      backdrop-filter: blur(14px);
-      animation:phoneFloat 5s ease-in-out infinite;
-    }
-
-    .phone-notch{
-      width:110px;
-      height:22px;
-      border-radius:999px;
-      background:#0f172a;
-      margin:0 auto 12px;
-      opacity:.95;
-    }
-
-    .phone-screen{
-      background:linear-gradient(180deg,#f8fbff,#eef4ff);
-      border-radius:26px;
-      overflow:hidden;
-      padding:14px;
-      min-height:570px;
-      border:1px solid rgba(15,23,42,.05);
-    }
-
-    .mini-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:12px;
-      font-size:11px;
-      color:#475569;
-      font-weight:700;
-    }
-
-    .app-mini-brand{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      color:#2563eb;
-      font-weight:800;
-      font-size:12px;
-    }
-
-    .hero-card{
-      background:#fff;
-      border:1px solid rgba(15,23,42,.06);
-      border-radius:22px;
-      padding:18px;
-      box-shadow:0 12px 30px rgba(15,23,42,.06);
-      text-align:center;
-    }
-
-    .ghost-icon{
-      width:92px;
-      height:92px;
-      margin:0 auto 14px;
-      border-radius:24px;
-      background:linear-gradient(135deg,#60a5fa,#86efac);
-      display:grid;
-      place-items:center;
-      font-size:44px;
-      color:#fff;
-      box-shadow:0 16px 34px rgba(59,130,246,.22);
-    }
-
-    .hero-card h3{
-      margin:0;
-      font-size:24px;
-      line-height:1.05;
-      letter-spacing:-0.03em;
-    }
-
-    .hero-card small{
-      display:block;
-      margin-top:8px;
-      color:#64748b;
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    .trial-pill{
-      margin:16px auto 14px;
-      width:max-content;
-      background:#22c55e;
-      color:#fff;
-      font-weight:800;
-      font-size:12px;
-      padding:10px 16px;
-      border-radius:999px;
-      box-shadow:0 12px 24px rgba(34,197,94,.24);
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:8px;
-      margin-top:12px;
-    }
-
-    .mini-feature{
-      background:#f8fafc;
-      border:1px solid rgba(15,23,42,.06);
-      border-radius:14px;
-      padding:10px 8px;
-      font-size:10px;
-      color:#334155;
-      line-height:1.35;
-      font-weight:700;
-    }
-
-    .hero-cta{
-      margin-top:16px;
-      display:grid;
-      gap:10px;
-    }
-
-    .hero-cta a{
-      width:100%;
-      text-align:center;
-    }
-
-    .phone-badges{
-      position:absolute;
-      width:100%;
-      inset:0;
-      pointer-events:none;
-    }
-
-    .floating-badge{
-      position:absolute;
-      background:rgba(255,255,255,.86);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(15,23,42,.06);
-      border-radius:18px;
-      padding:12px 14px;
-      box-shadow:var(--shadow);
-      color:#0f172a;
-      animation:badgeFloat 5s ease-in-out infinite;
-    }
-
-    .floating-badge small{
-      display:block;
-      color:#64748b;
-      font-size:12px;
-      margin-bottom:4px;
-    }
-
-    .floating-badge strong{
-      font-size:14px;
-      letter-spacing:-0.02em;
-    }
-
-    .badge-a{top:70px; left:-10px; animation-delay:.2s}
-    .badge-b{right:-6px; top:140px; animation-delay:1.4s}
-    .badge-c{left:12px; bottom:96px; animation-delay:.8s}
-
-    section{
-      padding:36px 0;
-    }
-
-    .section-head{
-      text-align:center;
-      margin-bottom:24px;
-    }
-
-    .section-head h2{
-      margin:0;
-      font-size:clamp(28px,4vw,44px);
-      letter-spacing:-0.04em;
-    }
-
-    .section-head p{
-      margin:12px auto 0;
-      max-width:720px;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.75;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:14px;
-    }
-
-    .stat{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.6);
-      backdrop-filter:blur(12px);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:var(--shadow);
-    }
-
-    .stat strong{
-      display:block;
-      font-size:30px;
-      letter-spacing:-0.04em;
-      margin-bottom:6px;
-    }
-
-    .stat span{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .features{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .feature{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.65);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(14px);
-      transition:.25s ease;
-    }
-
-    .feature:hover{
-      transform:translateY(-4px);
-      box-shadow:0 28px 60px rgba(31,41,55,.14);
-    }
-
-    .feature-icon{
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      font-size:22px;
-      color:#fff;
-      background:linear-gradient(135deg,var(--blue2),var(--indigo));
-      box-shadow:0 10px 24px rgba(59,130,246,.22);
-      margin-bottom:14px;
-    }
-
-    .feature h3{
-      margin:0 0 10px;
-      font-size:19px;
-      letter-spacing:-0.03em;
-    }
-
-    .feature p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .step{
-      background:var(--card-strong);
-      border:1px solid rgba(15,23,42,.06);
-      border-radius:var(--radius);
-      padding:26px;
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .step-number{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--blue2),var(--indigo));
-      color:#fff;
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      margin-bottom:14px;
-      box-shadow:0 10px 24px rgba(59,130,246,.22);
-    }
-
-    .step h3{
-      margin:0 0 10px;
-      font-size:20px;
-      letter-spacing:-0.03em;
-    }
-
-    .step p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-    }
-
-    .uses{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .use{
-      background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.72));
-      border:1px solid rgba(15,23,42,.06);
-      border-radius:22px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .use h4{
-      margin:0 0 8px;
-      font-size:18px;
-      letter-spacing:-0.03em;
-    }
-
-    .use p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.65;
-    }
-
-    .cta-box{
-      margin-top:10px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 30%),
-        linear-gradient(135deg,#1d4ed8,#4f46e5);
-      border-radius:30px;
-      padding:38px;
-      color:#fff;
-      box-shadow:0 26px 70px rgba(59,130,246,.24);
-      text-align:center;
-    }
-
-    .cta-box h2{
-      margin:0;
-      font-size:clamp(30px,4vw,50px);
-      letter-spacing:-0.04em;
-    }
-
-    .cta-box p{
-      margin:12px auto 0;
-      max-width:720px;
-      color:rgba(255,255,255,.88);
-      line-height:1.8;
-      font-size:17px;
-    }
-
-    .cta-buttons{
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:26px;
-    }
-
-    .cta-box .btn-primary{
-      background:#fff;
-      color:#1e293b;
-      box-shadow:none;
-    }
-
-    .cta-box .btn-secondary{
-      background:rgba(255,255,255,.12);
-      color:#fff;
-      border-color:rgba(255,255,255,.22);
-    }
-
-    footer{
-      padding:26px 0 46px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      flex-wrap:wrap;
-      color:#64748b;
-      font-size:14px;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links a:hover{
-      color:#0f172a;
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(26px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @keyframes phoneFloat{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-10px)}
-    }
-
-    @keyframes badgeFloat{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-8px)}
-    }
-
-    @keyframes floatGlow{
-      0%,100%{transform:translateY(0) scale(1)}
-      50%{transform:translateY(-8px) scale(1.03)}
-    }
-
-    @media (max-width: 1080px){
-      .hero-grid,
-      .features,
-      .steps,
-      .uses,
-      .stats{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .hero-grid{
-        gap:28px;
-      }
-
-      .visual-wrap{
-        min-height:unset;
-      }
-
-      .badge-a{left:0}
-      .badge-b{right:0}
-    }
-
-    @media (max-width: 760px){
-      .nav-links{display:none}
-      .hero{padding-top:42px}
-      .hero-grid,
-      .features,
-      .steps,
-      .uses,
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      h1{
-        font-size:44px;
-      }
-
-      .hero p{
-        font-size:16px;
-      }
-
-      .phone-shell{
-        width:min(100%, 340px);
-      }
-
-      .floating-badge{
-        display:none;
-      }
-
-      .cta-box{
-        padding:28px 20px;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GhostNumber — Private Calls Made Simple</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:Inter,sans-serif;
+  background:#ffffff;
+  color:#0f172a;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+h1{
+  font-size:56px;
+  margin-bottom:10px;
+}
+
+p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:12px;
+  font-weight:600;
+}
+
+.primary{
+  background:#2563eb;
+  color:white;
+}
+
+.secondary{
+  border:1px solid #e2e8f0;
+}
+
+.hero{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  padding:80px 0;
+}
+
+.hero img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.1);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:40px;
+}
+
+.card{
+  padding:20px;
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+}
+
+.pricing{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:40px;
+}
+
+.price-card{
+  padding:24px;
+  border-radius:20px;
+  border:1px solid #e2e8f0;
+}
+
+.highlight{
+  border:2px solid #2563eb;
+}
+
+footer{
+  margin-top:60px;
+  padding:20px 0;
+  border-top:1px solid #e2e8f0;
+  display:flex;
+  justify-content:space-between;
+}
+</style>
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#">
-        <span class="brand-badge">👻</span>
-        <span>GhostNumber</span>
-      </a>
 
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#use-cases">Use cases</a>
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-      </div>
+<div class="container">
 
-      <div class="nav-actions">
-        <a class="btn btn-secondary" href="https://app.ghostnumber.app/login.html">Log in</a>
-        <a class="btn btn-primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Call with your own Ghost Number</h1>
+    <p>Private calling with virtual numbers, billing, call history and full control in one app.</p>
+
+    <br>
+
+    <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Start free</a>
+    <a class="btn secondary" href="https://app.ghostnumber.app/login.html">Login</a>
+  </div>
+
+  <img src="hero.jpg">
+</section>
+
+<!-- FEATURES -->
+<section>
+  <h2>Everything in one app</h2>
+
+  <div class="features">
+    <div class="card">
+      <h3>Private calls</h3>
+      <p>No exposure of your real number</p>
     </div>
-  </nav>
 
-  <header class="hero">
-    <div class="container hero-grid">
-      <div class="reveal show">
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          Private calls with your own Ghost Number
-        </div>
-
-        <h1>Private Calls.<br>Real Control.</h1>
-
-        <p>
-          Get your own virtual number, protect your privacy, and manage calls through a clean web app built for fast onboarding and real everyday use.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://app.ghostnumber.app/signup.html">Start free onboarding</a>
-          <a class="btn btn-secondary" href="https://app.ghostnumber.app/login.html">Open app</a>
-        </div>
-
-        <div class="hero-notes">
-          <span>Virtual US numbers</span>
-          <span>Privacy-first call flow</span>
-          <span>Fast web onboarding</span>
-        </div>
-      </div>
-
-      <div class="visual-wrap reveal show">
-        <div class="glow"></div>
-
-        <div class="phone-shell">
-          <div class="phone-notch"></div>
-
-          <div class="phone-screen">
-            <div class="mini-top">
-              <div class="app-mini-brand">👻 GhostNumber</div>
-              <div>Secure</div>
-            </div>
-
-            <div class="hero-card">
-              <div class="ghost-icon">👻</div>
-              <h3>Call with your own Ghost Number</h3>
-              <small>
-                Private calling for inbound and outbound use, with a simple web app for setup, verification and control.
-              </small>
-
-              <div class="trial-pill">5 free trial minutes</div>
-
-              <div class="mini-grid">
-                <div class="mini-feature">US virtual numbers</div>
-                <div class="mini-feature">Protected calling</div>
-                <div class="mini-feature">Fast setup</div>
-              </div>
-
-              <div class="hero-cta">
-                <a class="btn btn-primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
-                <a class="btn btn-secondary" href="https://app.ghostnumber.app/login.html">Login</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phone-badges">
-          <div class="floating-badge badge-a">
-            <small>Privacy</small>
-            <strong>Your real number stays hidden</strong>
-          </div>
-          <div class="floating-badge badge-b">
-            <small>Quick setup</small>
-            <strong>Verify. Choose. Call.</strong>
-          </div>
-          <div class="floating-badge badge-c">
-            <small>Web app</small>
-            <strong>Calls, history and billing in one place</strong>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Call history</h3>
+      <p>Track incoming and outgoing calls</p>
     </div>
-  </header>
 
-  <section>
-    <div class="container">
-      <div class="stats reveal">
-        <div class="stat">
-          <strong>1 app</strong>
-          <span>Onboarding, calls, billing and controls in one clean dashboard.</span>
-        </div>
-        <div class="stat">
-          <strong>Private by design</strong>
-          <span>Make supported calls without exposing your personal number directly.</span>
-        </div>
-        <div class="stat">
-          <strong>Fast activation</strong>
-          <span>Verify your phone, choose a package, and start using your Ghost Number.</span>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Billing</h3>
+      <p>Manage minutes and payments easily</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="features">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>Built for control, not clutter</h2>
-        <p>
-          GhostNumber gives you a focused experience: private calling, number management, billing visibility, and a simple interface that feels fast on desktop and mobile.
-        </p>
-      </div>
+<!-- APP PREVIEW -->
+<section class="hero">
+  <img src="login.jpg">
+  <img src="billing.jpg">
+</section>
 
-      <div class="features">
-        <div class="feature reveal">
-          <div class="feature-icon">📱</div>
-          <h3>Virtual US numbers</h3>
-          <p>Get a Ghost Number for supported calling flows and keep your personal number out of sight.</p>
-        </div>
+<!-- PRICING -->
+<section>
+  <h2>Simple pricing</h2>
 
-        <div class="feature reveal">
-          <div class="feature-icon">🔒</div>
-          <h3>Privacy-first calling</h3>
-          <p>The platform uses a callback bridge flow, helping you call without exposing your private line directly.</p>
-        </div>
+  <div class="pricing">
 
-        <div class="feature reveal">
-          <div class="feature-icon">⚡</div>
-          <h3>Fast onboarding</h3>
-          <p>Verify your phone, test the call flow, choose your package, and start using the app in minutes.</p>
-        </div>
-
-        <div class="feature reveal">
-          <div class="feature-icon">📞</div>
-          <h3>Web calling</h3>
-          <p>Use the app to initiate calls, manage the flow, and keep everything in one easy interface.</p>
-        </div>
-
-        <div class="feature reveal">
-          <div class="feature-icon">🧾</div>
-          <h3>Billing visibility</h3>
-          <p>See packages, manage payments, and keep track of your usage with a clear dashboard.</p>
-        </div>
-
-        <div class="feature reveal">
-          <div class="feature-icon">🕘</div>
-          <h3>Usage controls</h3>
-          <p>Features like Do Not Disturb help you keep control over how and when your number is used.</p>
-        </div>
-      </div>
+    <div class="price-card">
+      <h3>Silver</h3>
+      <h1>$15</h1>
+      <p>+60 minutes</p>
     </div>
-  </section>
 
-  <section id="how">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>How it works</h2>
-        <p>
-          The experience is simple, clear, and designed around the exact flow already visible in your app.
-        </p>
-      </div>
-
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-number">1</div>
-          <h3>Create your account</h3>
-          <p>Sign up, verify your phone number, and complete onboarding directly from the GhostNumber web app.</p>
-        </div>
-
-        <div class="step reveal">
-          <div class="step-number">2</div>
-          <h3>Get your Ghost Number</h3>
-          <p>Choose your package, receive your number, and set up your preferred call flow in a few quick steps.</p>
-        </div>
-
-        <div class="step reveal">
-          <div class="step-number">3</div>
-          <h3>Call with privacy</h3>
-          <p>The platform routes the flow through your verified phone, helping you make supported calls without revealing your real number directly.</p>
-        </div>
-      </div>
+    <div class="price-card highlight">
+      <h3>Gold</h3>
+      <h1>$25</h1>
+      <p>+120 minutes</p>
     </div>
-  </section>
 
-  <section id="use-cases">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>Made for real use cases</h2>
-        <p>
-          GhostNumber fits situations where you want privacy, control, and a cleaner boundary between your personal number and public activity.
-        </p>
-      </div>
-
-      <div class="uses">
-        <div class="use reveal">
-          <h4>Buying & selling</h4>
-          <p>Keep your private number separate when talking to strangers on marketplaces or listings.</p>
-        </div>
-        <div class="use reveal">
-          <h4>Online registrations</h4>
-          <p>Use a dedicated number flow instead of giving out your personal number everywhere.</p>
-        </div>
-        <div class="use reveal">
-          <h4>Work-life separation</h4>
-          <p>Use a second number experience for side projects, clients, or temporary business activity.</p>
-        </div>
-        <div class="use reveal">
-          <h4>Cleaner call control</h4>
-          <p>Manage call history, billing, and quiet-hour behavior from one dashboard instead of several tools.</p>
-        </div>
-      </div>
+    <div class="price-card">
+      <h3>Platinum</h3>
+      <h1>$40</h1>
+      <p>+240 minutes</p>
     </div>
-  </section>
 
-  <section>
-    <div class="container">
-      <div class="cta-box reveal">
-        <h2>Launch your Ghost Number today</h2>
-        <p>
-          Start onboarding, verify your number, test the flow, and move into the app experience built for speed, privacy, and control.
-        </p>
+  </div>
+</section>
 
-        <div class="cta-buttons">
-          <a class="btn btn-primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
-          <a class="btn btn-secondary" href="https://app.ghostnumber.app/login.html">Open app</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- CTA -->
+<section style="text-align:center;margin-top:60px;">
+  <h2>Start using GhostNumber today</h2>
+  <br>
+  <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
+</section>
 
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 GhostNumber</div>
-      <div class="footer-links">
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="mailto:support@ghostnumber.app">support@ghostnumber.app</a>
-      </div>
-    </div>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 GhostNumber</div>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.14 });
+  <div>
+    <a href="/privacy">Privacy</a>
+    |
+    <a href="/terms">Terms</a>
+  </div>
+</footer>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+</div>
+
 </body>
 </html>
