@@ -27,7 +27,7 @@ img{max-width:100%;display:block}
 
 .nav{
   position:sticky;top:0;z-index:20;
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--line);
 }
@@ -85,10 +85,16 @@ h1{
 .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;color:#475467;font-weight:700}
 .trust span:before{content:"✓ ";color:var(--green);font-weight:900}
 
+.hero-visual{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:34px;
+  padding:14px;
+  box-shadow:0 30px 90px rgba(20,120,255,.16);
+}
 .hero-visual img{
   width:100%;
-  border-radius:34px;
-  box-shadow:0 30px 90px rgba(20,120,255,.20);
+  border-radius:26px;
 }
 
 .section{padding:64px 0}
@@ -136,9 +142,26 @@ h1{
   border-radius:32px;
   box-shadow:0 22px 70px rgba(16,24,40,.10);
 }
-.phone-shot img{border-radius:24px;width:100%}
+.phone-shot img{
+  border-radius:24px;
+  width:100%;
+  background:#f8fafc;
+}
+.phone-shot p{
+  text-align:center;
+  margin:12px 0 0;
+  color:#667085;
+  font-weight:700;
+}
 .copy h2{font-size:44px;letter-spacing:-.045em;margin:0 0 14px}
 .copy p{color:var(--muted);font-size:18px;line-height:1.8}
+
+.app-preview-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+  align-items:start;
+}
 
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .step{
@@ -303,8 +326,10 @@ footer{padding:38px 0;color:#667085}
 
 <section class="section showcase">
   <div class="phone-shot reveal">
-    <img src="app ghost number.jpeg" alt="GhostNumber app dashboard">
+    <img src="app%20ghost%20number.jpeg" alt="GhostNumber app dashboard">
+    <p>Main dashboard</p>
   </div>
+
   <div class="copy reveal">
     <h2>A clean dashboard for your private number</h2>
     <p>
@@ -313,6 +338,47 @@ footer{padding:38px 0;color:#667085}
     </p>
     <br>
     <a class="btn primary" href="https://app.ghostnumber.app/signup.html">Create account</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head reveal">
+    <h2>See how the app looks</h2>
+    <p>
+      Real screens from GhostNumber: dashboard, billing, call history, payments and quiet hours.
+    </p>
+  </div>
+
+  <div class="app-preview-grid">
+    <div class="phone-shot reveal">
+      <img src="app%20ghost%20number.jpeg" alt="Dashboard">
+      <p>Main dashboard</p>
+    </div>
+
+    <div class="phone-shot reveal">
+      <img src="billing.jpeg" alt="Billing">
+      <p>Billing & minutes</p>
+    </div>
+
+    <div class="phone-shot reveal">
+      <img src="call%20history.jpg" alt="Call history">
+      <p>Call history</p>
+    </div>
+
+    <div class="phone-shot reveal">
+      <img src="manage%20payment.jpeg" alt="Payments">
+      <p>Manage payments</p>
+    </div>
+
+    <div class="phone-shot reveal">
+      <img src="do%20not%20disturb.jpeg" alt="Do Not Disturb">
+      <p>Do Not Disturb</p>
+    </div>
+
+    <div class="phone-shot reveal">
+      <img src="support.jpeg" alt="Support">
+      <p>Support</p>
+    </div>
   </div>
 </section>
 
@@ -329,20 +395,6 @@ footer{padding:38px 0;color:#667085}
     <div class="step reveal"><div class="num">1</div><h3>Verify your phone</h3><p>Confirm your real phone number by SMS before using free trial and paid calling features.</p></div>
     <div class="step reveal"><div class="num">2</div><h3>Buy Starter Number + 60</h3><p>Your first paid package includes your Ghost Number and 60 minutes.</p></div>
     <div class="step reveal"><div class="num">3</div><h3>Add minutes later</h3><p>After you have an active Ghost Number, you can top up with 60, 120, or 300 minutes.</p></div>
-  </div>
-</section>
-
-<section class="section showcase">
-  <div class="copy reveal">
-    <h2>Built for real usage</h2>
-    <p>
-      Keep your call history organized, manage contacts, monitor billing,
-      and add minutes when your balance gets low.
-    </p>
-  </div>
-
-  <div class="phone-shot reveal">
-    <img src="billing.jpeg" alt="GhostNumber billing screen">
   </div>
 </section>
 
@@ -391,15 +443,6 @@ footer{padding:38px 0;color:#667085}
       </div>
       <div class="note">You need an active Ghost Number before buying this top-up.</div>
     </div>
-  </div>
-</section>
-
-<section class="section showcase">
-  <div class="phone-shot reveal">
-    <img src="call history.jpg" alt="GhostNumber call history">
-  </div>
-  <div class="phone-shot reveal">
-    <img src="manage payment.jpeg" alt="GhostNumber add minutes">
   </div>
 </section>
 
