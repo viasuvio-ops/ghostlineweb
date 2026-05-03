@@ -1,203 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GhostNumber</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhostNumber | Virtual Number for Calls & Privacy</title>
+  <meta name="description" content="GhostNumber gives you a second number for calls, privacy, verification and contact management." />
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
-}
+  <style>
+    * { box-sizing: border-box; }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: #020617;
-}
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0, #020617 45%, #020617 100%);
+      color: #fff;
+    }
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
+    a { color: inherit; text-decoration: none; }
 
-.btn {
-  background: #6366f1;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(2, 6, 23, 0.75);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
 
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.hero h1 {
-  font-size: 48px;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
 
-.hero p {
-  opacity: 0.7;
-  max-width: 600px;
-  margin: auto;
-}
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
 
-.section {
-  padding: 70px 20px;
-  text-align: center;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      box-shadow: 0 18px 45px rgba(99, 102, 241, 0.35);
+    }
 
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-}
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
 
-.card {
-  width: 280px;
-}
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 90px 22px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-}
+    .badge {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.16);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      color: #c7d2fe;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
 
-.usecases {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
+    h1 {
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin: 0 0 24px;
+    }
 
-.use {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  width: 260px;
-}
+    .hero p {
+      font-size: 19px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
 
-footer {
-  text-align: center;
-  padding: 30px;
-  opacity: 0.6;
-}
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
-footer a {
-  color: #818cf8;
-  margin: 0 10px;
-  text-decoration: none;
-}
-</style>
+    .phone-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.45);
+    }
+
+    .phone-card img {
+      width: 100%;
+      border-radius: 26px;
+      display: block;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 80px 22px;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 46px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .showcase img {
+      width: 100%;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 56px;
+    }
+
+    .step:before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #6366f1;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(99,102,241,0.35), rgba(168,85,247,0.25));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 34px;
+      padding: 60px 24px;
+    }
+
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      margin: 0 0 16px;
+      letter-spacing: -0.05em;
+    }
+
+    .cta p {
+      color: #e2e8f0;
+      max-width: 680px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 34px 22px;
+      color: #94a3b8;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 850px) {
+      .hero, .showcase, .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">GhostNumber</div>
-  <a href="https://app.ghostnumber.app" class="btn">Open App</a>
+  <div class="nav">
+    <div class="logo">GhostNumber</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+      <a class="btn" href="https://app.ghostnumber.app">Open App</a>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>Virtual Numbers. Real Privacy.</h1>
-  <p>
-    GhostNumber lets you use a second phone number to stay organized,
-    protect your personal number, and avoid unwanted calls or messages.
-  </p>
-  <br>
-  <a href="https://app.ghostnumber.app" class="btn">Get Started</a>
-</section>
+<main>
 
-<section class="section">
-  <h2>What You Can Do</h2>
+  <section class="hero">
+    <div>
+      <div class="badge">Second number. Cleaner communication.</div>
+      <h1>Use a second number without giving out your personal one.</h1>
+      <p>
+        GhostNumber helps you keep your main phone number private, reduce unwanted interruptions,
+        and manage calls from a clean online dashboard.
+      </p>
 
-  <div class="usecases">
-
-    <div class="use">
-      <h3>📱 Second Number</h3>
-      <p>Keep your personal number private and use a second number for apps, work or online services.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://app.ghostnumber.app">Open GhostNumber</a>
+        <a class="btn secondary" href="#features">See what it does</a>
+      </div>
     </div>
 
-    <div class="use">
-      <h3>🔕 Avoid Disturbance</h3>
-      <p>Use a separate number so your main phone isn’t flooded with messages or calls.</p>
+    <div class="phone-card">
+      <img src="login%20ghostnumber.jpeg" alt="GhostNumber app preview">
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-title">
+      <h2>Built for privacy, calls and control.</h2>
+      <p>
+        GhostNumber is designed for people who want a separate number for online services,
+        business contacts, verification and everyday call management.
+      </p>
     </div>
 
-    <div class="use">
-      <h3>🌍 Global Access</h3>
-      <p>Access your number from anywhere and receive SMS instantly.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Second phone number</h3>
+        <p>Use a virtual number instead of sharing your personal number everywhere.</p>
+      </div>
+
+      <div class="card">
+        <h3>Outbound calls</h3>
+        <p>Place calls through the platform using a callback system connected through trusted providers.</p>
+      </div>
+
+      <div class="card">
+        <h3>Inbound forwarding</h3>
+        <p>Receive calls forwarded to your verified phone number, while keeping things organized.</p>
+      </div>
+
+      <div class="card">
+        <h3>Phone verification</h3>
+        <p>Verify your phone number by SMS for account security. GhostNumber does not send promotional SMS.</p>
+      </div>
+
+      <div class="card">
+        <h3>Call history</h3>
+        <p>View your call activity, manage contacts and keep track of communication in one place.</p>
+      </div>
+
+      <div class="card">
+        <h3>Billing dashboard</h3>
+        <p>Manage subscription, payments and account settings from a simple dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Why use GhostNumber?</h2>
+      <p>
+        Not every situation needs your main number. A second number gives you more separation,
+        more control and fewer unwanted interruptions.
+      </p>
     </div>
 
-  </div>
-</section>
+    <div class="grid">
+      <div class="card">
+        <h3>For online accounts</h3>
+        <p>Use a separate number when signing up for platforms, services or marketplaces.</p>
+      </div>
 
-<section class="section">
-  <h2>Features</h2>
+      <div class="card">
+        <h3>For work and side projects</h3>
+        <p>Keep business calls separate from your personal life without carrying a second phone.</p>
+      </div>
 
-  <div class="features">
+      <div class="card">
+        <h3>For privacy</h3>
+        <p>Share a dedicated number instead of exposing your main phone number everywhere.</p>
+      </div>
+    </div>
+  </section>
 
-    <div class="card">
-      <img src="/public/feature.png">
-      <h3>Instant Setup</h3>
-      <p>Get your number in seconds.</p>
+  <section class="showcase">
+    <div>
+      <div class="section-title" style="text-align:left; margin:0;">
+        <h2>Manage everything from one dashboard.</h2>
+        <p>
+          Access your virtual number, contacts, call activity and billing from one clean interface.
+          GhostNumber keeps the experience simple so you can focus on communication, not setup.
+        </p>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="/public/feature%20ghostnumber.png">
-      <h3>Dashboard</h3>
-      <p>Manage everything in one place.</p>
+    <img src="feature%20ghostnumber.png" alt="GhostNumber dashboard">
+  </section>
+
+  <section id="how">
+    <div class="section-title">
+      <h2>How it works</h2>
+      <p>A simple flow from account creation to using your number.</p>
     </div>
 
-    <div class="card">
-      <img src="/public/login%20ghostnumber.jpeg">
-      <h3>Secure Login</h3>
-      <p>Your data stays protected.</p>
+    <div class="grid steps">
+      <div class="card step">
+        <h3>Create your account</h3>
+        <p>Sign up with email and password, then verify your phone number for security.</p>
+      </div>
+
+      <div class="card step">
+        <h3>Get your number</h3>
+        <p>Receive a virtual number provided through third-party telecom providers.</p>
+      </div>
+
+      <div class="card step">
+        <h3>Start calling</h3>
+        <p>Place outbound calls and receive forwarded inbound calls through the platform.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <img src="/public/manage%20payment.jpeg">
-      <h3>Payments</h3>
-      <p>Simple and transparent billing.</p>
+  <section class="showcase">
+    <img src="manage%20payment.jpeg" alt="GhostNumber payment management">
+
+    <div>
+      <div class="section-title" style="text-align:left; margin:0;">
+        <h2>Subscriptions and usage, clearly managed.</h2>
+        <p>
+          GhostNumber includes account and billing management so users can track subscription status,
+          usage and payment details in the app.
+        </p>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<section class="section">
-  <h2>How It Works</h2>
-
-  <div class="usecases">
-
-    <div class="use">
-      <h3>1. Create Account</h3>
-      <p>Sign up in seconds.</p>
+  <section>
+    <div class="cta">
+      <h2>Ready to use your second number?</h2>
+      <p>
+        Open GhostNumber and manage your virtual number, calls, contacts and billing from the app.
+      </p>
+      <a class="btn" href="https://app.ghostnumber.app">Go to App</a>
     </div>
+  </section>
 
-    <div class="use">
-      <h3>2. Get Number</h3>
-      <p>Choose your virtual number.</p>
-    </div>
-
-    <div class="use">
-      <h3>3. Start Using</h3>
-      <p>Receive SMS and manage everything.</p>
-    </div>
-
-  </div>
-</section>
+</main>
 
 <footer>
-  © 2026 GhostNumber <br><br>
-
-  <a href="/terms.html">Terms & Conditions</a>
-  <a href="/privacy.html">Privacy Policy</a>
-  <a href="https://app.ghostnumber.app">Open App</a>
+  <div class="footer-inner">
+    <div>© 2026 GhostNumber · VIV CRYSTAL SRL</div>
+    <div class="footer-links">
+      <a href="https://app.ghostnumber.app">Open App</a>
+      <a href="/terms.html">Terms & Conditions</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="mailto:support@ghostnumber.app">Support</a>
+    </div>
+  </div>
 </footer>
 
 </body>
