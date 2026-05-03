@@ -22,6 +22,7 @@ header {
 
 .logo {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .btn {
@@ -41,8 +42,14 @@ header {
   font-size: 48px;
 }
 
+.hero p {
+  opacity: 0.7;
+  max-width: 600px;
+  margin: auto;
+}
+
 .section {
-  padding: 60px 20px;
+  padding: 70px 20px;
   text-align: center;
 }
 
@@ -54,7 +61,7 @@ header {
 }
 
 .card {
-  width: 300px;
+  width: 280px;
 }
 
 .card img {
@@ -62,10 +69,30 @@ header {
   border-radius: 10px;
 }
 
+.usecases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.use {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  width: 260px;
+}
+
 footer {
   text-align: center;
   padding: 30px;
-  opacity: 0.5;
+  opacity: 0.6;
+}
+
+footer a {
+  color: #818cf8;
+  margin: 0 10px;
+  text-decoration: none;
 }
 </style>
 </head>
@@ -79,36 +106,62 @@ footer {
 
 <section class="hero">
   <h1>Virtual Numbers. Real Privacy.</h1>
-  <p>Receive SMS instantly with secure virtual numbers.</p>
+  <p>
+    GhostNumber lets you use a second phone number to stay organized,
+    protect your personal number, and avoid unwanted calls or messages.
+  </p>
   <br>
-  <a href="https://app.ghostnumber.app" class="btn">Start Now</a>
+  <a href="https://app.ghostnumber.app" class="btn">Get Started</a>
 </section>
 
 <section class="section">
-  <h2>Powerful Features</h2>
+  <h2>What You Can Do</h2>
+
+  <div class="usecases">
+
+    <div class="use">
+      <h3>📱 Second Number</h3>
+      <p>Keep your personal number private and use a second number for apps, work or online services.</p>
+    </div>
+
+    <div class="use">
+      <h3>🔕 Avoid Disturbance</h3>
+      <p>Use a separate number so your main phone isn’t flooded with messages or calls.</p>
+    </div>
+
+    <div class="use">
+      <h3>🌍 Global Access</h3>
+      <p>Access your number from anywhere and receive SMS instantly.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Features</h2>
 
   <div class="features">
 
     <div class="card">
-      <img src="feature.png">
+      <img src="/public/feature.png">
       <h3>Instant Setup</h3>
       <p>Get your number in seconds.</p>
     </div>
 
     <div class="card">
-      <img src="feature ghostnumber.png">
+      <img src="/public/feature%20ghostnumber.png">
       <h3>Dashboard</h3>
-      <p>Manage everything easily.</p>
+      <p>Manage everything in one place.</p>
     </div>
 
     <div class="card">
-      <img src="login ghostnumber.jpeg">
+      <img src="/public/login%20ghostnumber.jpeg">
       <h3>Secure Login</h3>
       <p>Your data stays protected.</p>
     </div>
 
     <div class="card">
-      <img src="manage payment.jpeg">
+      <img src="/public/manage%20payment.jpeg">
       <h3>Payments</h3>
       <p>Simple and transparent billing.</p>
     </div>
@@ -116,8 +169,35 @@ footer {
   </div>
 </section>
 
+<section class="section">
+  <h2>How It Works</h2>
+
+  <div class="usecases">
+
+    <div class="use">
+      <h3>1. Create Account</h3>
+      <p>Sign up in seconds.</p>
+    </div>
+
+    <div class="use">
+      <h3>2. Get Number</h3>
+      <p>Choose your virtual number.</p>
+    </div>
+
+    <div class="use">
+      <h3>3. Start Using</h3>
+      <p>Receive SMS and manage everything.</p>
+    </div>
+
+  </div>
+</section>
+
 <footer>
-  © 2026 GhostNumber
+  © 2026 GhostNumber <br><br>
+
+  <a href="/terms.html">Terms & Conditions</a>
+  <a href="/privacy.html">Privacy Policy</a>
+  <a href="https://app.ghostnumber.app">Open App</a>
 </footer>
 
 </body>
