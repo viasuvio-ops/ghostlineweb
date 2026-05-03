@@ -3,235 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GhostNumber — Private Calling Made Simple</title>
-
-<meta name="description" content="Get your own virtual phone number. Make private calls, manage billing, view call history, and protect your real number with GhostNumber.">
+<title>GhostNumber</title>
 
 <style>
-:root{
-  --blue:#1a73e8;
-  --green:#00c896;
-  --text:#111;
-  --muted:#666;
-  --bg:#f7f9fc;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Inter,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #020617;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
+.logo {
+  font-weight: bold;
 }
 
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px;
-  background:white;
-  border-bottom:1px solid #eee;
+.btn {
+  background: #6366f1;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
 }
 
-.logo{
-  font-weight:700;
-  font-size:20px;
+.hero {
+  text-align: center;
+  padding: 100px 20px;
 }
 
-.nav-links a{
-  margin-left:20px;
-  text-decoration:none;
-  color:var(--muted);
+.hero h1 {
+  font-size: 48px;
 }
 
-.btn{
-  padding:12px 18px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
+.section {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.btn-primary{
-  background:linear-gradient(135deg,var(--blue),var(--green));
-  color:white;
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
 }
 
-.hero{
-  text-align:center;
-  padding:80px 20px;
+.card {
+  width: 300px;
 }
 
-.hero h1{
-  font-size:42px;
-  margin-bottom:20px;
+.card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
-.hero p{
-  font-size:18px;
-  color:var(--muted);
-  max-width:600px;
-  margin:auto;
-}
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  margin-top:60px;
-}
-
-.card{
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  border:1px solid #eee;
-}
-
-.card h3{
-  margin-bottom:10px;
-}
-
-.section{
-  margin-top:80px;
-}
-
-.footer{
-  margin-top:100px;
-  padding:30px;
-  text-align:center;
-  background:white;
-  border-top:1px solid #eee;
-}
-
-.footer a{
-  margin:0 10px;
-  color:var(--muted);
-  text-decoration:none;
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.5;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">👻 GhostNumber</div>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#how">How it works</a>
-    <a href="https://app.ghostnumber.app/privacy">Privacy</a>
-    <a href="https://app.ghostnumber.app/terms">Terms</a>
-    <a href="https://app.ghostnumber.app/login">Login</a>
-  </div>
-</nav>
+<header>
+  <div class="logo">GhostNumber</div>
+  <a href="https://app.ghostnumber.app" class="btn">Open App</a>
+</header>
 
 <section class="hero">
-  <h1>Call with your own Ghost Number</h1>
-  <p>
-    Protect your personal phone number and make private calls using a virtual number.
-    Manage billing, call history, and contacts in one simple app.
-  </p>
-
-  <br><br>
-
-  <a class="btn btn-primary" href="https://app.ghostnumber.app/signup">
-    Start with GhostNumber
-  </a>
-</section>
-
-<div class="container">
-
-<section id="features" class="section">
-  <h2>Everything you need in one app</h2>
-
-  <div class="features">
-    <div class="card">
-      <h3>Private calling</h3>
-      <p>Call anyone without exposing your real phone number.</p>
-    </div>
-
-    <div class="card">
-      <h3>Virtual number</h3>
-      <p>Get your own number for inbound and outbound calls.</p>
-    </div>
-
-    <div class="card">
-      <h3>Call history</h3>
-      <p>Track all incoming and outgoing calls in one place.</p>
-    </div>
-
-    <div class="card">
-      <h3>Billing control</h3>
-      <p>Manage minutes, packages, and payments easily.</p>
-    </div>
-
-    <div class="card">
-      <h3>Contacts</h3>
-      <p>Save contacts and call them quickly anytime.</p>
-    </div>
-
-    <div class="card">
-      <h3>Do Not Disturb</h3>
-      <p>Set quiet hours when you don’t want to be disturbed.</p>
-    </div>
-  </div>
-</section>
-
-<section id="how" class="section">
-  <h2>How it works</h2>
-
-  <div class="features">
-    <div class="card">
-      <h3>1. Create account</h3>
-      <p>Sign up using email or Google account.</p>
-    </div>
-
-    <div class="card">
-      <h3>2. Verify phone</h3>
-      <p>Confirm your real number via SMS verification.</p>
-    </div>
-
-    <div class="card">
-      <h3>3. Get Ghost Number</h3>
-      <p>Buy your virtual number and activate calling.</p>
-    </div>
-
-    <div class="card">
-      <h3>4. Start calling</h3>
-      <p>Make private calls through your GhostNumber.</p>
-    </div>
-  </div>
+  <h1>Virtual Numbers. Real Privacy.</h1>
+  <p>Receive SMS instantly with secure virtual numbers.</p>
+  <br>
+  <a href="https://app.ghostnumber.app" class="btn">Start Now</a>
 </section>
 
 <section class="section">
-  <div class="card" style="text-align:center;">
-    <h2>Ready to protect your number?</h2>
-    <p>Create your account and start using GhostNumber today.</p>
+  <h2>Powerful Features</h2>
 
-    <br>
+  <div class="features">
 
-    <a class="btn btn-primary" href="https://app.ghostnumber.app/signup">
-      Create account
-    </a>
+    <div class="card">
+      <img src="feature.png">
+      <h3>Instant Setup</h3>
+      <p>Get your number in seconds.</p>
+    </div>
+
+    <div class="card">
+      <img src="feature ghostnumber.png">
+      <h3>Dashboard</h3>
+      <p>Manage everything easily.</p>
+    </div>
+
+    <div class="card">
+      <img src="login ghostnumber.jpeg">
+      <h3>Secure Login</h3>
+      <p>Your data stays protected.</p>
+    </div>
+
+    <div class="card">
+      <img src="manage payment.jpeg">
+      <h3>Payments</h3>
+      <p>Simple and transparent billing.</p>
+    </div>
+
   </div>
 </section>
 
-</div>
-
-<footer class="footer">
+<footer>
   © 2026 GhostNumber
-
-  <div style="margin-top:10px;">
-    <a href="https://app.ghostnumber.app/support">Support</a>
-    <a href="https://app.ghostnumber.app/privacy">Privacy</a>
-    <a href="https://app.ghostnumber.app/terms">Terms</a>
-  </div>
 </footer>
 
 </body>
