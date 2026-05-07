@@ -3,56 +3,214 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GhostNumber</title>
+<title>GhostNumber - Virtual Phone Number for Calls</title>
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,sans-serif;background:#050816;color:white}
 a{text-decoration:none;color:inherit}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 8%;background:#070b1a;border-bottom:1px solid #1f2937;position:sticky;top:0;z-index:10}
+
+header{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 8%;
+  background:#070b1a;
+  border-bottom:1px solid #1f2937;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
 .logo{font-size:24px;font-weight:800}
-nav{display:flex;gap:28px;align-items:center}
-nav a{color:#cbd5e1}
-.btn{background:#7c3aed;padding:14px 24px;border-radius:14px;font-weight:700;color:white;display:inline-block}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:90px 8%;background:radial-gradient(circle at right,#312e81,#050816 55%)}
-.hero h1{font-size:62px;line-height:1.05;margin:0 0 24px}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:#cbd5e1;font-size:14px}
+nav a:hover{color:white}
+
+.btn{
+  background:#7c3aed;
+  padding:14px 24px;
+  border-radius:14px;
+  font-weight:700;
+  color:white;
+  display:inline-block;
+  box-shadow:0 15px 40px rgba(124,58,237,.35);
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:55px;
+  align-items:center;
+  padding:100px 8%;
+  background:radial-gradient(circle at right,#312e81,#050816 55%);
+}
+
+.hero h1{
+  font-size:64px;
+  line-height:1.05;
+  margin:0 0 24px;
+}
+
 .hero h1 span{color:#8b5cf6}
-.hero p{font-size:20px;line-height:1.7;color:#cbd5e1;margin-bottom:32px}
-.hero-img{width:100%;border-radius:32px;border:1px solid #334155;box-shadow:0 40px 90px #000;background:#0f172a}
+.hero p{font-size:20px;line-height:1.7;color:#cbd5e1;margin-bottom:28px}
 .notice{margin-top:18px;color:#cbd5e1;font-size:15px}
+
+.hero-img{
+  width:100%;
+  border-radius:30px;
+  border:1px solid #334155;
+  box-shadow:0 40px 100px rgba(0,0,0,.65);
+  background:#0f172a;
+}
+
 section{padding:80px 8%}
-.center{text-align:center;max-width:820px;margin:0 auto 50px}
+
+.center{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 50px;
+}
+
 .center h2{font-size:44px;margin:0 0 16px}
 .center p{color:#cbd5e1;font-size:18px;line-height:1.7}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.card{background:#0f172a;border:1px solid #273449;border-radius:24px;padding:28px;box-shadow:0 25px 60px rgba(0,0,0,.25)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #273449;
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
 .card .icon{font-size:34px;margin-bottom:18px}
 .card h3{font-size:22px;margin:0 0 12px}
-.card p{color:#cbd5e1;line-height:1.6}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.mock{background:linear-gradient(135deg,#111827,#1e1b4b);border-radius:30px;padding:28px;border:1px solid #334155}
-.row{display:flex;justify-content:space-between;background:#111827;padding:18px;border-radius:16px;margin:12px 0;color:#cbd5e1}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{background:#0f172a;border:1px solid #273449;border-radius:24px;padding:30px;text-align:center}
-.stepnum{width:54px;height:54px;border-radius:50%;background:#7c3aed;margin:auto;display:grid;place-items:center;font-size:24px;font-weight:800}
-.cta{margin:70px 8%;padding:55px;border-radius:32px;background:linear-gradient(135deg,#312e81,#7c3aed);display:flex;justify-content:space-between;align-items:center;gap:30px}
+.card p,.card li{color:#cbd5e1;line-height:1.6}
+.card ul{padding-left:20px}
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.mock{
+  background:linear-gradient(135deg,#111827,#1e1b4b);
+  border-radius:30px;
+  padding:28px;
+  border:1px solid #334155;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  background:#111827;
+  padding:18px;
+  border-radius:16px;
+  margin:12px 0;
+  color:#cbd5e1;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.step{
+  background:#0f172a;
+  border:1px solid #273449;
+  border-radius:24px;
+  padding:30px;
+}
+
+.stepnum{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:#7c3aed;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+}
+
+.info-box{
+  background:#0f172a;
+  border:1px solid #273449;
+  border-radius:24px;
+  padding:30px;
+}
+
+.info-box h3{margin-top:0;font-size:24px}
+.info-box p,.info-box li{color:#cbd5e1;line-height:1.7}
+.info-box ul{padding-left:20px}
+
+.cta{
+  margin:70px 8%;
+  padding:55px;
+  border-radius:32px;
+  background:linear-gradient(135deg,#312e81,#7c3aed);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
 .cta h2{font-size:38px;margin:0 0 10px}
 .cta p{color:#e0e7ff}
-footer{padding:40px 8%;border-top:1px solid #1f2937;display:flex;justify-content:space-between;gap:35px;flex-wrap:wrap;color:#94a3b8}
-footer a{color:#cbd5e1;margin-left:18px}
-footer p{margin:6px 0}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a{margin-left:0}
 
-@media(max-width:900px){
-.hero,.split{grid-template-columns:1fr}
-.grid{grid-template-columns:1fr 1fr}
-.steps{grid-template-columns:1fr}
-.cta{flex-direction:column;text-align:center}
-nav a:not(.btn){display:none}
-.hero h1{font-size:44px}
+footer{
+  padding:45px 8%;
+  border-top:1px solid #1f2937;
+  display:flex;
+  justify-content:space-between;
+  gap:35px;
+  flex-wrap:wrap;
+  color:#94a3b8;
 }
-@media(max-width:560px){.grid{grid-template-columns:1fr}}
+
+footer p{margin:6px 0}
+footer a{color:#cbd5e1}
+
+.footer-links{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:950px){
+  .hero,.split{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .info-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .cta{flex-direction:column;text-align:center}
+  nav a:not(.btn){display:none}
+  .hero h1{font-size:44px}
+}
+
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  header{padding:0 20px}
+  section{padding:60px 20px}
+  .hero{padding:70px 20px}
+}
 </style>
 </head>
 
@@ -61,11 +219,11 @@ nav a:not(.btn){display:none}
 <header>
   <div class="logo">GhostNumber</div>
   <nav>
-    <a href="#features">Features</a>
     <a href="#about">About</a>
     <a href="#how">How it works</a>
-    <a href="terms.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
+    <a href="#billing">Billing</a>
+    <a href="#rules">Rules</a>
+    <a href="#support">Support</a>
     <a class="btn" href="https://app.ghostnumber.app">Open App</a>
   </nav>
 </header>
@@ -74,119 +232,210 @@ nav a:not(.btn){display:none}
   <div>
     <h1>A second number for <span>privacy</span> and call control.</h1>
     <p>
-      GhostNumber is a virtual phone number platform created for people who want to make and manage calls
-      without sharing their personal number everywhere.
+      GhostNumber is a virtual phone service that allows users to make supported calls using a virtual phone number.
+      The service works through your verified phone number, your assigned virtual number, and the active minutes available on your account.
     </p>
     <a class="btn" href="https://app.ghostnumber.app">Open GhostNumber</a>
     <div class="notice">GhostNumber is focused on call management. It does not provide SMS or messaging features.</div>
   </div>
 
   <div>
-    <img class="hero-img" src="feature-ghostnumber-1124x500.png" alt="GhostNumber app preview">
+    <img class="hero-img" src="./feature-ghostnumber-1024x500.png" alt="GhostNumber app preview">
   </div>
 </section>
 
 <section id="about">
   <div class="center">
-    <h2>About GhostNumber</h2>
+    <h2>What is GhostNumber?</h2>
     <p>
       GhostNumber helps users separate personal calls from online services, business contacts and public interactions.
-      The platform is designed around privacy, simple account management, verified phone access, call history and subscription management.
+      It is designed for privacy, verified phone access, call activity, billing, number management and account control.
     </p>
-    <p>
-      The application is useful when you want to keep your personal phone number private while still being reachable
-      through a dedicated virtual number. GhostNumber is built for calling only, not for sending or receiving text messages.
-    </p>
-  </div>
-</section>
-
-<section id="features">
-  <div class="center">
-    <h2>Why use GhostNumber?</h2>
-    <p>Use a separate number for privacy, business communication and better control over your calls.</p>
   </div>
 
   <div class="grid">
-    <div class="card">
-      <div class="icon">🔒</div>
-      <h3>Protect your privacy</h3>
-      <p>Keep your personal number private and avoid exposing it on every website, form or service.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">📱</div>
-      <h3>Second number</h3>
-      <p>Use a dedicated virtual number without carrying a second phone or SIM card.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">📞</div>
-      <h3>Call management</h3>
-      <p>Manage calling activity from one simple account dashboard.</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🕘</div>
-      <h3>Call history</h3>
-      <p>View recent calls and keep your communication organized in one place.</p>
-    </div>
-  </div>
-</section>
-
-<section class="split">
-  <div class="mock">
-    <h2>Dashboard preview</h2>
-    <div class="row"><span>Virtual Number</span><strong>Active</strong></div>
-    <div class="row"><span>Phone Verification</span><strong>Verified</strong></div>
-    <div class="row"><span>Subscription</span><strong>Managed</strong></div>
-    <div class="row"><span>Call Features</span><strong>Enabled</strong></div>
-  </div>
-
-  <div>
-    <h2>Everything in one place.</h2>
-    <p style="color:#cbd5e1;line-height:1.8;font-size:18px">
-      GhostNumber gives users a simple way to manage their virtual number, verified phone, call activity,
-      contacts, billing and account settings. The service is made for people who want more privacy and control
-      when making or receiving calls.
-    </p>
-    <p style="color:#cbd5e1;line-height:1.8;font-size:18px">
-      Please note: GhostNumber does not offer SMS, text messages or chat messaging. The platform is dedicated to phone calls.
-    </p>
-    <a class="btn" href="https://app.ghostnumber.app">Go to App</a>
+    <div class="card"><div class="icon">🔒</div><h3>Privacy</h3><p>Use a virtual number instead of sharing your personal phone number everywhere.</p></div>
+    <div class="card"><div class="icon">📞</div><h3>Calls Only</h3><p>GhostNumber is built for supported calling features, not SMS or chat messaging.</p></div>
+    <div class="card"><div class="icon">📱</div><h3>Verified Phone</h3><p>Your verified phone number is required for onboarding and call routing.</p></div>
+    <div class="card"><div class="icon">💳</div><h3>Packages</h3><p>Use active minutes from your package to make supported calls.</p></div>
   </div>
 </section>
 
 <section id="how">
   <div class="center">
-    <h2>How it works</h2>
-    <p>Simple setup, secure verification and easy call management.</p>
+    <h2>How to start using GhostNumber</h2>
+    <p>Complete onboarding, verify your phone, choose your number package and start using supported calling features.</p>
   </div>
 
   <div class="steps">
     <div class="step">
       <div class="stepnum">1</div>
       <h3>Create account</h3>
-      <p>Sign up with your email and password.</p>
+      <p>Create an account using email and password. Email verification may be required.</p>
     </div>
 
     <div class="step">
       <div class="stepnum">2</div>
       <h3>Verify phone</h3>
-      <p>Confirm your phone number for secure account access.</p>
+      <p>Verify your phone number by SMS. Without phone verification, free trial and paid calling features may remain locked.</p>
     </div>
 
     <div class="step">
       <div class="stepnum">3</div>
-      <h3>Start calling</h3>
-      <p>Use your virtual number for call privacy and communication control.</p>
+      <h3>Buy package</h3>
+      <p>Use the free test call if available, choose a virtual number package, and your number will appear in your dashboard.</p>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="split">
+    <div class="mock">
+      <h2>How calls work</h2>
+      <div class="row"><span>1. Enter destination</span><strong>Number selected</strong></div>
+      <div class="row"><span>2. GhostNumber calls you</span><strong>Verified phone</strong></div>
+      <div class="row"><span>3. You answer</span><strong>Connection starts</strong></div>
+      <div class="row"><span>4. Destination connects</span><strong>Call active</strong></div>
+    </div>
+
+    <div>
+      <h2>Callback-based calling</h2>
+      <p style="color:#cbd5e1;line-height:1.8;font-size:18px">
+        GhostNumber connects calls through a callback system using third-party telecommunications providers.
+        You enter or choose the number you want to call. GhostNumber first calls your verified phone.
+        After you answer, GhostNumber connects the destination number.
+      </p>
+      <p style="color:#cbd5e1;line-height:1.8;font-size:18px">
+        If you do not answer your own phone, the call cannot be completed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="billing">
+  <div class="center">
+    <h2>Billing, minutes and package validity</h2>
+    <p>GhostNumber uses minute-based billing and package validity rules.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Billing and usage</h3>
+      <p>GhostNumber uses minute-based billing. Calls may be rounded, and minimum usage may apply depending on call status.</p>
+      <p>Usage may be deducted during the connection process, including when calls fail, are busy, are not answered, or are canceled.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Package validity</h3>
+      <p>Each successful payment activates your package for 45 days.</p>
+      <p>If no renewal or top-up is completed, the number may remain reserved only until day 60 from the last successful payment.</p>
+      <p>After 60 days without payment, the virtual number may be automatically released.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Expiration and released numbers</h3>
+      <p>After expiration, your virtual number may stop working for supported calling features.</p>
+      <p>Once released, the number is not guaranteed to remain available and may not be recoverable.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Remaining minutes</h3>
+      <p>Remaining minutes are linked to your active package and number status.</p>
+      <p>If your number expires, is released, or is manually deleted, unused minutes may be lost.</p>
+      <p>Unused minutes are not guaranteed after number deletion, expiration, or automatic release.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="center">
+    <h2>Account and number management</h2>
+    <p>Users can manage their number, account access and service settings from the GhostNumber dashboard.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Delete Number</h3>
+      <ul>
+        <li>Your number is removed from your account.</li>
+        <li>Your current number stops being active.</li>
+        <li>Remaining minutes may be lost.</li>
+        <li>You may need to buy another number to continue using the service.</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h3>Delete Account</h3>
+      <ul>
+        <li>Your account access ends.</li>
+        <li>Your assigned number may be released.</li>
+        <li>Remaining minutes may be lost.</li>
+        <li>You may need to create a new account to use the service again.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="center">
+    <h2>Service rules and restrictions</h2>
+    <p>GhostNumber is built for supported, lawful calling use only.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Phone verification</h3>
+      <p>Your verified phone number is required for onboarding, free trial access where available, and supported call routing.</p>
+      <p>Without phone verification, calling features may remain unavailable.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Free trial restrictions</h3>
+      <p>Where offered, free trial usage may be limited to one verified phone number.</p>
+      <p>GhostNumber may restrict repeat free-trial access where fraud-prevention or abuse-prevention rules apply.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Number availability</h3>
+      <p>Virtual numbers are subject to country support, inventory, provider rules, and availability.</p>
+      <p>A previously assigned number may not remain available after deletion, expiration, release, or account closure.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Quiet hours and controls</h3>
+      <p>If quiet hours are enabled, GhostNumber may block inbound or outbound activity during the configured time window.</p>
+      <p>These settings help users control account usage and reduce unwanted activity.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Restricted usage</h3>
+      <p>GhostNumber may block unsupported destinations, premium-rate numbers, emergency numbers, abusive traffic, suspicious activity, or actions that violate telecommunications requirements.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>No emergency calls</h3>
+      <p>GhostNumber is not an emergency service and must not be used for emergency calls.</p>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="center">
+    <h2>Support</h2>
+    <p>
+      If you need help with onboarding, calls, billing, payments, account access, number assignment,
+      number deletion, or account deletion, contact us at:
+    </p>
+    <p style="font-size:24px;font-weight:800">
+      <a href="mailto:support@ghostnumber.app">support@ghostnumber.app</a>
+    </p>
   </div>
 </section>
 
 <div class="cta">
   <div>
     <h2>Ready to use your second number?</h2>
-    <p>Open GhostNumber and manage your calls with more privacy and control.</p>
+    <p>Open GhostNumber and manage supported calls with more privacy and control.</p>
   </div>
   <a class="btn" href="https://app.ghostnumber.app">Open App</a>
 </div>
@@ -199,16 +448,18 @@ nav a:not(.btn){display:none}
 
   <div>
     <p><strong>VIV CRYSTAL SRL</strong></p>
-    <p>CUI: 17485245</p>
-    <p>Nr. Reg. Com.: J2005001281351</p>
+    <p>VAT ID: 17485245</p>
+    <p>Trade Register No.: J2005001281351</p>
     <p>EUID: ROONRC.J2005001281351</p>
     <p>Incorporated: April 14, 2005</p>
   </div>
 
   <div class="footer-links">
-    <a href="terms.html">Terms & Conditions</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="mailto:support@ghostnumber.app">Support</a>
+    <a href="#about">About</a>
+    <a href="#how">How it works</a>
+    <a href="#billing">Billing</a>
+    <a href="#support">Support</a>
+    <a href="mailto:support@ghostnumber.app">Email Support</a>
   </div>
 </footer>
 
