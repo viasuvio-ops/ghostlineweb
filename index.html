@@ -11,7 +11,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:Inter,Arial,sans-serif;
+  font-family:Arial, sans-serif;
   background:#f7fbff;
   color:#0f172a;
 }
@@ -23,25 +23,17 @@ header{
   align-items:center;
   justify-content:space-between;
   padding:0 8%;
-  background:rgba(255,255,255,.92);
+  background:rgba(255,255,255,.94);
   backdrop-filter:blur(14px);
   border-bottom:1px solid #e2e8f0;
   position:sticky;
   top:0;
   z-index:20;
 }
-
-.logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:-.4px;
-  color:#0f172a;
-}
-
+.logo{font-size:24px;font-weight:900;color:#0f172a}
 nav{display:flex;gap:22px;align-items:center}
 nav a{color:#475569;font-size:14px;font-weight:700}
 nav a:hover{color:#2563eb}
-
 .btn{
   background:linear-gradient(135deg,#2563eb,#16c7a7);
   padding:13px 22px;
@@ -52,62 +44,57 @@ nav a:hover{color:#2563eb}
   box-shadow:0 18px 45px rgba(37,99,235,.25);
 }
 
-.store-buttons{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-  align-items:center;
-  margin-top:28px;
-}
-
-.store-buttons img{
-  height:86px;
-  width:auto;
-  display:block;
-  border-radius:12px;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-
-.store-buttons img:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 40px rgba(15,23,42,.18);
-}
-
 .hero{
   display:grid;
-  grid-template-columns:1.05fr .95fr;
+  grid-template-columns:.9fr 1.1fr;
   gap:56px;
   align-items:center;
   padding:92px 8% 82px;
   background:
-    radial-gradient(circle at 82% 18%,rgba(22,199,167,.22),transparent 36%),
+    radial-gradient(circle at 82% 18%,rgba(22,199,167,.23),transparent 36%),
     radial-gradient(circle at 18% 20%,rgba(37,99,235,.20),transparent 32%),
     linear-gradient(135deg,#ffffff,#eef7ff 58%,#e9fff9);
 }
-
 .hero h1{
-  font-size:62px;
+  font-size:58px;
   line-height:1.04;
   margin:0 0 22px;
-  letter-spacing:-2.5px;
+  letter-spacing:-2px;
 }
-
 .hero h1 span{color:#2563eb}
 .hero p{
   font-size:20px;
   line-height:1.75;
   color:#475569;
   margin:0 0 22px;
-  max-width:720px;
+  max-width:680px;
+}
+
+.hero-images{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:stretch;
+}
+.hero-images a{display:block}
+.hero-images img{
+  width:100%;
+  height:620px;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+  border-radius:34px;
+  border:1px solid #dbeafe;
+  box-shadow:0 35px 95px rgba(15,23,42,.18);
+  background:white;
 }
 
 .hero-badges{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
-  margin:20px 0 0;
+  margin:24px 0 0;
 }
-
 .badge{
   display:inline-flex;
   align-items:center;
@@ -120,55 +107,14 @@ nav a:hover{color:#2563eb}
   font-weight:800;
   box-shadow:0 10px 28px rgba(15,23,42,.06);
 }
-
-.notice{
-  margin-top:20px;
-  color:#64748b;
-  font-size:15px;
-  line-height:1.6;
-}
-
-.hero-card{
-  background:white;
-  border:1px solid #dbeafe;
-  border-radius:34px;
-  padding:22px;
-  box-shadow:0 40px 100px rgba(15,23,42,.16);
-}
-
-.hero-img{
-  width:100%;
-  border-radius:26px;
-  border:1px solid #e2e8f0;
-  background:#f8fafc;
-  display:block;
-}
+.notice{margin-top:20px;color:#64748b;font-size:15px;line-height:1.6}
 
 section{padding:78px 8%}
+.center{text-align:center;max-width:900px;margin:0 auto 48px}
+.center h2{font-size:44px;margin:0 0 14px;letter-spacing:-1.5px}
+.center p{color:#475569;font-size:18px;line-height:1.75}
 
-.center{
-  text-align:center;
-  max-width:900px;
-  margin:0 auto 48px;
-}
-
-.center h2{
-  font-size:44px;
-  margin:0 0 14px;
-  letter-spacing:-1.5px;
-}
-.center p{
-  color:#475569;
-  font-size:18px;
-  line-height:1.75;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
-}
-
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .card,.info-box,.step{
   background:white;
   border:1px solid #e2e8f0;
@@ -176,22 +122,12 @@ section{padding:78px 8%}
   padding:28px;
   box-shadow:0 22px 60px rgba(15,23,42,.07);
 }
-
 .card .icon{font-size:34px;margin-bottom:16px}
 .card h3,.step h3{font-size:22px;margin:0 0 12px}
-.card p,.card li,.step p,.info-box p,.info-box li{
-  color:#475569;
-  line-height:1.7;
-}
+.card p,.card li,.step p,.info-box p,.info-box li{color:#475569;line-height:1.7}
 .card ul,.info-box ul{padding-left:20px}
 
-.split{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  align-items:center;
-}
-
+.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 .mock{
   background:linear-gradient(135deg,#eef7ff,#ffffff);
   border-radius:32px;
@@ -199,7 +135,6 @@ section{padding:78px 8%}
   border:1px solid #dbeafe;
   box-shadow:0 30px 80px rgba(15,23,42,.08);
 }
-
 .row{
   display:flex;
   justify-content:space-between;
@@ -213,12 +148,7 @@ section{padding:78px 8%}
 }
 .row strong{color:#2563eb}
 
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .stepnum{
   width:56px;
   height:56px;
@@ -231,19 +161,9 @@ section{padding:78px 8%}
   font-weight:900;
   margin-bottom:18px;
 }
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:24px;
-}
-
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .info-box h3{margin-top:0;font-size:24px;color:#0f172a}
-
-.sms-section{
-  background:linear-gradient(135deg,#e9fff9,#eef7ff);
-}
-
+.sms-section{background:linear-gradient(135deg,#e9fff9,#eef7ff)}
 .highlight{
   background:linear-gradient(135deg,#2563eb,#16c7a7);
   color:white;
@@ -262,9 +182,25 @@ section{padding:78px 8%}
   border:1px solid #dbeafe;
   box-shadow:0 30px 85px rgba(15,23,42,.10);
 }
-
 .cta h2{font-size:44px;margin:0 0 12px;letter-spacing:-1.4px}
 .cta p{color:#475569;font-size:20px;line-height:1.7;max-width:760px}
+.cta-images{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:32px;
+  max-width:850px;
+}
+.cta-images img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+  border-radius:28px;
+  border:1px solid #dbeafe;
+  box-shadow:0 24px 70px rgba(15,23,42,.16);
+}
 
 footer{
   padding:45px 8%;
@@ -276,25 +212,28 @@ footer{
   color:#64748b;
   background:white;
 }
-
 footer p{margin:6px 0}
 footer a{color:#2563eb;font-weight:700}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
 
-.footer-links{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
+@media(max-width:1200px){
+  .hero{grid-template-columns:1fr}
+  .hero-images img{height:560px}
 }
-
 @media(max-width:1050px){
-  .hero,.split{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr 1fr}
   .info-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   nav a:not(.btn){display:none}
   .hero h1{font-size:48px}
 }
-
+@media(max-width:760px){
+  .hero-images{grid-template-columns:1fr}
+  .hero-images img{height:auto;max-height:none;object-fit:contain}
+  .cta-images{grid-template-columns:1fr}
+  .cta-images img{height:auto;object-fit:contain}
+}
 @media(max-width:620px){
   header{padding:0 18px}
   .logo{font-size:21px}
@@ -305,8 +244,6 @@ footer a{color:#2563eb;font-weight:700}
   .hero p{font-size:17px}
   .grid{grid-template-columns:1fr}
   .center h2{font-size:34px}
-  .store-buttons{gap:12px}
-  .store-buttons img{height:64px}
   .cta{margin:50px 20px;padding:34px 24px}
   .cta h2{font-size:32px}
   .highlight{padding:32px 24px}
@@ -339,72 +276,6 @@ footer a{color:#2563eb;font-weight:700}
       Make supported calls, receive messages inside the app, send GSM messages, and manage everything from one simple dashboard.
     </p>
 
-    <div style="
-  display:flex;
-  gap:40px;
-  align-items:center;
-  margin-top:40px;
-  flex-wrap:wrap;
-">
-
-  <!-- POZA MARE GHOSTNUMBER -->
-
-  <img
-    src="./feature-ghostnumber-1024x500.png"
-    alt="GhostNumber"
-    style="
-      width:420px;
-      max-width:100%;
-      border-radius:28px;
-      box-shadow:0 20px 60px rgba(0,0,0,.15);
-      border:1px solid #dbeafe;
-    "
-  >
-
-  <!-- APP STORE BADGES -->
-
-  <div style="
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-  ">
-
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro"
-       target="_blank"
-       rel="noopener">
-
-      <img
-        src="./google-play-badge.jpeg"
-        alt="Get it on Google Play"
-        style="
-          height:120px;
-          width:auto;
-          display:block;
-        "
-      >
-
-    </a>
-
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191"
-       target="_blank"
-       rel="noopener">
-
-      <img
-        src="./app-store-badge.jpeg"
-        alt="Download on the App Store"
-        style="
-          height:120px;
-          width:auto;
-          display:block;
-        "
-      >
-
-    </a>
-
-  </div>
-
-</div>
-
     <div class="hero-badges">
       <span class="badge">📞 Private calling</span>
       <span class="badge">💬 In-app SMS</span>
@@ -417,8 +288,14 @@ footer a{color:#2563eb;font-weight:700}
     </div>
   </div>
 
-  <div class="hero-card">
-    <img class="hero-img" src="./feature-ghostnumber-1024x500.png" alt="GhostNumber app preview">
+  <div class="hero-images">
+    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
+      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
+    </a>
+
+    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
+      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
+    </a>
   </div>
 </section>
 
@@ -639,13 +516,13 @@ footer a{color:#2563eb;font-weight:700}
   <h2>Ready to use your second number?</h2>
   <p>Download GhostNumber, get your private USA number, and manage calls and SMS with more privacy and control.</p>
 
-  <div class="store-buttons">
+  <div class="cta-images">
     <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
-      <img src="./google-play-badge.jpeg" alt="Get it on Google Play">
+      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
     </a>
 
     <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
-      <img src="./app-store-badge.jpeg" alt="Download on the App Store">
+      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
     </a>
   </div>
 </div>
