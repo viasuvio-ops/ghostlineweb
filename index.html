@@ -137,13 +137,19 @@ nav a:hover{color:var(--cyan)}
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  gap:28px;
 }
-.phone-showcase img.phone-img{
-  width:100%;
-  max-width:1000px;
-  margin-bottom:25px;
-  filter:drop-shadow(0 45px 90px rgba(0,229,255,.35));
+.store-big{
+  width:440px;
+  max-width:100%;
+  border-radius:18px;
+  box-shadow:0 25px 80px rgba(0,0,0,.45);
+  transition:.25s;
 }
+.store-big:hover{
+  transform:translateY(-8px);
+}
+
 .store-row{
   display:flex;
   gap:14px;
@@ -343,6 +349,7 @@ footer a{
   .notice{grid-template-columns:1fr}
   .cta{margin:20px 20px 60px}
   .store-row img{height:48px}
+  .store-big{width:100%}
 }
 </style>
 </head>
@@ -383,25 +390,13 @@ footer a{
   </div>
 
   <div class="phone-showcase">
+    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
+      <img class="store-big" src="app-store-badge.jpeg" alt="App Store">
+    </a>
 
-  <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
-    <img class="store-big" src="app-store-badge.jpeg" alt="App Store">
-  </a>
-
-  <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
-    <img class="store-big" src="google-play-badge.jpeg" alt="Google Play">
-  </a>
-
-</div>
-
-    <div class="store-row">
-      <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
-        <img src="app-store-badge.jpeg" alt="Download on the App Store">
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
-        <img src="google-play-badge.jpeg" alt="Get it on Google Play">
-      </a>
-    </div>
+    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
+      <img class="store-big" src="google-play-badge.jpeg" alt="Google Play">
+    </a>
   </div>
 </section>
 
