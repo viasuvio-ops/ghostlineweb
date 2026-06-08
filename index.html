@@ -1,257 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-<!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GhostNumber - Private USA Number for Calls & SMS</title>
-<meta name="description" content="GhostNumber gives you a private USA number for calls and SMS. Receive messages inside the app, send GSM messages, and manage your second number with privacy and control." />
+<title>GhostNumber - Virtual Numbers & eSIM</title>
+<meta name="description" content="GhostNumber gives you private virtual numbers for calls and SMS, plus eSIM data plans in 200+ countries. Virtual numbers are available on web and app. eSIM is available only through Google Play and App Store in-app purchases." />
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:#f7fbff;
-  color:#0f172a;
+  font-family:Inter,Arial,sans-serif;
+  background:#020713;
+  color:#fff;
 }
 a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+:root{
+  --blue:#2f7cff;
+  --cyan:#00e5ff;
+  --teal:#00d6a3;
+  --purple:#8b5cf6;
+  --muted:#94a3b8;
+  --card:#071426;
+  --line:rgba(148,163,184,.18);
+}
 
 header{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 8%;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #e2e8f0;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:50;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 7%;
+  background:rgba(2,7,19,.75);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
 }
-.logo{font-size:24px;font-weight:900;color:#0f172a}
-nav{display:flex;gap:22px;align-items:center}
-nav a{color:#475569;font-size:14px;font-weight:700}
-nav a:hover{color:#2563eb}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:900;
+}
+.logo img{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+}
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+nav a{
+  color:#dbeafe;
+  font-size:14px;
+  font-weight:700;
+}
+nav a:hover{color:var(--cyan)}
 .btn{
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  padding:13px 22px;
-  border-radius:14px;
-  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:900;
   color:white;
-  display:inline-block;
-  box-shadow:0 18px 45px rgba(37,99,235,.25);
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  box-shadow:0 0 35px rgba(0,229,255,.28);
+}
+.btn.secondary{
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--line);
+  box-shadow:none;
 }
 
 .hero{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:56px;
-  align-items:center;
-  padding:92px 8% 82px;
-  background:
-    radial-gradient(circle at 82% 18%,rgba(22,199,167,.23),transparent 36%),
-    radial-gradient(circle at 18% 20%,rgba(37,99,235,.20),transparent 32%),
-    linear-gradient(135deg,#ffffff,#eef7ff 58%,#e9fff9);
-}
-.hero h1{
-  font-size:58px;
-  line-height:1.04;
-  margin:0 0 22px;
-  letter-spacing:-2px;
-}
-.hero h1 span{color:#2563eb}
-.hero p{
-  font-size:20px;
-  line-height:1.75;
-  color:#475569;
-  margin:0 0 22px;
-  max-width:680px;
-}
-
-.hero-images{
+  position:relative;
+  overflow:hidden;
+  padding:82px 7% 62px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:28px;
-  align-items:stretch;
-}
-.hero-images a{display:block}
-.hero-images img{
-  width:100%;
-  height:620px;
-  object-fit:cover;
-  object-position:top center;
-  display:block;
-  border-radius:34px;
-  border:1px solid #dbeafe;
-  box-shadow:0 35px 95px rgba(15,23,42,.18);
-  background:white;
-}
-
-.hero-badges{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:24px 0 0;
-}
-.badge{
-  display:inline-flex;
+  gap:50px;
   align-items:center;
-  gap:8px;
-  background:white;
-  color:#0f172a;
-  border:1px solid #dbeafe;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:800;
-  box-shadow:0 10px 28px rgba(15,23,42,.06);
+  background:
+    radial-gradient(circle at 20% 10%,rgba(47,124,255,.30),transparent 34%),
+    radial-gradient(circle at 80% 20%,rgba(139,92,246,.25),transparent 34%),
+    radial-gradient(circle at 70% 90%,rgba(0,214,163,.20),transparent 38%);
 }
-.notice{margin-top:20px;color:#64748b;font-size:15px;line-height:1.6}
+.hero:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:170px;
+  background:linear-gradient(180deg,transparent,rgba(0,229,255,.10),transparent);
+  pointer-events:none;
+}
+.pill{
+  display:inline-flex;
+  padding:9px 14px;
+  border-radius:999px;
+  color:#67e8f9;
+  background:rgba(0,229,255,.10);
+  border:1px solid rgba(0,229,255,.25);
+  box-shadow:0 0 28px rgba(0,229,255,.15);
+  font-weight:800;
+  font-size:14px;
+  margin-bottom:18px;
+}
+.hero h1{
+  font-size:72px;
+  line-height:.98;
+  margin:0 0 18px;
+  letter-spacing:-3px;
+}
+.gradient{
+  background:linear-gradient(135deg,var(--blue),var(--cyan),var(--teal));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  color:#cbd5e1;
+  font-size:20px;
+  line-height:1.7;
+  max-width:620px;
+}
+.store-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.store-row img{
+  height:55px;
+  border-radius:10px;
+  box-shadow:0 0 30px rgba(47,124,255,.22);
+}
+.stats{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+.stat{
+  color:#cbd5e1;
+}
+.stat strong{
+  display:block;
+  color:#fff;
+  font-size:26px;
+}
+.hero-art{
+  border-radius:34px;
+  padding:10px;
+  background:linear-gradient(135deg,rgba(47,124,255,.35),rgba(0,214,163,.18),rgba(139,92,246,.35));
+  box-shadow:0 40px 120px rgba(0,0,0,.45);
+}
+.hero-art img{
+  border-radius:28px;
+  width:100%;
+}
 
-section{padding:78px 8%}
-.center{text-align:center;max-width:900px;margin:0 auto 48px}
-.center h2{font-size:44px;margin:0 0 14px;letter-spacing:-1.5px}
-.center p{color:#475569;font-size:18px;line-height:1.75}
+section{
+  padding:82px 7%;
+}
+.section-title{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 44px;
+}
+.section-title h2{
+  font-size:46px;
+  margin:0 0 12px;
+  letter-spacing:-1.4px;
+}
+.section-title p{
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+}
 
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.card,.info-box,.step{
-  background:white;
-  border:1px solid #e2e8f0;
+.features-image{
+  border-radius:34px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 45px 140px rgba(0,229,255,.18);
+}
+
+.notice{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:70px 1fr auto;
+  gap:20px;
+  align-items:center;
+  background:linear-gradient(135deg,rgba(47,124,255,.14),rgba(0,214,163,.10));
+  border:1px solid rgba(0,229,255,.22);
+  border-radius:26px;
+  padding:24px;
+}
+.notice-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+}
+.notice h3{
+  margin:0 0 6px;
+  font-size:20px;
+}
+.notice p{
+  margin:0;
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
+}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 25px 80px rgba(0,0,0,.25);
+}
+.card .icon{
+  font-size:36px;
+  margin-bottom:18px;
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.big-card{
+  min-height:360px;
+  border-radius:30px;
+  padding:36px;
+  background:
+    linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.65)),
+    radial-gradient(circle at 80% 20%,rgba(0,229,255,.20),transparent 30%),
+    var(--card);
+  border:1px solid var(--line);
+  box-shadow:0 35px 100px rgba(0,0,0,.32);
+}
+.big-card h3{
+  font-size:34px;
+  margin:14px 0;
+}
+.big-card ul{
+  padding-left:20px;
+  color:#cbd5e1;
+  line-height:2;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.step{
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--line);
   border-radius:26px;
   padding:28px;
-  box-shadow:0 22px 60px rgba(15,23,42,.07);
 }
-.card .icon{font-size:34px;margin-bottom:16px}
-.card h3,.step h3{font-size:22px;margin:0 0 12px}
-.card p,.card li,.step p,.info-box p,.info-box li{color:#475569;line-height:1.7}
-.card ul,.info-box ul{padding-left:20px}
-
-.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.mock{
-  background:linear-gradient(135deg,#eef7ff,#ffffff);
-  border-radius:32px;
-  padding:28px;
-  border:1px solid #dbeafe;
-  box-shadow:0 30px 80px rgba(15,23,42,.08);
-}
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  background:white;
-  padding:18px;
-  border-radius:17px;
-  margin:12px 0;
-  color:#475569;
-  border:1px solid #e2e8f0;
-}
-.row strong{color:#2563eb}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.stepnum{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  color:white;
+.step-num{
+  width:58px;
+  height:58px;
+  border-radius:18px;
   display:grid;
   place-items:center;
   font-size:24px;
   font-weight:900;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
   margin-bottom:18px;
 }
-.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.info-box h3{margin-top:0;font-size:24px;color:#0f172a}
-.sms-section{background:linear-gradient(135deg,#e9fff9,#eef7ff)}
-.highlight{
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  color:white;
-  border-radius:32px;
-  padding:46px;
-  box-shadow:0 30px 80px rgba(37,99,235,.22);
+.step p{
+  color:var(--muted);
+  line-height:1.6;
 }
-.highlight h2{font-size:40px;margin:0 0 16px;letter-spacing:-1.2px}
-.highlight p,.highlight li{color:#ecfeff;line-height:1.75;font-size:18px}
 
 .cta{
-  margin:70px 8%;
-  padding:56px;
-  border-radius:34px;
-  background:linear-gradient(135deg,#ffffff,#eef7ff);
-  border:1px solid #dbeafe;
-  box-shadow:0 30px 85px rgba(15,23,42,.10);
-}
-.cta h2{font-size:44px;margin:0 0 12px;letter-spacing:-1.4px}
-.cta p{color:#475569;font-size:20px;line-height:1.7;max-width:760px}
-.cta-images{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  margin:20px 7% 80px;
+  border-radius:32px;
+  padding:38px;
+  display:flex;
+  justify-content:space-between;
   gap:24px;
-  margin-top:32px;
-  max-width:850px;
+  align-items:center;
+  background:linear-gradient(135deg,rgba(47,124,255,.16),rgba(0,214,163,.10));
+  border:1px solid var(--line);
+  box-shadow:0 35px 110px rgba(0,0,0,.35);
 }
-.cta-images img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  object-position:top center;
-  display:block;
-  border-radius:28px;
-  border:1px solid #dbeafe;
-  box-shadow:0 24px 70px rgba(15,23,42,.16);
+.cta h2{
+  margin:0 0 8px;
+  font-size:34px;
+}
+.cta p{
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
 }
 
 footer{
-  padding:45px 8%;
-  border-top:1px solid #e2e8f0;
+  padding:42px 7%;
+  border-top:1px solid var(--line);
   display:flex;
   justify-content:space-between;
-  gap:35px;
+  gap:30px;
   flex-wrap:wrap;
-  color:#64748b;
-  background:white;
+  color:var(--muted);
 }
-footer p{margin:6px 0}
-footer a{color:#2563eb;font-weight:700}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+footer a{
+  color:#dbeafe;
+  margin-right:18px;
+}
 
-@media(max-width:1200px){
-  .hero{grid-template-columns:1fr}
-  .hero-images img{height:560px}
-}
 @media(max-width:1050px){
-  .split{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr 1fr}
-  .info-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
   nav a:not(.btn){display:none}
-  .hero h1{font-size:48px}
+  .hero h1{font-size:56px}
 }
-@media(max-width:760px){
-  .hero-images{grid-template-columns:1fr}
-  .hero-images img{height:auto;max-height:none;object-fit:contain}
-  .cta-images{grid-template-columns:1fr}
-  .cta-images img{height:auto;object-fit:contain}
-}
-@media(max-width:620px){
-  header{padding:0 18px}
-  .logo{font-size:21px}
-  .btn{padding:11px 15px;font-size:13px}
-  section{padding:58px 20px}
-  .hero{padding:62px 20px}
-  .hero h1{font-size:39px;letter-spacing:-1.2px}
+@media(max-width:720px){
+  header{padding:14px 18px}
+  section,.hero{padding:58px 20px}
+  .hero h1{font-size:44px}
   .hero p{font-size:17px}
-  .grid{grid-template-columns:1fr}
-  .center h2{font-size:34px}
-  .cta{margin:50px 20px;padding:34px 24px}
-  .cta h2{font-size:32px}
-  .highlight{padding:32px 24px}
-  .highlight h2{font-size:32px}
-  .row{flex-direction:column}
+  .grid,.steps{grid-template-columns:1fr}
+  .notice{grid-template-columns:1fr}
+  .cta{margin:20px 20px 60px;flex-direction:column;align-items:flex-start}
+  .store-row img{height:48px}
 }
 </style>
 </head>
@@ -259,849 +363,196 @@ footer a{color:#2563eb;font-weight:700}
 <body>
 
 <header>
-  <div class="logo">GhostNumber</div>
+  <a class="logo" href="#">
+    <img src="icon-512.png" alt="GhostNumber logo">
+    GhostNumber
+  </a>
   <nav>
-    <a href="#about">About</a>
-    <a href="#sms">SMS</a>
-    <a href="#how">How it works</a>
-    <a href="#billing">Billing</a>
-    <a href="#rules">Rules</a>
+    <a href="#features">Features</a>
+    <a href="#esim">eSIM</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#countries">Countries</a>
+    <a href="#faq">FAQ</a>
     <a href="#support">Support</a>
-    <a class="btn" href="https://app.ghostnumber.app">Open App</a>
+    <a class="btn" href="https://app.ghostnumber.app">Get the App</a>
   </nav>
 </header>
 
 <section class="hero">
   <div>
-    <h1>A private USA number for <span>calls, SMS and privacy.</span></h1>
+    <div class="pill">🛡 Privacy First. Global Freedom.</div>
+    <h1>Virtual Numbers<br>& <span class="gradient">eSIM</span></h1>
     <p>
-      GhostNumber gives you a second phone number so you can keep your personal number private.
-      Make supported calls, receive messages inside the app, send GSM messages, and manage everything from one simple dashboard.
+      One app for private calls, SMS and global data. Get a second phone number
+      or stay connected anywhere with affordable eSIM plans in 200+ countries.
     </p>
 
-    <div class="hero-badges">
-      <span class="badge">📞 Private calling</span>
-      <span class="badge">💬 In-app SMS</span>
-      <span class="badge">🇺🇸 USA number</span>
-      <span class="badge">🔒 Privacy control</span>
+    <div class="stats">
+      <div class="stat"><strong>200+</strong>Countries</div>
+      <div class="stat"><strong>Instant</strong>Setup</div>
+      <div class="stat"><strong>No SIM</strong>Card needed</div>
+      <div class="stat"><strong>Private</strong>Calls & SMS</div>
     </div>
 
-    <div class="notice">
-      Google Play app name: <strong>GhostNumber</strong>. Apple App Store app name: <strong>GhostNumber USA</strong>.
+    <div class="store-row">
+      <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
+        <img src="app-store-badge.jpeg" alt="Download on the App Store">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
+        <img src="google-play-badge.jpeg" alt="Get it on Google Play">
+      </a>
     </div>
   </div>
 
-  <div class="hero-images">
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
-      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
-    </a>
-
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
-      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
-    </a>
+  <div class="hero-art">
+    <img src="feature-ghostnumber-1024x500.png" alt="GhostNumber App Preview">
   </div>
 </section>
 
-<section id="about">
-  <div class="center">
-    <h2>What is GhostNumber?</h2>
+<section id="features">
+  <div class="section-title">
+    <h2>Private Number + Global eSIM</h2>
     <p>
-      GhostNumber helps users separate personal calls and messages from online services, business contacts and public interactions.
-      It is designed for privacy, verified phone access, call activity, SMS management, billing, number management and account control.
+      GhostNumber combines privacy communication and travel connectivity in one simple app.
     </p>
   </div>
 
-  <div class="grid">
-    <div class="card"><div class="icon">🔒</div><h3>Privacy</h3><p>Use a virtual number instead of sharing your personal phone number everywhere.</p></div>
-    <div class="card"><div class="icon">📞</div><h3>Private Calls</h3><p>Make supported calls using your GhostNumber instead of exposing your personal number.</p></div>
-    <div class="card"><div class="icon">💬</div><h3>SMS Inside App</h3><p>Receive messages directly inside the GhostNumber app, not in your normal phone inbox.</p></div>
-    <div class="card"><div class="icon">🇺🇸</div><h3>USA Number</h3><p>Use a private USA number for supported communication and privacy control.</p></div>
-  </div>
-</section>
-
-<section id="sms" class="sms-section">
-  <div class="split">
-    <div class="highlight">
-      <h2>Calls and SMS in one private app</h2>
-      <p>
-        GhostNumber is made for people who want a separate number for privacy, online accounts, business contacts and personal control.
-      </p>
-      <ul>
-        <li>Receive SMS messages inside the GhostNumber app.</li>
-        <li>Incoming messages do not need to appear in the normal GSM inbox.</li>
-        <li>Send GSM messages from the app where supported.</li>
-        <li>SMS package includes up to 100 messages, depending on your active plan.</li>
-        <li>Keep private conversations separate from your personal phone number.</li>
-      </ul>
-    </div>
-
-    <div class="mock">
-      <h2>SMS privacy flow</h2>
-      <div class="row"><span>1. Someone sends SMS</span><strong>To GhostNumber</strong></div>
-      <div class="row"><span>2. Message arrives</span><strong>Inside app</strong></div>
-      <div class="row"><span>3. Personal inbox</span><strong>Stays clean</strong></div>
-      <div class="row"><span>4. You reply</span><strong>GSM supported</strong></div>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="center">
-    <h2>How to start using GhostNumber</h2>
-    <p>Complete onboarding, verify your phone, choose your number package and start using supported calling and SMS features.</p>
+  <div class="features-image">
+    <img src="feature-cards.png" alt="GhostNumber virtual number and eSIM features">
   </div>
 
-  <div class="steps">
-    <div class="step">
-      <div class="stepnum">1</div>
-      <h3>Create account</h3>
-      <p>Create an account using email and password. Email verification may be required.</p>
-    </div>
-
-    <div class="step">
-      <div class="stepnum">2</div>
-      <h3>Verify phone</h3>
-      <p>Verify your phone number by SMS. Without phone verification, free trial and paid features may remain locked.</p>
-    </div>
-
-    <div class="step">
-      <div class="stepnum">3</div>
-      <h3>Buy package</h3>
-      <p>Use the free test call if available, choose a virtual number package, and your number will appear in your dashboard.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="split">
-    <div class="mock">
-      <h2>How calls work</h2>
-      <div class="row"><span>1. Enter destination</span><strong>Number selected</strong></div>
-      <div class="row"><span>2. GhostNumber calls you</span><strong>Verified phone</strong></div>
-      <div class="row"><span>3. You answer</span><strong>Connection starts</strong></div>
-      <div class="row"><span>4. Destination connects</span><strong>Call active</strong></div>
-    </div>
-
+  <div class="notice">
+    <div class="notice-icon">🛒</div>
     <div>
-      <h2>Callback-based calling</h2>
-      <p style="color:#475569;line-height:1.8;font-size:18px">
-        GhostNumber connects calls through a callback system using third-party telecommunications providers.
-        You enter or choose the number you want to call. GhostNumber first calls your verified phone.
-        After you answer, GhostNumber connects the destination number.
+      <h3>eSIM purchase information</h3>
+      <p>
+        eSIM plans are available only through Google Play and the Apple App Store as in-app purchases.
+        eSIM plans cannot be purchased on the website with Stripe.
       </p>
-      <p style="color:#475569;line-height:1.8;font-size:18px">
-        If you do not answer your own phone, the call cannot be completed.
+      <p>
+        Virtual number packages can be purchased on the website with Stripe or inside the mobile app,
+        depending on platform availability.
       </p>
     </div>
-  </div>
-</section>
-
-<section id="billing">
-  <div class="center">
-    <h2>Billing, minutes and package validity</h2>
-    <p>GhostNumber uses minute-based billing, SMS package limits and package validity rules.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Billing and usage</h3>
-      <p>GhostNumber uses minute-based billing. Calls may be rounded, and minimum usage may apply depending on call status.</p>
-      <p>Usage may be deducted during the connection process, including when calls fail, are busy, are not answered, or are canceled.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>SMS package</h3>
-      <p>Depending on the active package, users may have access to an SMS allowance, such as up to 100 messages.</p>
-      <p>SMS availability, delivery and usage may depend on provider rules, destination support, account status and package validity.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Package validity</h3>
-      <p>Each successful payment activates your package for 45 days.</p>
-      <p>If no renewal or top-up is completed, the number may remain reserved only until day 60 from the last successful payment.</p>
-      <p>After 60 days without payment, the virtual number may be automatically released.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Remaining minutes and messages</h3>
-      <p>Remaining minutes and messages are linked to your active package and number status.</p>
-      <p>If your number expires, is released, or is manually deleted, unused minutes or messages may be lost.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="center">
-    <h2>Account and number management</h2>
-    <p>Users can manage their number, account access and service settings from the GhostNumber dashboard.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Delete Number</h3>
-      <ul>
-        <li>Your number is removed from your account.</li>
-        <li>Your current number stops being active.</li>
-        <li>Remaining minutes and messages may be lost.</li>
-        <li>You may need to buy another number to continue using the service.</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <h3>Delete Account</h3>
-      <ul>
-        <li>Your account access ends.</li>
-        <li>Your assigned number may be released.</li>
-        <li>Remaining minutes and messages may be lost.</li>
-        <li>You may need to create a new account to use the service again.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="rules">
-  <div class="center">
-    <h2>Service rules and restrictions</h2>
-    <p>GhostNumber is built for supported, lawful calling and messaging use only.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Phone verification</h3>
-      <p>Your verified phone number is required for onboarding, free trial access where available, and supported call routing.</p>
-      <p>Without phone verification, calling and messaging features may remain unavailable.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Free trial restrictions</h3>
-      <p>Where offered, free trial usage may be limited to one verified phone number.</p>
-      <p>GhostNumber may restrict repeat free-trial access where fraud-prevention or abuse-prevention rules apply.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Number availability</h3>
-      <p>Virtual numbers are subject to country support, inventory, provider rules, and availability.</p>
-      <p>A previously assigned number may not remain available after deletion, expiration, release, or account closure.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Quiet hours and controls</h3>
-      <p>If quiet hours are enabled, GhostNumber may block inbound or outbound activity during the configured time window.</p>
-      <p>These settings help users control account usage and reduce unwanted activity.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Restricted usage</h3>
-      <p>GhostNumber may block unsupported destinations, premium-rate numbers, emergency numbers, abusive traffic, suspicious activity, or actions that violate telecommunications requirements.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>No emergency calls</h3>
-      <p>GhostNumber is not an emergency service and must not be used for emergency calls.</p>
-    </div>
-  </div>
-</section>
-
-<section id="support">
-  <div class="center">
-    <h2>Support</h2>
-    <p>
-      If you need help with onboarding, calls, SMS, billing, payments, account access, number assignment,
-      number deletion, or account deletion, contact us at:
-    </p>
-    <p style="font-size:24px;font-weight:900">
-      <a href="mailto:support@ghostnumber.app">support@ghostnumber.app</a>
-    </p>
-  </div>
-</section>
-
-<div class="cta">
-  <h2>Ready to use your second number?</h2>
-  <p>Download GhostNumber, get your private USA number, and manage calls and SMS with more privacy and control.</p>
-
-  <div class="cta-images">
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
-      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
-    </a>
-
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
-      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
-    </a>
-  </div>
-</div>
-
-<footer>
-  <div>
-    <strong>GhostNumber</strong><br>
-    © 2026 GhostNumber · VIV CRYSTAL SRL
-  </div>
-
-  <div>
-    <p><strong>VIV CRYSTAL SRL</strong></p>
-    <p>VAT ID: 17485245</p>
-    <p>Trade Register No.: J2005001281351</p>
-    <p>EUID: ROONRC.J2005001281351</p>
-    <p>Incorporated: April 14, 2005</p>
-  </div>
-
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#sms">SMS</a>
-    <a href="#how">How it works</a>
-    <a href="#billing">Billing</a>
-    <a href="#support">Support</a>
-    <a href="mailto:support@ghostnumber.app">Email Support</a>
-  </div>
-</footer>
-
-</body>
-</html>
- />
-<meta name="viewport" chjhjhjhjA Number for Calls & SMS</title>
-<meta name="description" content="GhostNumber gives you a private USA number for calls and SMS. Receive messages inside the app, send GSM messages, and manage your second number with privacy and control." />
-
-<style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f7fbff;
-  color:#0f172a;
-}
-a{text-decoration:none;color:inherit}
-
-header{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 8%;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid #e2e8f0;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-.logo{font-size:24px;font-weight:900;color:#0f172a}
-nav{display:flex;gap:22px;align-items:center}
-nav a{color:#475569;font-size:14px;font-weight:700}
-nav a:hover{color:#2563eb}
-.btn{
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  padding:13px 22px;
-  border-radius:14px;
-  font-weight:800;
-  color:white;
-  display:inline-block;
-  box-shadow:0 18px 45px rgba(37,99,235,.25);
-}
-
-.hero{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:56px;
-  align-items:center;
-  padding:92px 8% 82px;
-  background:
-    radial-gradient(circle at 82% 18%,rgba(22,199,167,.23),transparent 36%),
-    radial-gradient(circle at 18% 20%,rgba(37,99,235,.20),transparent 32%),
-    linear-gradient(135deg,#ffffff,#eef7ff 58%,#e9fff9);
-}
-.hero h1{
-  font-size:58px;
-  line-height:1.04;
-  margin:0 0 22px;
-  letter-spacing:-2px;
-}
-.hero h1 span{color:#2563eb}
-.hero p{
-  font-size:20px;
-  line-height:1.75;
-  color:#475569;
-  margin:0 0 22px;
-  max-width:680px;
-}
-
-.hero-images{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
-  align-items:stretch;
-}
-.hero-images a{display:block}
-.hero-images img{
-  width:100%;
-  height:620px;
-  object-fit:cover;
-  object-position:top center;
-  display:block;
-  border-radius:34px;
-  border:1px solid #dbeafe;
-  box-shadow:0 35px 95px rgba(15,23,42,.18);
-  background:white;
-}
-
-.hero-badges{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:24px 0 0;
-}
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:white;
-  color:#0f172a;
-  border:1px solid #dbeafe;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:800;
-  box-shadow:0 10px 28px rgba(15,23,42,.06);
-}
-.notice{margin-top:20px;color:#64748b;font-size:15px;line-height:1.6}
-
-section{padding:78px 8%}
-.center{text-align:center;max-width:900px;margin:0 auto 48px}
-.center h2{font-size:44px;margin:0 0 14px;letter-spacing:-1.5px}
-.center p{color:#475569;font-size:18px;line-height:1.75}
-
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.card,.info-box,.step{
-  background:white;
-  border:1px solid #e2e8f0;
-  border-radius:26px;
-  padding:28px;
-  box-shadow:0 22px 60px rgba(15,23,42,.07);
-}
-.card .icon{font-size:34px;margin-bottom:16px}
-.card h3,.step h3{font-size:22px;margin:0 0 12px}
-.card p,.card li,.step p,.info-box p,.info-box li{color:#475569;line-height:1.7}
-.card ul,.info-box ul{padding-left:20px}
-
-.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.mock{
-  background:linear-gradient(135deg,#eef7ff,#ffffff);
-  border-radius:32px;
-  padding:28px;
-  border:1px solid #dbeafe;
-  box-shadow:0 30px 80px rgba(15,23,42,.08);
-}
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  background:white;
-  padding:18px;
-  border-radius:17px;
-  margin:12px 0;
-  color:#475569;
-  border:1px solid #e2e8f0;
-}
-.row strong{color:#2563eb}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.stepnum{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  color:white;
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:18px;
-}
-.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.info-box h3{margin-top:0;font-size:24px;color:#0f172a}
-.sms-section{background:linear-gradient(135deg,#e9fff9,#eef7ff)}
-.highlight{
-  background:linear-gradient(135deg,#2563eb,#16c7a7);
-  color:white;
-  border-radius:32px;
-  padding:46px;
-  box-shadow:0 30px 80px rgba(37,99,235,.22);
-}
-.highlight h2{font-size:40px;margin:0 0 16px;letter-spacing:-1.2px}
-.highlight p,.highlight li{color:#ecfeff;line-height:1.75;font-size:18px}
-
-.cta{
-  margin:70px 8%;
-  padding:56px;
-  border-radius:34px;
-  background:linear-gradient(135deg,#ffffff,#eef7ff);
-  border:1px solid #dbeafe;
-  box-shadow:0 30px 85px rgba(15,23,42,.10);
-}
-.cta h2{font-size:44px;margin:0 0 12px;letter-spacing:-1.4px}
-.cta p{color:#475569;font-size:20px;line-height:1.7;max-width:760px}
-.cta-images{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  margin-top:32px;
-  max-width:850px;
-}
-.cta-images img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  object-position:top center;
-  display:block;
-  border-radius:28px;
-  border:1px solid #dbeafe;
-  box-shadow:0 24px 70px rgba(15,23,42,.16);
-}
-
-footer{
-  padding:45px 8%;
-  border-top:1px solid #e2e8f0;
-  display:flex;
-  justify-content:space-between;
-  gap:35px;
-  flex-wrap:wrap;
-  color:#64748b;
-  background:white;
-}
-footer p{margin:6px 0}
-footer a{color:#2563eb;font-weight:700}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-
-@media(max-width:1200px){
-  .hero{grid-template-columns:1fr}
-  .hero-images img{height:560px}
-}
-@media(max-width:1050px){
-  .split{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr 1fr}
-  .info-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  nav a:not(.btn){display:none}
-  .hero h1{font-size:48px}
-}
-@media(max-width:760px){
-  .hero-images{grid-template-columns:1fr}
-  .hero-images img{height:auto;max-height:none;object-fit:contain}
-  .cta-images{grid-template-columns:1fr}
-  .cta-images img{height:auto;object-fit:contain}
-}
-@media(max-width:620px){
-  header{padding:0 18px}
-  .logo{font-size:21px}
-  .btn{padding:11px 15px;font-size:13px}
-  section{padding:58px 20px}
-  .hero{padding:62px 20px}
-  .hero h1{font-size:39px;letter-spacing:-1.2px}
-  .hero p{font-size:17px}
-  .grid{grid-template-columns:1fr}
-  .center h2{font-size:34px}
-  .cta{margin:50px 20px;padding:34px 24px}
-  .cta h2{font-size:32px}
-  .highlight{padding:32px 24px}
-  .highlight h2{font-size:32px}
-  .row{flex-direction:column}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">GhostNumber</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#sms">SMS</a>
-    <a href="#how">How it works</a>
-    <a href="#billing">Billing</a>
-    <a href="#rules">Rules</a>
-    <a href="#support">Support</a>
     <a class="btn" href="https://app.ghostnumber.app">Open App</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div>
-    <h1>A private USA number for <span>calls, SMS and privacy.</span></h1>
-    <p>
-      GhostNumber gives you a second phone number so you can keep your personal number private.
-      Make supported calls, receive messages inside the app, send GSM messages, and manage everything from one simple dashboard.
-    </p>
-
-    <div class="hero-badges">
-      <span class="badge">📞 Private calling</span>
-      <span class="badge">💬 In-app SMS</span>
-      <span class="badge">🇺🇸 USA number</span>
-      <span class="badge">🔒 Privacy control</span>
-    </div>
-
-    <div class="notice">
-      Google Play app name: <strong>GhostNumber</strong>. Apple App Store app name: <strong>GhostNumber USA</strong>.
-    </div>
-  </div>
-
-  <div class="hero-images">
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
-      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
-    </a>
-
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
-      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
-    </a>
   </div>
 </section>
 
-<section id="about">
-  <div class="center">
-    <h2>What is GhostNumber?</h2>
-    <p>
-      GhostNumber helps users separate personal calls and messages from online services, business contacts and public interactions.
-      It is designed for privacy, verified phone access, call activity, SMS management, billing, number management and account control.
-    </p>
-  </div>
-
-  <div class="grid">
-    <div class="card"><div class="icon">🔒</div><h3>Privacy</h3><p>Use a virtual number instead of sharing your personal phone number everywhere.</p></div>
-    <div class="card"><div class="icon">📞</div><h3>Private Calls</h3><p>Make supported calls using your GhostNumber instead of exposing your personal number.</p></div>
-    <div class="card"><div class="icon">💬</div><h3>SMS Inside App</h3><p>Receive messages directly inside the GhostNumber app, not in your normal phone inbox.</p></div>
-    <div class="card"><div class="icon">🇺🇸</div><h3>USA Number</h3><p>Use a private USA number for supported communication and privacy control.</p></div>
-  </div>
-</section>
-
-<section id="sms" class="sms-section">
-  <div class="split">
-    <div class="highlight">
-      <h2>Calls and SMS in one private app</h2>
-      <p>
-        GhostNumber is made for people who want a separate number for privacy, online accounts, business contacts and personal control.
-      </p>
+<section id="esim">
+  <div class="two">
+    <div class="big-card">
+      <div class="pill">Virtual Numbers</div>
+      <h3>Your Second Number for Calls & SMS</h3>
       <ul>
-        <li>Receive SMS messages inside the GhostNumber app.</li>
-        <li>Incoming messages do not need to appear in the normal GSM inbox.</li>
-        <li>Send GSM messages from the app where supported.</li>
-        <li>SMS package includes up to 100 messages, depending on your active plan.</li>
-        <li>Keep private conversations separate from your personal phone number.</li>
+        <li>Private virtual number for calls</li>
+        <li>Receive SMS inside the app</li>
+        <li>Send GSM messages where supported</li>
+        <li>Keep your personal number private</li>
       </ul>
     </div>
 
-    <div class="mock">
-      <h2>SMS privacy flow</h2>
-      <div class="row"><span>1. Someone sends SMS</span><strong>To GhostNumber</strong></div>
-      <div class="row"><span>2. Message arrives</span><strong>Inside app</strong></div>
-      <div class="row"><span>3. Personal inbox</span><strong>Stays clean</strong></div>
-      <div class="row"><span>4. You reply</span><strong>GSM supported</strong></div>
+    <div class="big-card">
+      <div class="pill">eSIM Data Plans</div>
+      <h3>Stay Connected Anywhere with eSIM</h3>
+      <ul>
+        <li>eSIM data in 200+ countries</li>
+        <li>No physical SIM card</li>
+        <li>Fast setup from the mobile app</li>
+        <li>Available only through Google Play / App Store IAP</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="how">
-  <div class="center">
-    <h2>How to start using GhostNumber</h2>
-    <p>Complete onboarding, verify your phone, choose your number package and start using supported calling and SMS features.</p>
+<section>
+  <div class="section-title">
+    <h2>Why Choose <span class="gradient">GhostNumber?</span></h2>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="icon">🌍</div><h3>Global Coverage</h3><p>Virtual numbers and eSIM options for international users.</p></div>
+    <div class="card"><div class="icon">⚡</div><h3>Instant Setup</h3><p>Start fast with a simple mobile-first experience.</p></div>
+    <div class="card"><div class="icon">💸</div><h3>Affordable Plans</h3><p>Simple packages for privacy and connectivity.</p></div>
+    <div class="card"><div class="icon">🛡</div><h3>Secure & Private</h3><p>Keep your personal number away from strangers and websites.</p></div>
+    <div class="card"><div class="icon">🎧</div><h3>Support</h3><p>Help available for calls, SMS, eSIM and payments.</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-title">
+    <h2>How It Works</h2>
   </div>
 
   <div class="steps">
     <div class="step">
-      <div class="stepnum">1</div>
-      <h3>Create account</h3>
-      <p>Create an account using email and password. Email verification may be required.</p>
+      <div class="step-num">1</div>
+      <h3>Choose</h3>
+      <p>Pick a virtual number package or choose an eSIM plan inside the mobile app.</p>
     </div>
-
     <div class="step">
-      <div class="stepnum">2</div>
-      <h3>Verify phone</h3>
-      <p>Verify your phone number by SMS. Without phone verification, free trial and paid features may remain locked.</p>
+      <div class="step-num">2</div>
+      <h3>Activate</h3>
+      <p>Set it up quickly. Virtual numbers can work on web/app. eSIM activates in the app.</p>
     </div>
-
     <div class="step">
-      <div class="stepnum">3</div>
-      <h3>Buy package</h3>
-      <p>Use the free test call if available, choose a virtual number package, and your number will appear in your dashboard.</p>
+      <div class="step-num">3</div>
+      <h3>Stay Connected</h3>
+      <p>Make calls, receive SMS, send messages where supported, or use mobile data abroad.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="split">
-    <div class="mock">
-      <h2>How calls work</h2>
-      <div class="row"><span>1. Enter destination</span><strong>Number selected</strong></div>
-      <div class="row"><span>2. GhostNumber calls you</span><strong>Verified phone</strong></div>
-      <div class="row"><span>3. You answer</span><strong>Connection starts</strong></div>
-      <div class="row"><span>4. Destination connects</span><strong>Call active</strong></div>
-    </div>
-
-    <div>
-      <h2>Callback-based calling</h2>
-      <p style="color:#475569;line-height:1.8;font-size:18px">
-        GhostNumber connects calls through a callback system using third-party telecommunications providers.
-        You enter or choose the number you want to call. GhostNumber first calls your verified phone.
-        After you answer, GhostNumber connects the destination number.
-      </p>
-      <p style="color:#475569;line-height:1.8;font-size:18px">
-        If you do not answer your own phone, the call cannot be completed.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="billing">
-  <div class="center">
-    <h2>Billing, minutes and package validity</h2>
-    <p>GhostNumber uses minute-based billing, SMS package limits and package validity rules.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Billing and usage</h3>
-      <p>GhostNumber uses minute-based billing. Calls may be rounded, and minimum usage may apply depending on call status.</p>
-      <p>Usage may be deducted during the connection process, including when calls fail, are busy, are not answered, or are canceled.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>SMS package</h3>
-      <p>Depending on the active package, users may have access to an SMS allowance, such as up to 100 messages.</p>
-      <p>SMS availability, delivery and usage may depend on provider rules, destination support, account status and package validity.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Package validity</h3>
-      <p>Each successful payment activates your package for 45 days.</p>
-      <p>If no renewal or top-up is completed, the number may remain reserved only until day 60 from the last successful payment.</p>
-      <p>After 60 days without payment, the virtual number may be automatically released.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Remaining minutes and messages</h3>
-      <p>Remaining minutes and messages are linked to your active package and number status.</p>
-      <p>If your number expires, is released, or is manually deleted, unused minutes or messages may be lost.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="center">
-    <h2>Account and number management</h2>
-    <p>Users can manage their number, account access and service settings from the GhostNumber dashboard.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Delete Number</h3>
-      <ul>
-        <li>Your number is removed from your account.</li>
-        <li>Your current number stops being active.</li>
-        <li>Remaining minutes and messages may be lost.</li>
-        <li>You may need to buy another number to continue using the service.</li>
-      </ul>
-    </div>
-
-    <div class="info-box">
-      <h3>Delete Account</h3>
-      <ul>
-        <li>Your account access ends.</li>
-        <li>Your assigned number may be released.</li>
-        <li>Remaining minutes and messages may be lost.</li>
-        <li>You may need to create a new account to use the service again.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="rules">
-  <div class="center">
-    <h2>Service rules and restrictions</h2>
-    <p>GhostNumber is built for supported, lawful calling and messaging use only.</p>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-box">
-      <h3>Phone verification</h3>
-      <p>Your verified phone number is required for onboarding, free trial access where available, and supported call routing.</p>
-      <p>Without phone verification, calling and messaging features may remain unavailable.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Free trial restrictions</h3>
-      <p>Where offered, free trial usage may be limited to one verified phone number.</p>
-      <p>GhostNumber may restrict repeat free-trial access where fraud-prevention or abuse-prevention rules apply.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Number availability</h3>
-      <p>Virtual numbers are subject to country support, inventory, provider rules, and availability.</p>
-      <p>A previously assigned number may not remain available after deletion, expiration, release, or account closure.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Quiet hours and controls</h3>
-      <p>If quiet hours are enabled, GhostNumber may block inbound or outbound activity during the configured time window.</p>
-      <p>These settings help users control account usage and reduce unwanted activity.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>Restricted usage</h3>
-      <p>GhostNumber may block unsupported destinations, premium-rate numbers, emergency numbers, abusive traffic, suspicious activity, or actions that violate telecommunications requirements.</p>
-    </div>
-
-    <div class="info-box">
-      <h3>No emergency calls</h3>
-      <p>GhostNumber is not an emergency service and must not be used for emergency calls.</p>
-    </div>
-  </div>
-</section>
-
-<section id="support">
-  <div class="center">
-    <h2>Support</h2>
+<section id="countries">
+  <div class="section-title">
+    <h2>200+ eSIM Destinations</h2>
     <p>
-      If you need help with onboarding, calls, SMS, billing, payments, account access, number assignment,
-      number deletion, or account deletion, contact us at:
+      Buy eSIM data plans from the mobile app for countries and regions worldwide.
+      eSIM purchases are handled only through Google Play or App Store in-app payments.
     </p>
-    <p style="font-size:24px;font-weight:900">
-      <a href="mailto:support@ghostnumber.app">support@ghostnumber.app</a>
-    </p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-title">
+    <h2>FAQ</h2>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>Can I buy eSIM on the website?</h3>
+      <p>No. eSIM plans are available only through Google Play and App Store in-app purchases.</p>
+    </div>
+    <div class="card">
+      <h3>Can I buy virtual numbers on web?</h3>
+      <p>Yes. Virtual number packages can be purchased on the website with Stripe or inside the app, depending on platform availability.</p>
+    </div>
   </div>
 </section>
 
 <div class="cta">
-  <h2>Ready to use your second number?</h2>
-  <p>Download GhostNumber, get your private USA number, and manage calls and SMS with more privacy and control.</p>
-
-  <div class="cta-images">
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa&hl=ro" target="_blank" rel="noopener">
-      <img src="./google-play-badge.jpeg" alt="GhostNumber on Google Play">
+  <div>
+    <h2>Ready to take control of your connectivity?</h2>
+    <p>Download GhostNumber and start with private numbers, SMS and eSIM data.</p>
+  </div>
+  <div class="store-row">
+    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
+      <img src="app-store-badge.jpeg" alt="Download on the App Store">
     </a>
-
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
-      <img src="./app-store-badge.jpeg" alt="GhostNumber USA on the App Store">
+    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
+      <img src="google-play-badge.jpeg" alt="Get it on Google Play">
     </a>
   </div>
 </div>
 
-<footer>
+<footer id="support">
   <div>
     <strong>GhostNumber</strong><br>
     © 2026 GhostNumber · VIV CRYSTAL SRL
   </div>
-
   <div>
-    <p><strong>VIV CRYSTAL SRL</strong></p>
-    <p>VAT ID: 17485245</p>
-    <p>Trade Register No.: J2005001281351</p>
-    <p>EUID: ROONRC.J2005001281351</p>
-    <p>Incorporated: April 14, 2005</p>
-  </div>
-
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#sms">SMS</a>
-    <a href="#how">How it works</a>
-    <a href="#billing">Billing</a>
-    <a href="#support">Support</a>
-    <a href="mailto:support@ghostnumber.app">Email Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:support@ghostnumber.app">Contact Us</a>
   </div>
 </footer>
 
