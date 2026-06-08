@@ -139,9 +139,11 @@ nav a:hover{color:var(--cyan)}
   justify-content:center;
 }
 .phone-showcase img.phone-img{
-  width:100%;
-  max-width:620px;
-  filter:drop-shadow(0 45px 90px rgba(0,229,255,.25));
+  width:min(900px,100%);
+  max-width:none;
+  transform:scale(1.35);
+  margin-bottom:55px;
+  filter:drop-shadow(0 45px 90px rgba(0,229,255,.35));
 }
 .store-row{
   display:flex;
@@ -311,7 +313,10 @@ section{
   font-size:18px;
 }
 .cta .phone-showcase img.phone-img{
-  max-width:520px;
+  width:min(800px,100%);
+  max-width:none;
+  transform:scale(1.25);
+  margin-bottom:45px;
 }
 
 footer{
@@ -385,7 +390,7 @@ footer a{
   </div>
 
   <div class="phone-showcase">
-    <img class="phone-img" src="phones.png" alt="GhostNumber app on phones">
+    <img class="phone-img" src="phones.png" alt="GhostNumb<img class="phone-img" src="feature-cards.png" alt="">er app on phones">
 
     <div class="store-row">
       <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
@@ -525,7 +530,7 @@ footer a{
   </div>
 
   <div class="phone-showcase">
-    <img class="phone-img" src="phones.png" alt="GhostNumber app preview">
+    
 
     <div class="store-row">
       <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
