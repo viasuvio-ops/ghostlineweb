@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GhostNumber - Virtual Numbers & eSIM</title>
-<meta name="description" content="GhostNumber gives you private virtual numbers for calls and SMS, plus eSIM data plans in 200+ countries." />
+<title>GhostNumber - Virtual Numbers, International Calling and eSIM</title>
+<meta name="description" content="GhostNumber is a privacy phone and travel connectivity app with US numbers, international virtual numbers, wallet-based calls and global eSIM data plans." />
 
 <style>
 *{box-sizing:border-box}
@@ -17,17 +17,17 @@ body{
 }
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
-
 :root{
   --blue:#2f7cff;
   --cyan:#00e5ff;
   --teal:#00d6a3;
   --purple:#8b5cf6;
+  --amber:#fbbf24;
   --muted:#94a3b8;
+  --soft:#cbd5e1;
   --card:#071426;
   --line:rgba(148,163,184,.18);
 }
-
 header{
   position:sticky;
   top:0;
@@ -35,8 +35,9 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 7%;
-  background:rgba(2,7,19,.75);
+  gap:22px;
+  padding:16px 7%;
+  background:rgba(2,7,19,.82);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
@@ -46,21 +47,18 @@ header{
   gap:10px;
   font-size:22px;
   font-weight:900;
+  white-space:nowrap;
 }
-.logo img{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-}
+.logo img{width:38px;height:38px;border-radius:11px}
 nav{
   display:flex;
-  gap:28px;
+  gap:22px;
   align-items:center;
 }
 nav a{
   color:#dbeafe;
   font-size:14px;
-  font-weight:700;
+  font-weight:800;
 }
 nav a:hover{color:var(--cyan)}
 .btn{
@@ -68,43 +66,64 @@ nav a:hover{color:var(--cyan)}
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:14px 22px;
+  min-height:46px;
+  padding:0 20px;
   border-radius:999px;
+  border:1px solid transparent;
   font-weight:900;
   color:white;
   background:linear-gradient(135deg,var(--blue),var(--teal));
-  box-shadow:0 0 35px rgba(0,229,255,.28);
+  box-shadow:0 0 35px rgba(0,229,255,.24);
 }
-
+.btn.secondary{
+  background:rgba(255,255,255,.08);
+  border-color:var(--line);
+  box-shadow:none;
+}
+.btn.dark{
+  background:#fff;
+  color:#06111f;
+  box-shadow:none;
+}
 .hero{
   position:relative;
   overflow:hidden;
-  padding:82px 7% 62px;
+  min-height:calc(100svh - 78px);
+  padding:86px 7% 64px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
+  grid-template-columns:1.05fr .95fr;
+  gap:54px;
   align-items:center;
   background:
-    radial-gradient(circle at 20% 10%,rgba(47,124,255,.30),transparent 34%),
-    radial-gradient(circle at 80% 20%,rgba(139,92,246,.25),transparent 34%),
+    radial-gradient(circle at 18% 10%,rgba(47,124,255,.32),transparent 34%),
+    radial-gradient(circle at 86% 20%,rgba(139,92,246,.24),transparent 34%),
     radial-gradient(circle at 70% 90%,rgba(0,214,163,.20),transparent 38%);
 }
 .pill{
   display:inline-flex;
+  align-items:center;
+  gap:9px;
   padding:9px 14px;
   border-radius:999px;
   color:#67e8f9;
   background:rgba(0,229,255,.10);
   border:1px solid rgba(0,229,255,.25);
-  font-weight:800;
+  font-weight:900;
   font-size:14px;
   margin-bottom:18px;
 }
+.pill:before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--teal);
+}
 .hero h1{
-  font-size:72px;
+  font-size:clamp(46px,7vw,82px);
   line-height:.98;
-  margin:0 0 18px;
-  letter-spacing:-3px;
+  margin:0 0 20px;
+  letter-spacing:0;
 }
 .gradient{
   background:linear-gradient(135deg,var(--blue),var(--cyan),var(--teal));
@@ -115,71 +134,112 @@ nav a:hover{color:var(--cyan)}
   color:#cbd5e1;
   font-size:20px;
   line-height:1.7;
-  max-width:620px;
+  max-width:680px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:28px;
 }
 .stats{
-  display:flex;
-  gap:28px;
-  flex-wrap:wrap;
-  margin-top:32px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:34px;
 }
 .stat{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
   color:#cbd5e1;
 }
 .stat strong{
   display:block;
   color:#fff;
-  font-size:26px;
+  font-size:25px;
+  margin-bottom:4px;
 }
-
 .phone-showcase{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:center;
-  gap:40px;
+  display:grid;
+  gap:18px;
 }
-.store-big{
-  width:520px;
-  max-width:100%;
-  border-radius:18px;
-  box-shadow:0 25px 80px rgba(0,0,0,.45);
-  transition:.25s;
+.app-preview{
+  border-radius:34px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 45px 140px rgba(0,229,255,.18);
 }
-.store-big:hover{
-  transform:translateY(-8px);
-}
-
 .store-row{
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr;
   gap:14px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:24px;
 }
 .store-row img{
-  height:58px;
-  border-radius:10px;
-  box-shadow:0 0 30px rgba(47,124,255,.22);
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 25px 80px rgba(0,0,0,.38);
+  transition:.25s;
 }
-
-section{
-  padding:82px 7%;
-}
+.store-row img:hover{transform:translateY(-5px)}
+section{padding:84px 7%}
 .section-title{
   text-align:center;
-  max-width:850px;
+  max-width:920px;
   margin:0 auto 44px;
 }
 .section-title h2{
-  font-size:46px;
-  margin:0 0 12px;
-  letter-spacing:-1.4px;
+  font-size:clamp(34px,4.5vw,54px);
+  margin:0 0 14px;
+  letter-spacing:0;
 }
 .section-title p{
   color:var(--muted);
   font-size:18px;
-  line-height:1.7;
+  line-height:1.75;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 25px 80px rgba(0,0,0,.22);
+}
+.card h3{
+  margin:0 0 10px;
+  font-size:22px;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+}
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  margin-bottom:18px;
+  color:#06111f;
+  background:linear-gradient(135deg,var(--cyan),var(--teal));
+  font-weight:900;
 }
 .features-image{
   border-radius:34px;
@@ -187,75 +247,26 @@ section{
   border:1px solid var(--line);
   box-shadow:0 45px 140px rgba(0,229,255,.18);
 }
-
 .notice{
   margin-top:28px;
   display:grid;
-  grid-template-columns:70px 1fr auto;
-  gap:20px;
+  grid-template-columns:1fr auto;
+  gap:22px;
   align-items:center;
   background:linear-gradient(135deg,rgba(47,124,255,.14),rgba(0,214,163,.10));
   border:1px solid rgba(0,229,255,.22);
   border-radius:26px;
-  padding:24px;
-}
-.notice-icon{
-  width:58px;
-  height:58px;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  font-size:28px;
-  background:linear-gradient(135deg,var(--blue),var(--teal));
-}
-.notice h3{
-  margin:0 0 6px;
-  font-size:20px;
-}
-.notice p{
-  margin:0;
-  color:#cbd5e1;
-  line-height:1.6;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:20px;
-}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
-  border:1px solid var(--line);
-  border-radius:24px;
   padding:26px;
-  box-shadow:0 25px 80px rgba(0,0,0,.25);
 }
-.card .icon{
-  font-size:36px;
-  margin-bottom:18px;
-}
-.card h3{
-  margin:0 0 8px;
-  font-size:18px;
-}
-.card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.6;
-}
-
-.two{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
+.notice h3{margin:0 0 8px;font-size:22px}
+.notice p{margin:0;color:#cbd5e1;line-height:1.65}
 .big-card{
-  min-height:360px;
+  min-height:380px;
   border-radius:30px;
   padding:36px;
   background:
-    linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.65)),
-    radial-gradient(circle at 80% 20%,rgba(0,229,255,.20),transparent 30%),
+    linear-gradient(135deg,rgba(0,0,0,.34),rgba(0,0,0,.65)),
+    radial-gradient(circle at 80% 20%,rgba(0,229,255,.18),transparent 30%),
     var(--card);
   border:1px solid var(--line);
 }
@@ -263,64 +274,76 @@ section{
   font-size:34px;
   margin:14px 0;
 }
-.big-card ul{
+.big-card ul,.card ul{
   padding-left:20px;
   color:#cbd5e1;
-  line-height:2;
+  line-height:1.9;
 }
-
+.surface{
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
 .steps{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 .step{
   background:rgba(255,255,255,.045);
   border:1px solid var(--line);
-  border-radius:26px;
-  padding:28px;
+  border-radius:24px;
+  padding:26px;
 }
 .step-num{
-  width:58px;
-  height:58px;
-  border-radius:18px;
+  width:48px;
+  height:48px;
+  border-radius:16px;
   display:grid;
   place-items:center;
-  font-size:24px;
+  font-size:20px;
   font-weight:900;
   background:linear-gradient(135deg,var(--blue),var(--purple));
   margin-bottom:18px;
 }
-.step p{
+.step p{color:var(--muted);line-height:1.65}
+.example{
+  border-left:4px solid var(--teal);
+}
+.price{
+  font-size:34px;
+  font-weight:900;
+  margin:14px 0 8px;
+}
+.small{
   color:var(--muted);
+  font-size:14px;
   line-height:1.6;
 }
-
 .cta{
   margin:20px 7% 80px;
   border-radius:32px;
-  padding:38px;
+  padding:42px;
   display:flex;
   justify-content:space-between;
   gap:34px;
   align-items:center;
-  background:linear-gradient(135deg,rgba(47,124,255,.16),rgba(0,214,163,.10));
+  background:linear-gradient(135deg,rgba(47,124,255,.18),rgba(0,214,163,.10));
   border:1px solid var(--line);
   box-shadow:0 35px 110px rgba(0,0,0,.35);
 }
 .cta h2{
   margin:0 0 12px;
-  font-size:56px;
+  font-size:clamp(34px,5vw,56px);
   line-height:1.05;
   font-weight:900;
 }
 .cta p{
   margin:0;
   color:var(--muted);
-  font-size:24px;
+  font-size:21px;
   line-height:1.6;
 }
-
 footer{
   padding:42px 7%;
   border-top:1px solid var(--line);
@@ -333,216 +356,285 @@ footer{
 footer a{
   color:#dbeafe;
   margin-right:18px;
+  font-weight:800;
 }
-
-@media(max-width:1050px){
-  .hero{grid-template-columns:1fr}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .two{grid-template-columns:1fr}
+@media(max-width:1080px){
+  .hero,.two{grid-template-columns:1fr}
+  .grid-3,.grid-4,.steps{grid-template-columns:repeat(2,1fr)}
   .cta{flex-direction:column;align-items:flex-start}
   nav a:not(.btn){display:none}
-  .hero h1{font-size:56px}
 }
 @media(max-width:720px){
   header{padding:14px 18px}
   section,.hero{padding:58px 20px}
-  .hero h1{font-size:44px}
-  .hero p{font-size:17px}
-  .grid,.steps{grid-template-columns:1fr}
-  .notice{grid-template-columns:1fr}
-  .cta{margin:20px 20px 60px}
-  .store-row img{height:48px}
-  .store-big{width:100%}
+  .stats,.grid-3,.grid-4,.steps,.notice,.store-row{grid-template-columns:1fr}
+  .cta{margin:20px 20px 60px;padding:28px}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <a class="logo" href="#">
+  <a class="logo" href="/">
     <img src="icon-512.png.png" alt="GhostNumber logo">
     GhostNumber
   </a>
   <nav>
-    <a href="#features">Features</a>
-    <a href="#esim">eSIM</a>
+    <a href="#products">Services</a>
+    <a href="#examples">Examples</a>
     <a href="#pricing">Pricing</a>
-    <a href="#countries">Countries</a>
+    <a href="#how">How it works</a>
     <a href="/community.html">Community</a>
     <a href="#faq">FAQ</a>
-    <a href="#support">Support</a>
-    <a class="btn" href="https://app.ghostnumber.app">Get the App</a>
+    <a href="/support.html">Support</a>
+    <a class="btn" href="#download">Download</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div>
-    <div class="pill">🛡 Privacy First. Global Freedom.</div>
-    <h1>Virtual Numbers<br>& <span class="gradient">eSIM</span></h1>
-    <p>
-      One app for private calls, SMS and global data. Get a second phone number
-      or stay connected anywhere with affordable eSIM plans in 200+ countries.
-    </p>
-
-    <div class="stats">
-      <div class="stat"><strong>200+</strong>Countries</div>
-      <div class="stat"><strong>Instant</strong>Setup</div>
-      <div class="stat"><strong>No SIM</strong>Card needed</div>
-      <div class="stat"><strong>Private</strong>Calls & SMS</div>
-    </div>
-  </div>
-
-  <div class="phone-showcase">
-    <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank">
-      <img class="store-big" src="app-store-badge.jpeg" alt="App Store">
-    </a>
-
-    <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank">
-      <img class="store-big" src="google-play-badge.jpeg" alt="Google Play">
-    </a>
-  </div>
-</section>
-
-<section id="features">
-  <div class="section-title">
-    <h2>Private Number + Global eSIM</h2>
-    <p>
-      GhostNumber combines privacy communication and travel connectivity in one simple app.
-    </p>
-  </div>
-
-  <div class="features-image">
-    <img src="feature-cards.png" alt="GhostNumber virtual number and eSIM features">
-  </div>
-
-  <div class="notice">
-    <div class="notice-icon">🛒</div>
+<main>
+  <section class="hero">
     <div>
-      <h3>eSIM purchase information</h3>
+      <div class="pill">Privacy phone services and global travel data</div>
+      <h1>Virtual numbers, international calls and <span class="gradient">eSIM</span>.</h1>
       <p>
-        eSIM plans are available only through Google Play and the Apple App Store as in-app purchases.
-        eSIM plans cannot be purchased on the website with Stripe.
+        GhostNumber helps you keep your personal number private, use a US or UK virtual number,
+        receive and make supported calls, and buy eSIM data for trips around the world.
       </p>
+      <div class="hero-actions">
+        <a class="btn" href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">App Store</a>
+        <a class="btn secondary" href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank" rel="noopener">Google Play</a>
+        <a class="btn secondary" href="https://app.ghostnumber.app">Open Web App</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong>US + UK</strong>Virtual numbers</div>
+        <div class="stat"><strong>200+</strong>eSIM destinations</div>
+        <div class="stat"><strong>Wallet</strong>International usage</div>
+        <div class="stat"><strong>Private</strong>Calls and SMS</div>
+      </div>
+    </div>
+
+    <div class="phone-showcase" id="download">
+      <div class="app-preview">
+        <img src="feature-cards.png" alt="GhostNumber virtual number and eSIM features">
+      </div>
+      <div class="store-row">
+        <a href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">
+          <img src="app-store-badge.jpeg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank" rel="noopener">
+          <img src="google-play-badge.jpeg" alt="Get it on Google Play">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="section-title">
+      <h2>One brand, three useful services.</h2>
       <p>
-        Virtual number packages can be purchased on the website with Stripe or inside the mobile app,
-        depending on platform availability.
+        Use GhostNumber for a private US number, International Number for wallet-based global users,
+        and eSIM data when you travel or need mobile internet without changing your physical SIM.
       </p>
     </div>
-    <a class="btn" href="https://app.ghostnumber.app">Open App</a>
-  </div>
-</section>
 
-<section id="esim">
-  <div class="two">
-    <div class="big-card">
-      <div class="pill">Virtual Numbers</div>
-      <h3>Your Second Number for Calls & SMS</h3>
-      <ul>
-        <li>Private virtual number for calls</li>
-        <li>Receive SMS inside the app</li>
-        <li>Send GSM messages where supported</li>
-        <li>Keep your personal number private</li>
-      </ul>
+    <div class="grid-3">
+      <article class="card">
+        <div class="icon">US</div>
+        <h3>US GhostNumber</h3>
+        <p>A dedicated US virtual number for private calling, SMS, contacts, call history and do not disturb.</p>
+        <ul>
+          <li>Designed for US customers.</li>
+          <li>Package includes minutes and SMS.</li>
+          <li>Use it when you do not want to expose your personal number.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="icon">INT</div>
+        <h3>International Number</h3>
+        <p>For customers outside the United States who want a supported US or UK number connected to a verified phone.</p>
+        <ul>
+          <li>Incoming calls forward to your real verified mobile phone.</li>
+          <li>Outgoing calls are charged from wallet credit.</li>
+          <li>Call history and quiet hours help you stay in control.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="icon">SIM</div>
+        <h3>Global eSIM Data</h3>
+        <p>Buy data plans for supported countries and regions, install digitally and avoid physical SIM swapping.</p>
+        <ul>
+          <li>Plans can start around $2 depending on destination.</li>
+          <li>Great for travel, backup data and roaming control.</li>
+          <li>Purchased through Apple or Google in-app payments where required.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="surface" id="examples">
+    <div class="section-title">
+      <h2>Real-world examples for international users.</h2>
+      <p>
+        Rates and availability depend on the selected number, destination, carrier route and provider.
+        The app shows the current price logic before use.
+      </p>
     </div>
 
-    <div class="big-card">
-      <div class="pill">eSIM Data Plans</div>
-      <h3>Stay Connected Anywhere with eSIM</h3>
-      <ul>
-        <li>eSIM data in 200+ countries</li>
-        <li>No physical SIM card</li>
-        <li>Fast setup from the mobile app</li>
-        <li>Available only through Google Play / App Store IAP</li>
-      </ul>
+    <div class="grid-3">
+      <article class="card example">
+        <h3>Nigeria</h3>
+        <p>
+          A customer in Nigeria can verify a Nigerian mobile phone, choose a supported US number,
+          receive calls forwarded to that phone, and pay from wallet balance by minute.
+        </p>
+      </article>
+      <article class="card example">
+        <h3>India</h3>
+        <p>
+          A customer in India can use a US or UK virtual number for privacy. For outgoing calls,
+          GhostNumber checks wallet credit first and blocks usage if balance is too low.
+        </p>
+      </article>
+      <article class="card example">
+        <h3>Romania</h3>
+        <p>
+          A customer in Romania can keep a US number, receive international forwarded calls,
+          see call history, pause interruptions with do not disturb and buy eSIM data for travel.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-title">
+      <h2>Simple pricing models.</h2>
+      <p>GhostNumber separates package billing, wallet billing and eSIM plan billing so each service is clear.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>US GhostNumber</h3>
+        <div class="price">$15 package</div>
+        <p>Includes a dedicated US number, 60 calling minutes and 100 SMS messages. Validity and renewal rules are shown in the app.</p>
+      </article>
+      <article class="card">
+        <h3>International Number</h3>
+        <div class="price">Wallet usage</div>
+        <p>Calls, forwarding and number renewal use prepaid wallet credit. If balance is not enough, calls are blocked or ended for safety.</p>
+      </article>
+      <article class="card">
+        <h3>eSIM Data</h3>
+        <div class="price">From about $2</div>
+        <p>Exact eSIM prices depend on country, data amount, validity and availability. Mobile app purchases use Apple or Google payment flows.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-title">
+      <h2>Private number plus travel connectivity.</h2>
+      <p>GhostNumber combines communication privacy and mobile data access in one app experience.</p>
+    </div>
+
+    <div class="features-image">
+      <img src="feature-ghostnumber-1024x500.png" alt="GhostNumber app service overview">
+    </div>
+
+    <div class="notice">
+      <div>
+        <h3>Where to buy</h3>
+        <p>
+          Download GhostNumber from the App Store or Google Play. You can also open the web app for account access,
+          but eSIM purchases on mobile are handled through Apple or Google in-app purchase when required.
+        </p>
+      </div>
+      <a class="btn" href="https://app.ghostnumber.app">Open Web App</a>
+    </div>
+  </section>
+
+  <section id="how" class="surface">
+    <div class="section-title">
+      <h2>How it works.</h2>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-num">1</div>
+        <h3>Download</h3>
+        <p>Install GhostNumber from the App Store or Google Play, or open the web app.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">2</div>
+        <h3>Choose service</h3>
+        <p>Select US Number, International Number or eSIM depending on what you need.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">3</div>
+        <h3>Verify and pay</h3>
+        <p>Verify your phone, choose a number or eSIM plan, and complete payment in the correct flow.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">4</div>
+        <h3>Control usage</h3>
+        <p>Use call history, wallet balance, support pages and do not disturb to manage the service.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-title">
+      <h2>Questions before you start?</h2>
+    </div>
+
+    <div class="grid-4">
+      <article class="card">
+        <h3>Can I buy a US number outside the US?</h3>
+        <p>Yes, International Number is made for international customers who need a supported US or UK virtual number.</p>
+      </article>
+      <article class="card">
+        <h3>Can I receive calls?</h3>
+        <p>Supported incoming calls can forward from your virtual number to your verified mobile phone.</p>
+      </article>
+      <article class="card">
+        <h3>What if wallet credit runs out?</h3>
+        <p>International calls need wallet credit. If there is not enough balance, the app prevents unpaid usage.</p>
+      </article>
+      <article class="card">
+        <h3>Is eSIM worldwide?</h3>
+        <p>eSIM plans cover many countries and regions, but availability and pricing are always shown in the app.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div>
+      <h2>Download GhostNumber and choose your service.</h2>
+      <p>Private numbers for calls and SMS, International Number with wallet billing, and eSIM data for travel.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">App Store</a>
+      <a class="btn secondary" href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank" rel="noopener">Google Play</a>
+      <a class="btn dark" href="https://app.ghostnumber.app">Web App</a>
     </div>
   </div>
-</section>
-
-<section>
-  <div class="section-title">
-    <h2>Why Choose <span class="gradient">GhostNumber?</span></h2>
-  </div>
-
-  <div class="grid">
-    <div class="card"><div class="icon">🌍</div><h3>Global Coverage</h3><p>Virtual numbers and eSIM options for international users.</p></div>
-    <div class="card"><div class="icon">⚡</div><h3>Instant Setup</h3><p>Start fast with a simple mobile-first experience.</p></div>
-    <div class="card"><div class="icon">💸</div><h3>Affordable Plans</h3><p>Simple packages for privacy and connectivity.</p></div>
-    <div class="card"><div class="icon">🛡</div><h3>Secure & Private</h3><p>Keep your personal number away from strangers and websites.</p></div>
-    <div class="card"><div class="icon">🎧</div><h3>Support</h3><p>Help available for calls, SMS, eSIM and payments.</p></div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="section-title">
-    <h2>How It Works</h2>
-  </div>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Choose</h3>
-      <p>Pick a virtual number package or choose an eSIM plan inside the mobile app.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Activate</h3>
-      <p>Set it up quickly. Virtual numbers can work on web/app. eSIM activates in the app.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Stay Connected</h3>
-      <p>Make calls, receive SMS, send messages where supported, or use mobile data abroad.</p>
-    </div>
-  </div>
-</section>
-
-<section id="countries">
-  <div class="section-title">
-    <h2>200+ eSIM Destinations</h2>
-    <p>
-      Buy eSIM data plans from the mobile app for countries and regions worldwide.
-      eSIM purchases are handled only through Google Play or App Store in-app payments.
-    </p>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="section-title">
-    <h2>FAQ</h2>
-  </div>
-
-  <div class="two">
-    <div class="card">
-      <h3>Can I buy eSIM on the website?</h3>
-      <p>No. eSIM plans are available only through Google Play and App Store in-app purchases.</p>
-    </div>
-    <div class="card">
-      <h3>Can I buy virtual numbers on web?</h3>
-      <p>Yes. Virtual number packages can be purchased on the website with Stripe or inside the app, depending on platform availability.</p>
-    </div>
-  </div>
-</section>
-
-<div class="cta">
-  <div>
-    <h2>Ready to take control of your connectivity?</h2>
-    <p>Download GhostNumber and start with private numbers, SMS and eSIM data.</p>
-  </div>
-
- 
+</main>
 
 <footer id="support">
   <div>
     <strong>GhostNumber</strong><br>
-    © 2026 GhostNumber · VIV CRYSTAL SRL
+    VIV CRYSTAL SRL<br>
+    support@ghostnumber.app
   </div>
   <div>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+    <a href="/community.html">Community</a>
+    <a href="/support.html">Support</a>
     <a href="mailto:support@ghostnumber.app">Contact Us</a>
   </div>
 </footer>
-
 </body>
 </html>
