@@ -381,6 +381,41 @@ textarea.field{
   font-size:13px;
   line-height:1.5;
 }
+.auth-status{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#dbeafe;
+  font-size:13px;
+  font-weight:800;
+}
+.legal-panel{
+  margin-bottom:18px;
+  padding:18px;
+  border:1px solid rgba(251,191,36,.28);
+  border-radius:20px;
+  background:rgba(251,191,36,.08);
+  color:#fde68a;
+  line-height:1.6;
+}
+.legal-panel strong{color:#fff}
+.checkline{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.5;
+}
+.checkline input{
+  margin-top:4px;
+}
+.message{
+  min-height:20px;
+  color:#67e8f9;
+  font-size:13px;
+  line-height:1.5;
+}
 footer{
   padding:42px 7%;
   border-top:1px solid var(--line);
@@ -415,6 +450,8 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
     <a href="/">Home</a>
     <a href="/support.html">Support</a>
     <a href="https://app.ghostnumber.app">Open App</a>
+    <span class="auth-status" id="authStatus">Guest</span>
+    <button class="btn secondary" id="loginBtn" type="button">Login</button>
     <button class="btn" id="newTopicTop">New topic</button>
   </nav>
 </header>
@@ -437,6 +474,11 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
 
 <main class="layout">
   <aside class="sidebar">
+    <div class="legal-panel">
+      <strong>Community rules</strong><br>
+      Posts are public. Do not publish passwords, private phone numbers, payment data,
+      abuse, spam, illegal content or emergency requests. GhostNumber may moderate or remove content.
+    </div>
     <div class="side-title">Categories</div>
     <div id="categories"></div>
   </aside>
@@ -465,8 +507,12 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
           <input class="field" id="replyCountry" placeholder="Country, optional">
         </div>
         <textarea class="field" id="replyText" placeholder="Write a helpful reply..." required></textarea>
+        <label class="checkline">
+          <input type="checkbox" id="replyLegal" required>
+          <span>I agree that my reply is public and follows the Community Rules, Privacy Policy and Terms.</span>
+        </label>
         <button class="btn" type="submit">Post reply</button>
-        <div class="hint">Replies are saved in this browser for now. Connect a database later to make posts public for every visitor.</div>
+        <div class="hint">Login with email is required. Replies are published to Supabase when the forum tables are installed.</div>
       </form>
     </section>
   </section>
@@ -487,8 +533,35 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
       <input class="field" id="topicTitle" placeholder="Topic title" required>
       <input class="field" id="topicTags" placeholder="Tags, separated by comma. Example: eSIM, Nigeria, wallet">
       <textarea class="field" id="topicText" placeholder="Explain your question, idea or guide..." required></textarea>
+      <label class="checkline">
+        <input type="checkbox" id="topicLegal" required>
+        <span>I agree that my topic is public and follows the Community Rules, Privacy Policy and Terms.</span>
+      </label>
       <button class="btn" type="submit">Publish topic</button>
-      <div class="hint">This static version saves posts in the visitor browser. For a live public forum, this same interface can be connected to Supabase, Firebase or another forum backend.</div>
+      <div class="hint">You must be logged in with email. If Supabase tables are not installed yet, the post is saved in this browser only.</div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="authModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Community login</h2>
+      <button class="btn secondary" id="closeAuthModal" type="button">Close</button>
+    </div>
+    <form class="modal-body" id="authForm">
+      <input class="field" id="authEmail" type="email" placeholder="Email address" required>
+      <input class="field" id="authPassword" type="password" placeholder="Password, minimum 6 characters" minlength="6" required>
+      <label class="checkline">
+        <input type="checkbox" id="authLegal" required>
+        <span>I agree to the <a href="/terms.html" target="_blank">Terms</a>, <a href="/privacy.html" target="_blank">Privacy Policy</a> and Community Rules.</span>
+      </label>
+      <div class="form-grid">
+        <button class="btn" type="submit" data-auth-action="signin">Login</button>
+        <button class="btn secondary" type="submit" data-auth-action="signup">Create account</button>
+      </div>
+      <div class="message" id="authMessage"></div>
+      <div class="hint">This uses the same Supabase project as GhostNumber. If you already have a GhostNumber account, login with the same email and password.</div>
     </form>
   </div>
 </div>
@@ -506,8 +579,13 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const storageKey = "ghostnumber_forum_topics_v1";
+const SUPABASE_URL = "https://jkwzolcxduhfjeyiqjwh.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprd3pvbGN4ZHVoZmpleWlxandoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyNTA4ODAsImV4cCI6MjA4NjgyNjg4MH0.GZoUszfHcUINn4JUT0VheHsGCWMCRulptBk0TMDh1aY";
+const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
 
 const categories = [
   { id:"all", name:"All discussions", desc:"Everything" },
@@ -598,6 +676,151 @@ const seedTopics = [
 let activeCategory = "all";
 let activeTopicId = null;
 let topics = loadTopics();
+
+async function initAuth() {
+  if (!supabaseClient) {
+    updateAuthUi();
+    return;
+  }
+
+  const { data } = await supabaseClient.auth.getSession();
+  currentUser = data?.session?.user || null;
+  updateAuthUi();
+
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    currentUser = session?.user || null;
+    updateAuthUi();
+  });
+
+  await loadRemoteTopics();
+}
+
+function updateAuthUi() {
+  const status = document.getElementById("authStatus");
+  const login = document.getElementById("loginBtn");
+  if (!status || !login) return;
+
+  if (currentUser) {
+    status.textContent = currentUser.email || "Logged in";
+    login.textContent = "Logout";
+  } else {
+    status.textContent = "Guest";
+    login.textContent = "Login";
+  }
+}
+
+function requireLogin() {
+  if (currentUser) return true;
+  openAuthModal("Login or create an account to post in the community.");
+  return false;
+}
+
+function openAuthModal(message = "") {
+  document.getElementById("authModal").classList.add("open");
+  document.getElementById("authModal").setAttribute("aria-hidden", "false");
+  document.getElementById("authMessage").textContent = message;
+}
+
+function closeAuthModal() {
+  document.getElementById("authModal").classList.remove("open");
+  document.getElementById("authModal").setAttribute("aria-hidden", "true");
+}
+
+function authorFromUser(fallbackName) {
+  return fallbackName || currentUser?.email?.split("@")[0] || "Community member";
+}
+
+async function loadRemoteTopics() {
+  if (!supabaseClient) return;
+
+  const { data, error } = await supabaseClient
+    .from("community_topics")
+    .select("id, category, title, body, tags, author_name, country, created_at, community_replies(id, author_name, country, body, created_at)")
+    .eq("status", "published")
+    .order("created_at", { ascending:false });
+
+  if (error || !Array.isArray(data)) {
+    console.warn("Community Supabase read unavailable:", error?.message || error);
+    return;
+  }
+
+  const remote = data.map((topic) => ({
+    id:topic.id,
+    category:topic.category,
+    title:topic.title,
+    author:topic.author_name || "Community member",
+    country:topic.country || "",
+    createdAt:topic.created_at,
+    tags:Array.isArray(topic.tags) ? topic.tags : [],
+    body:topic.body,
+    replies:(topic.community_replies || []).map((reply) => ({
+      id:reply.id,
+      author:reply.author_name || "Community member",
+      country:reply.country || "",
+      createdAt:reply.created_at,
+      text:reply.body
+    }))
+  }));
+
+  const seedIds = new Set(seedTopics.map((topic) => topic.id));
+  topics = [...remote, ...seedTopics.filter((topic) => !remote.some((item) => item.id === topic.id || item.id === String(topic.id)))];
+  topics = topics.filter((topic, index, list) => list.findIndex((item) => item.id === topic.id) === index || seedIds.has(topic.id));
+  render();
+}
+
+async function saveTopicRemote(topic) {
+  if (!supabaseClient || !currentUser) return false;
+
+  const { data, error } = await supabaseClient
+    .from("community_topics")
+    .insert({
+      category:topic.category,
+      title:topic.title,
+      body:topic.body,
+      tags:topic.tags,
+      author_name:topic.author,
+      country:topic.country || null,
+      user_id:currentUser.id,
+      status:"published"
+    })
+    .select("id, created_at")
+    .single();
+
+  if (error) {
+    console.warn("Community topic saved locally only:", error.message);
+    return false;
+  }
+
+  topic.id = data.id;
+  topic.createdAt = data.created_at;
+  return true;
+}
+
+async function saveReplyRemote(topic, reply) {
+  if (!supabaseClient || !currentUser || !topic?.id) return false;
+
+  const { data, error } = await supabaseClient
+    .from("community_replies")
+    .insert({
+      topic_id:topic.id,
+      body:reply.text,
+      author_name:reply.author,
+      country:reply.country || null,
+      user_id:currentUser.id,
+      status:"published"
+    })
+    .select("id, created_at")
+    .single();
+
+  if (error) {
+    console.warn("Community reply saved locally only:", error.message);
+    return false;
+  }
+
+  reply.id = data.id;
+  reply.createdAt = data.created_at;
+  return true;
+}
 
 function loadTopics() {
   try {
@@ -755,6 +978,8 @@ function escapeHtml(value) {
 }
 
 function openModal() {
+  if (!requireLogin()) return;
+  document.getElementById("topicName").value = authorFromUser(document.getElementById("topicName").value.trim());
   document.getElementById("topicModal").classList.add("open");
   document.getElementById("topicModal").setAttribute("aria-hidden", "false");
 }
@@ -772,16 +997,56 @@ document.getElementById("topicCategory").innerHTML = categories
 document.getElementById("newTopicBtn").addEventListener("click", openModal);
 document.getElementById("newTopicTop").addEventListener("click", openModal);
 document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("closeAuthModal").addEventListener("click", closeAuthModal);
 document.getElementById("searchInput").addEventListener("input", renderTopics);
 document.getElementById("sortSelect").addEventListener("change", renderTopics);
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  if (currentUser && supabaseClient) {
+    await supabaseClient.auth.signOut();
+    return;
+  }
+  openAuthModal();
+});
 
-document.getElementById("topicForm").addEventListener("submit", (event) => {
+document.getElementById("authForm").addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (!supabaseClient) {
+    document.getElementById("authMessage").textContent = "Supabase is not available on this page.";
+    return;
+  }
+
+  const action = event.submitter?.dataset?.authAction || "signin";
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const message = document.getElementById("authMessage");
+  message.textContent = action === "signup" ? "Creating account..." : "Logging in...";
+
+  const result = action === "signup"
+    ? await supabaseClient.auth.signUp({ email, password })
+    : await supabaseClient.auth.signInWithPassword({ email, password });
+
+  if (result.error) {
+    message.textContent = result.error.message;
+    return;
+  }
+
+  currentUser = result.data?.user || result.data?.session?.user || currentUser;
+  updateAuthUi();
+  message.textContent = action === "signup"
+    ? "Account created. Check your email if confirmation is required."
+    : "Logged in.";
+  setTimeout(closeAuthModal, 700);
+});
+
+document.getElementById("topicForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!requireLogin()) return;
+
   const topic = {
     id:`topic-${Date.now()}`,
     category:document.getElementById("topicCategory").value,
     title:document.getElementById("topicTitle").value.trim(),
-    author:document.getElementById("topicName").value.trim(),
+    author:authorFromUser(document.getElementById("topicName").value.trim()),
     country:document.getElementById("topicCountry").value.trim(),
     createdAt:new Date().toISOString(),
     tags:document.getElementById("topicTags").value.split(",").map((tag) => tag.trim()).filter(Boolean),
@@ -789,6 +1054,7 @@ document.getElementById("topicForm").addEventListener("submit", (event) => {
     replies:[]
   };
 
+  await saveTopicRemote(topic);
   topics.unshift(topic);
   saveUserTopics();
   event.target.reset();
@@ -798,25 +1064,30 @@ document.getElementById("topicForm").addEventListener("submit", (event) => {
   openTopic(topic.id);
 });
 
-document.getElementById("replyForm").addEventListener("submit", (event) => {
+document.getElementById("replyForm").addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (!requireLogin()) return;
+
   const topic = topics.find((item) => item.id === activeTopicId);
   if (!topic) return;
 
   topic.replies = topic.replies || [];
-  topic.replies.push({
-    author:document.getElementById("replyName").value.trim(),
+  const reply = {
+    author:authorFromUser(document.getElementById("replyName").value.trim()),
     country:document.getElementById("replyCountry").value.trim(),
     text:document.getElementById("replyText").value.trim(),
     createdAt:new Date().toISOString()
-  });
+  };
 
+  await saveReplyRemote(topic, reply);
+  topic.replies.push(reply);
   saveUserTopics();
   event.target.reset();
   render();
   openTopic(topic.id);
 });
 
+initAuth();
 render();
 </script>
 </body>
