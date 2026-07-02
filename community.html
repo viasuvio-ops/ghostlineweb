@@ -3,180 +3,821 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GhostNumber Community</title>
+<title>GhostNumber Community Forum</title>
+<meta name="description" content="GhostNumber Community Forum for virtual numbers, international calling, eSIM travel data, privacy, wallet usage and feature requests.">
 
 <style>
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:Inter,Arial,sans-serif;
-  background:#020713;
+  background:
+    radial-gradient(circle at 12% 2%,rgba(47,124,255,.30),transparent 34rem),
+    radial-gradient(circle at 82% 10%,rgba(0,214,163,.18),transparent 30rem),
+    #020713;
   color:#fff;
 }
-
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
 :root{
   --blue:#2f7cff;
   --cyan:#00e5ff;
   --teal:#00d6a3;
+  --purple:#8b5cf6;
+  --amber:#fbbf24;
+  --red:#fb7185;
   --muted:#94a3b8;
+  --soft:#cbd5e1;
   --card:#071426;
+  --panel:#0b1728;
   --line:rgba(148,163,184,.18);
 }
-
 header{
-  padding:20px 7%;
+  position:sticky;
+  top:0;
+  z-index:30;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:16px 7%;
+  background:rgba(2,7,19,.84);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
-
 .logo{
-  font-size:24px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
   font-weight:900;
-  color:white;
-  text-decoration:none;
 }
-
+.logo-mark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  color:#06111f;
+  background:linear-gradient(135deg,var(--cyan),var(--teal));
+  font-size:13px;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+nav a{
+  color:#dbeafe;
+  font-size:14px;
+  font-weight:800;
+}
+.btn{
+  border:0;
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:0 18px;
+  border-radius:999px;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  box-shadow:0 0 30px rgba(0,229,255,.22);
+}
+.btn.secondary{
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--line);
+  box-shadow:none;
+}
 .hero{
-  padding:80px 7%;
-  text-align:center;
+  padding:70px 7% 36px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:32px;
+  align-items:end;
 }
-
-.hero h1{
-  font-size:64px;
-  margin:0 0 20px;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 14px;
+  border-radius:999px;
+  color:#67e8f9;
+  background:rgba(0,229,255,.10);
+  border:1px solid rgba(0,229,255,.25);
+  font-weight:900;
+  margin-bottom:16px;
 }
-
+.eyebrow:before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--teal);
+}
+h1{
+  margin:0 0 18px;
+  font-size:clamp(42px,7vw,76px);
+  line-height:.98;
+}
+.gradient{
+  background:linear-gradient(135deg,var(--blue),var(--cyan),var(--teal));
+  -webkit-background-clip:text;
+  color:transparent;
+}
 .hero p{
-  max-width:800px;
-  margin:auto;
-  color:var(--muted);
+  max-width:820px;
+  margin:0;
+  color:var(--soft);
   font-size:20px;
   line-height:1.7;
 }
-
-.grid{
-  padding:0 7% 80px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-}
-
-.card{
-  background:var(--card);
+.hero-card{
+  padding:24px;
   border:1px solid var(--line);
   border-radius:24px;
-  padding:28px;
-  transition:.2s;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  box-shadow:0 30px 90px rgba(0,0,0,.26);
 }
-
-.card:hover{
-  transform:translateY(-5px);
+.hero-card strong{
+  display:block;
+  font-size:34px;
+  margin-bottom:6px;
 }
-
-.card h2{
-  margin-top:0;
+.hero-card span{
+  color:var(--muted);
+  line-height:1.5;
 }
-
-.card ul{
-  padding-left:18px;
-  color:#cbd5e1;
-  line-height:1.8;
+.layout{
+  padding:24px 7% 84px;
+  display:grid;
+  grid-template-columns:300px minmax(0,1fr);
+  gap:24px;
 }
-
-footer{
-  padding:40px 7%;
-  border-top:1px solid var(--line);
+.sidebar,.main-panel,.topic-panel{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:rgba(7,20,38,.86);
+  box-shadow:0 25px 80px rgba(0,0,0,.22);
+}
+.sidebar{
+  padding:18px;
+  align-self:start;
+  position:sticky;
+  top:92px;
+}
+.side-title{
+  margin:8px 8px 14px;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.category{
+  width:100%;
+  border:1px solid transparent;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  color:#dbeafe;
+  background:transparent;
+  cursor:pointer;
+  text-align:left;
+}
+.category:hover,.category.active{
+  background:rgba(255,255,255,.075);
+  border-color:var(--line);
+}
+.category b{display:block;font-size:14px}
+.category small{display:block;color:var(--muted);margin-top:3px}
+.count{
+  min-width:28px;
+  height:28px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  color:#06111f;
+  background:var(--cyan);
+  font-weight:900;
+  font-size:12px;
+}
+.main-panel{
+  overflow:hidden;
+}
+.toolbar{
+  padding:18px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 180px auto;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+}
+.field{
+  width:100%;
+  min-height:46px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  padding:0 14px;
+  outline:none;
+}
+.field::placeholder{color:#718096}
+select.field{color:#fff}
+.topic-list{
+  display:grid;
+}
+.topic-row{
+  border:0;
+  border-bottom:1px solid var(--line);
+  width:100%;
+  padding:22px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 130px;
+  gap:18px;
+  color:#fff;
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+}
+.topic-row:hover{background:rgba(255,255,255,.045)}
+.topic-title{
+  margin:0 0 8px;
+  font-size:20px;
+  line-height:1.25;
+}
+.topic-excerpt{
+  margin:0 0 14px;
+  color:var(--muted);
+  line-height:1.55;
+}
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.tag{
+  display:inline-flex;
+  min-height:26px;
+  align-items:center;
+  padding:0 9px;
+  border-radius:999px;
+  color:#dbeafe;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--line);
+  font-size:12px;
+  font-weight:800;
+}
+.topic-meta{
+  text-align:right;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
+.topic-meta strong{
+  display:block;
+  color:#fff;
+  font-size:18px;
+}
+.empty{
+  padding:42px;
   color:var(--muted);
   text-align:center;
+}
+.topic-panel{
+  margin-top:24px;
+  overflow:hidden;
+}
+.topic-detail{
+  padding:28px;
+}
+.detail-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+.topic-detail h2{
+  margin:0 0 12px;
+  font-size:34px;
+}
+.topic-body{
+  color:#cbd5e1;
+  line-height:1.8;
+  white-space:pre-wrap;
+}
+.reply{
+  border-top:1px solid var(--line);
+  padding:22px 28px;
+}
+.reply h3{
+  margin:0 0 8px;
+}
+.reply p{
+  color:var(--soft);
+  line-height:1.7;
+  white-space:pre-wrap;
+}
+.composer{
+  border-top:1px solid var(--line);
+  padding:22px 28px 28px;
+  display:grid;
+  gap:12px;
+}
+textarea.field{
+  padding:14px;
+  min-height:120px;
+  resize:vertical;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(2,7,19,.74);
+  backdrop-filter:blur(10px);
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(720px,100%);
+  max-height:92svh;
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#071426;
+  box-shadow:0 40px 120px rgba(0,0,0,.45);
+}
+.modal-head{
+  padding:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+.modal-head h2{margin:0}
+.modal-body{
+  padding:22px;
+  display:grid;
+  gap:12px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.hint{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+footer{
+  padding:42px 7%;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  color:var(--muted);
+}
+footer a{color:#dbeafe;font-weight:800;margin-right:16px}
+@media(max-width:1060px){
+  .hero,.layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .toolbar{grid-template-columns:1fr}
+  nav a:not(.btn){display:none}
+}
+@media(max-width:680px){
+  header{padding:14px 18px}
+  .hero{padding:52px 20px 24px}
+  .layout{padding:20px 20px 60px}
+  .topic-row{grid-template-columns:1fr}
+  .topic-meta{text-align:left}
+  .detail-head,.form-grid{grid-template-columns:1fr;display:grid}
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <a href="/" class="logo">GhostNumber Community</a>
+  <a href="/" class="logo"><span class="logo-mark">GN</span>GhostNumber Community</a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/support.html">Support</a>
+    <a href="https://app.ghostnumber.app">Open App</a>
+    <button class="btn" id="newTopicTop">New topic</button>
+  </nav>
 </header>
 
 <section class="hero">
-  <h1>Community</h1>
-  <p>
-    Discussions, guides, tips and questions about virtual numbers,
-    SMS verification, privacy, eSIM and mobile connectivity.
-  </p>
+  <div>
+    <div class="eyebrow">Community forum for GhostNumber users</div>
+    <h1>Ask, answer and build the <span class="gradient">GhostNumber</span> community.</h1>
+    <p>
+      Discuss US numbers, International Number, wallet usage, call forwarding, SMS,
+      privacy, eSIM travel data and feature requests. Start a topic, reply to users,
+      and keep useful answers easy to find.
+    </p>
+  </div>
+  <div class="hero-card">
+    <strong id="totalTopics">0</strong>
+    <span>active starter topics and user-created discussions in this browser.</span>
+  </div>
 </section>
 
-<div class="grid">
+<main class="layout">
+  <aside class="sidebar">
+    <div class="side-title">Categories</div>
+    <div id="categories"></div>
+  </aside>
 
-  <div class="card">
-    <h2>📞 Virtual Numbers</h2>
-    <ul>
-      <li>   
-        <a href="/community/us-phone-number.html">    
-            How to Get a US Phone Number in 2026  
-        </a> </li>
-      <li>Best second number apps</li>
-      <li>Private calling tips</li>
-    </ul>
+  <section>
+    <div class="main-panel">
+      <div class="toolbar">
+        <input class="field" id="searchInput" placeholder="Search topics, countries, eSIM, wallet, SMS..." />
+        <select class="field" id="sortSelect">
+          <option value="latest">Latest activity</option>
+          <option value="popular">Most replies</option>
+          <option value="newest">Newest topics</option>
+        </select>
+        <button class="btn" id="newTopicBtn">Start topic</button>
+      </div>
+      <div class="topic-list" id="topicList"></div>
+    </div>
+
+    <section class="topic-panel" id="topicPanel" hidden>
+      <div class="topic-detail" id="topicDetail"></div>
+      <div id="replyList"></div>
+      <form class="composer" id="replyForm">
+        <h3>Reply to this topic</h3>
+        <div class="form-grid">
+          <input class="field" id="replyName" placeholder="Your name" required>
+          <input class="field" id="replyCountry" placeholder="Country, optional">
+        </div>
+        <textarea class="field" id="replyText" placeholder="Write a helpful reply..." required></textarea>
+        <button class="btn" type="submit">Post reply</button>
+        <div class="hint">Replies are saved in this browser for now. Connect a database later to make posts public for every visitor.</div>
+      </form>
+    </section>
+  </section>
+</main>
+
+<div class="modal" id="topicModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Start a new topic</h2>
+      <button class="btn secondary" id="closeModal" type="button">Close</button>
+    </div>
+    <form class="modal-body" id="topicForm">
+      <div class="form-grid">
+        <input class="field" id="topicName" placeholder="Your name" required>
+        <input class="field" id="topicCountry" placeholder="Country, optional">
+      </div>
+      <select class="field" id="topicCategory" required></select>
+      <input class="field" id="topicTitle" placeholder="Topic title" required>
+      <input class="field" id="topicTags" placeholder="Tags, separated by comma. Example: eSIM, Nigeria, wallet">
+      <textarea class="field" id="topicText" placeholder="Explain your question, idea or guide..." required></textarea>
+      <button class="btn" type="submit">Publish topic</button>
+      <div class="hint">This static version saves posts in the visitor browser. For a live public forum, this same interface can be connected to Supabase, Firebase or another forum backend.</div>
+    </form>
   </div>
-
-<div class="card">
-  <h2>💬 SMS & Calling</h2>
-  <ul>
-    <li>
-      <a href="/community/sms-verification-codes.html">
-        Why SMS Verification Codes Don't Arrive
-      </a>
-    </li>
-    <li>How SMS Delivery Works</li>
-    <li>Why Calls Sometimes Fail</li>
-  </ul>
-</div>
-
- <div class="card">
-  <h2>🌍 eSIM & Travel</h2>
-  <ul>
-    <li>
-      <a href="/community/what-is-esim.html">
-        What Is an eSIM and How Does It Work?
-      </a>
-    </li>
-    <li>Best eSIM destinations</li>
-    <li>Data roaming tips</li>
-  </ul>
-</div>
-
-  <div class="card">
-    <h2>🔒 Privacy & Security</h2>
-    <ul>
-      <li>Protect your real number</li>
-      <li>Avoid spam calls</li>
-      <li>Online privacy tips</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>💼 Business Use</h2>
-    <ul>
-      <li>Business virtual numbers</li>
-      <li>Customer communication</li>
-      <li>Remote teams</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>💡 Feature Requests</h2>
-    <ul>
-      <li>Suggest new features</li>
-      <li>Vote on ideas</li>
-      <li>Future roadmap</li>
-    </ul>
-  </div>
-
 </div>
 
 <footer>
-  © 2026 GhostNumber Community
+  <div>
+    <strong>GhostNumber Community</strong><br>
+    Customer discussions for virtual numbers, eSIM, calling and privacy.
+  </div>
+  <div>
+    <a href="/">Home</a>
+    <a href="/support.html">Support</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
 </footer>
 
+<script>
+const storageKey = "ghostnumber_forum_topics_v1";
+
+const categories = [
+  { id:"all", name:"All discussions", desc:"Everything" },
+  { id:"us-number", name:"US Number", desc:"US GhostNumber" },
+  { id:"international", name:"International Number", desc:"US and UK numbers" },
+  { id:"esim", name:"eSIM and Travel", desc:"Data plans abroad" },
+  { id:"sms-calling", name:"SMS and Calling", desc:"Calls, SMS, delivery" },
+  { id:"privacy", name:"Privacy and Security", desc:"Protect your number" },
+  { id:"wallet", name:"Wallet and Billing", desc:"Credit, rates, payments" },
+  { id:"features", name:"Feature Requests", desc:"Ideas and roadmap" }
+];
+
+const seedTopics = [
+  {
+    id:"welcome-international-number",
+    category:"international",
+    title:"How does International Number work for customers outside the US?",
+    author:"GhostNumber Team",
+    country:"Global",
+    createdAt:"2026-07-02T10:00:00.000Z",
+    tags:["international","US number","call forwarding"],
+    body:"International Number is for customers outside the United States who want a supported US or UK virtual number. You verify your real mobile phone, choose an available number, add wallet credit, and receive forwarded calls on your verified phone. Outgoing calls use wallet credit and current destination rates.",
+    replies:[
+      { author:"GhostNumber Team", country:"Support", createdAt:"2026-07-02T10:15:00.000Z", text:"Tip: always keep enough wallet credit before starting or receiving forwarded calls. If balance is too low, calls may be blocked or ended for safety." }
+    ]
+  },
+  {
+    id:"nigeria-us-number-example",
+    category:"international",
+    title:"Example: using a US number from Nigeria",
+    author:"Community Guide",
+    country:"Nigeria",
+    createdAt:"2026-07-02T09:20:00.000Z",
+    tags:["Nigeria","US number","wallet"],
+    body:"A customer in Nigeria can verify a Nigerian mobile phone, choose a supported US virtual number, and receive calls forwarded to that Nigerian phone. Wallet credit is reduced by the active incoming call forwarding rate and call duration.",
+    replies:[]
+  },
+  {
+    id:"esim-before-travel",
+    category:"esim",
+    title:"Should I buy eSIM before I travel?",
+    author:"Travel Admin",
+    country:"Romania",
+    createdAt:"2026-07-01T16:30:00.000Z",
+    tags:["eSIM","travel","roaming"],
+    body:"Most travelers prefer buying eSIM before departure, then installing or activating it when they arrive. Check that your phone supports eSIM and that the destination plan is available in the app.",
+    replies:[
+      { author:"Ana", country:"Romania", createdAt:"2026-07-01T18:00:00.000Z", text:"I also keep my physical SIM active for banking SMS and use eSIM only for mobile data." }
+    ]
+  },
+  {
+    id:"sms-code-not-arriving",
+    category:"sms-calling",
+    title:"Why do some SMS verification codes not arrive?",
+    author:"Support Notes",
+    country:"Global",
+    createdAt:"2026-06-30T14:00:00.000Z",
+    tags:["SMS","verification","delivery"],
+    body:"SMS delivery can depend on the destination app, carrier filtering, country rules and whether the sender accepts virtual numbers. If a code does not arrive, try again later, check number format, and verify that the destination service supports virtual numbers.",
+    replies:[]
+  },
+  {
+    id:"feature-request-rate-preview",
+    category:"features",
+    title:"Feature request: show rate preview before every international call",
+    author:"Mihai",
+    country:"Romania",
+    createdAt:"2026-06-29T11:45:00.000Z",
+    tags:["feature request","rates","wallet"],
+    body:"It would help international users if the app showed the estimated call price before the call starts, including wallet balance and maximum possible minutes.",
+    replies:[
+      { author:"GhostNumber Team", country:"Support", createdAt:"2026-06-29T12:10:00.000Z", text:"Good idea. Wallet safety and clear rate display are important for International Number." }
+    ]
+  },
+  {
+    id:"privacy-second-number",
+    category:"privacy",
+    title:"Best privacy uses for a second phone number",
+    author:"Community Guide",
+    country:"US",
+    createdAt:"2026-06-28T08:20:00.000Z",
+    tags:["privacy","second number","spam"],
+    body:"Use a second number for marketplaces, online forms, travel bookings, customer calls and situations where you do not want your personal number exposed.",
+    replies:[]
+  }
+];
+
+let activeCategory = "all";
+let activeTopicId = null;
+let topics = loadTopics();
+
+function loadTopics() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    const merged = [...seedTopics];
+    for (const topic of saved) {
+      if (!merged.some((item) => item.id === topic.id)) merged.push(topic);
+    }
+    return merged;
+  } catch {
+    return [...seedTopics];
+  }
+}
+
+function saveUserTopics() {
+  const custom = topics.filter((topic) => !seedTopics.some((seed) => seed.id === topic.id));
+  localStorage.setItem(storageKey, JSON.stringify(custom));
+}
+
+function formatDate(value) {
+  return new Date(value).toLocaleDateString(undefined, { month:"short", day:"numeric", year:"numeric" });
+}
+
+function latestTime(topic) {
+  const replyTimes = (topic.replies || []).map((reply) => new Date(reply.createdAt).getTime());
+  return Math.max(new Date(topic.createdAt).getTime(), ...replyTimes);
+}
+
+function renderCategories() {
+  const wrap = document.getElementById("categories");
+  wrap.innerHTML = categories.map((cat) => {
+    const count = cat.id === "all" ? topics.length : topics.filter((topic) => topic.category === cat.id).length;
+    return `
+      <button class="category ${activeCategory === cat.id ? "active" : ""}" data-category="${cat.id}">
+        <span><b>${cat.name}</b><small>${cat.desc}</small></span>
+        <span class="count">${count}</span>
+      </button>
+    `;
+  }).join("");
+
+  wrap.querySelectorAll(".category").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.category;
+      render();
+    });
+  });
+
+  document.getElementById("totalTopics").textContent = topics.length;
+}
+
+function filteredTopics() {
+  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  const sort = document.getElementById("sortSelect").value;
+
+  let list = topics.filter((topic) => {
+    const matchesCategory = activeCategory === "all" || topic.category === activeCategory;
+    const haystack = [topic.title, topic.author, topic.country, topic.body, ...(topic.tags || [])].join(" ").toLowerCase();
+    return matchesCategory && (!query || haystack.includes(query));
+  });
+
+  if (sort === "popular") {
+    list.sort((a,b) => (b.replies?.length || 0) - (a.replies?.length || 0));
+  } else if (sort === "newest") {
+    list.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else {
+    list.sort((a,b) => latestTime(b) - latestTime(a));
+  }
+
+  return list;
+}
+
+function renderTopics() {
+  const list = filteredTopics();
+  const wrap = document.getElementById("topicList");
+
+  if (!list.length) {
+    wrap.innerHTML = `<div class="empty">No topics found. Start the first discussion in this category.</div>`;
+    return;
+  }
+
+  wrap.innerHTML = list.map((topic) => `
+    <button class="topic-row" data-topic="${topic.id}">
+      <span>
+        <h2 class="topic-title">${escapeHtml(topic.title)}</h2>
+        <p class="topic-excerpt">${escapeHtml(topic.body).slice(0, 190)}${topic.body.length > 190 ? "..." : ""}</p>
+        <span class="tags">${(topic.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</span>
+      </span>
+      <span class="topic-meta">
+        <strong>${topic.replies?.length || 0}</strong>
+        replies<br>
+        ${escapeHtml(topic.author)}<br>
+        ${formatDate(latestTime(topic))}
+      </span>
+    </button>
+  `).join("");
+
+  wrap.querySelectorAll(".topic-row").forEach((row) => {
+    row.addEventListener("click", () => openTopic(row.dataset.topic));
+  });
+}
+
+function openTopic(id) {
+  activeTopicId = id;
+  const topic = topics.find((item) => item.id === id);
+  if (!topic) return;
+
+  document.getElementById("topicPanel").hidden = false;
+  document.getElementById("topicDetail").innerHTML = `
+    <div class="detail-head">
+      <div>
+        <div class="tags">${(topic.tags || []).map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}</div>
+        <h2>${escapeHtml(topic.title)}</h2>
+        <div class="small">Started by ${escapeHtml(topic.author)}${topic.country ? " from " + escapeHtml(topic.country) : ""} on ${formatDate(topic.createdAt)}</div>
+      </div>
+      <button class="btn secondary" id="closeTopic">Close</button>
+    </div>
+    <div class="topic-body">${escapeHtml(topic.body)}</div>
+  `;
+
+  document.getElementById("closeTopic").addEventListener("click", () => {
+    document.getElementById("topicPanel").hidden = true;
+    activeTopicId = null;
+  });
+
+  renderReplies(topic);
+  document.getElementById("topicPanel").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function renderReplies(topic) {
+  const replies = topic.replies || [];
+  document.getElementById("replyList").innerHTML = replies.length
+    ? replies.map((reply) => `
+      <article class="reply">
+        <h3>${escapeHtml(reply.author)}${reply.country ? " - " + escapeHtml(reply.country) : ""}</h3>
+        <div class="small">${formatDate(reply.createdAt)}</div>
+        <p>${escapeHtml(reply.text)}</p>
+      </article>
+    `).join("")
+    : `<div class="reply"><p>No replies yet. Be the first to help.</p></div>`;
+}
+
+function render() {
+  renderCategories();
+  renderTopics();
+}
+
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>"']/g, (char) => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[char]));
+}
+
+function openModal() {
+  document.getElementById("topicModal").classList.add("open");
+  document.getElementById("topicModal").setAttribute("aria-hidden", "false");
+}
+
+function closeModal() {
+  document.getElementById("topicModal").classList.remove("open");
+  document.getElementById("topicModal").setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("topicCategory").innerHTML = categories
+  .filter((cat) => cat.id !== "all")
+  .map((cat) => `<option value="${cat.id}">${cat.name}</option>`)
+  .join("");
+
+document.getElementById("newTopicBtn").addEventListener("click", openModal);
+document.getElementById("newTopicTop").addEventListener("click", openModal);
+document.getElementById("closeModal").addEventListener("click", closeModal);
+document.getElementById("searchInput").addEventListener("input", renderTopics);
+document.getElementById("sortSelect").addEventListener("change", renderTopics);
+
+document.getElementById("topicForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const topic = {
+    id:`topic-${Date.now()}`,
+    category:document.getElementById("topicCategory").value,
+    title:document.getElementById("topicTitle").value.trim(),
+    author:document.getElementById("topicName").value.trim(),
+    country:document.getElementById("topicCountry").value.trim(),
+    createdAt:new Date().toISOString(),
+    tags:document.getElementById("topicTags").value.split(",").map((tag) => tag.trim()).filter(Boolean),
+    body:document.getElementById("topicText").value.trim(),
+    replies:[]
+  };
+
+  topics.unshift(topic);
+  saveUserTopics();
+  event.target.reset();
+  closeModal();
+  activeCategory = topic.category;
+  render();
+  openTopic(topic.id);
+});
+
+document.getElementById("replyForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const topic = topics.find((item) => item.id === activeTopicId);
+  if (!topic) return;
+
+  topic.replies = topic.replies || [];
+  topic.replies.push({
+    author:document.getElementById("replyName").value.trim(),
+    country:document.getElementById("replyCountry").value.trim(),
+    text:document.getElementById("replyText").value.trim(),
+    createdAt:new Date().toISOString()
+  });
+
+  saveUserTopics();
+  event.target.reset();
+  render();
+  openTopic(topic.id);
+});
+
+render();
+</script>
 </body>
 </html>
