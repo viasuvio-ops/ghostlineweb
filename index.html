@@ -370,6 +370,16 @@ footer a{
   .stats,.grid-3,.grid-4,.steps,.notice,.store-row{grid-template-columns:1fr}
   .cta{margin:20px 20px 60px;padding:28px}
 }
+.tutorial-video{scroll-margin-top:90px}
+.tutorial-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:center;max-width:1200px;margin:auto}
+.tutorial-player{position:relative;display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#071426}
+.tutorial-player img{width:100%;height:100%;object-fit:cover}
+.tutorial-player span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:999px;padding:16px 24px;background:#007aff;color:#fff;font-size:20px;font-weight:900;white-space:nowrap;box-shadow:0 8px 32px #0009}
+.tutorial-player:focus-visible{outline:3px solid var(--cyan);outline-offset:5px}
+.tutorial-copy h3{font-size:28px;margin:0 0 16px}
+.tutorial-copy p{color:var(--soft);line-height:1.7}
+.tutorial-copy ul{padding-left:20px;color:var(--soft);line-height:1.9}
+@media(max-width:720px){.tutorial-layout{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -384,6 +394,7 @@ footer a{
     <a href="#examples">Examples</a>
     <a href="#pricing">Pricing</a>
     <a href="#how">How it works</a>
+    <a href="#tutorial">Video tutorial</a>
     <a href="/community.html">Community</a>
     <a href="#faq">FAQ</a>
     <a href="/support.html">Support</a>
@@ -404,6 +415,7 @@ footer a{
         <a class="btn" href="https://apps.apple.com/us/app/ghostnumber-usa/id6769308191" target="_blank" rel="noopener">App Store</a>
         <a class="btn secondary" href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank" rel="noopener">Google Play</a>
         <a class="btn secondary" href="https://app.ghostnumber.app">Open Web App</a>
+        <a class="btn secondary" href="#tutorial">▶ Watch tutorial</a>
       </div>
 
       <div class="stats">
@@ -425,6 +437,30 @@ footer a{
         <a href="https://play.google.com/store/apps/details?id=app.ghostnumber.app.twa" target="_blank" rel="noopener">
           <img src="google-play-badge.jpeg" alt="Get it on Google Play">
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tutorial" class="surface tutorial-video" aria-labelledby="tutorial-heading">
+    <div class="section-title">
+      <h2 id="tutorial-heading">See GhostNumber in action.</h2>
+      <p>A step-by-step walkthrough with English voice and captions. Duration: 4:28.</p>
+    </div>
+    <div class="tutorial-layout">
+      <a class="tutorial-player" href="https://www.youtube.com/watch?v=IyT25Xbvhvw" target="_blank" rel="noopener noreferrer" aria-label="Watch the GhostNumber tutorial on YouTube, 4 minutes 28 seconds">
+        <img src="tutorial-preview.jpg" alt="GhostNumber tutorial showing the real app with private contact details hidden" loading="lazy" width="1920" height="1080">
+        <span aria-hidden="true">▶ Play tutorial</span>
+      </a>
+      <div class="tutorial-copy">
+        <h3>From your first visit to an eSIM purchase.</h3>
+        <ul>
+          <li>Create your account and choose a service</li>
+          <li>Explore calls, messages and call history</li>
+          <li>Manage your wallet and quiet hours</li>
+          <li>Follow a real eSIM purchase</li>
+        </ul>
+        <p>Personal information is hidden. Prices and availability may change.</p>
+        <a class="btn" href="https://www.youtube.com/watch?v=IyT25Xbvhvw" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
       </div>
     </div>
   </section>
