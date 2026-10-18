@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GhostNumber Community Forum</title>
-<meta name="description" content="GhostNumber Community Forum for virtual numbers, international calling, eSIM travel data, privacy, wallet usage and feature requests.">
+<title>Get US Number Community Forum</title>
+<meta name="description" content="Get US Number Community Forum for virtual numbers, international calling, eSIM travel data, privacy, wallet usage and feature requests.">
 
 <style>
 *{box-sizing:border-box}
@@ -433,7 +433,10 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
   nav a:not(.btn){display:none}
 }
 @media(max-width:680px){
-  header{padding:14px 18px}
+  header{padding:14px 18px;flex-direction:column;align-items:stretch;gap:12px}
+  .logo{font-size:18px}
+  .logo-mark{flex-shrink:0}
+  nav{justify-content:flex-end;flex-wrap:wrap;gap:12px}
   .hero{padding:52px 20px 24px}
   .layout{padding:20px 20px 60px}
   .topic-row{grid-template-columns:1fr}
@@ -445,7 +448,7 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
 
 <body>
 <header>
-  <a href="/" class="logo"><span class="logo-mark">GN</span>GhostNumber Community</a>
+  <a href="/" class="logo"><span class="logo-mark">US</span>Get US Number Community</a>
   <nav>
     <a href="/">Home</a>
     <a href="/support.html">Support</a>
@@ -458,8 +461,8 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
 
 <section class="hero">
   <div>
-    <div class="eyebrow">Community forum for GhostNumber users</div>
-    <h1>Ask, answer and build the <span class="gradient">GhostNumber</span> community.</h1>
+    <div class="eyebrow">Community forum for Get US Number users</div>
+    <h1>Ask, answer and build the <span class="gradient">Get US Number</span> community.</h1>
     <p>
       Discuss US numbers, International Number, wallet usage, call forwarding, SMS,
       privacy, eSIM travel data and feature requests. Start a topic, reply to users,
@@ -477,7 +480,7 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
     <div class="legal-panel">
       <strong>Community rules</strong><br>
       Posts are public. Do not publish passwords, private phone numbers, payment data,
-      abuse, spam, illegal content or emergency requests. GhostNumber may moderate or remove content.
+      abuse, spam, illegal content or emergency requests. Get US Number may moderate or remove content.
     </div>
     <div class="side-title">Categories</div>
     <div id="categories"></div>
@@ -561,14 +564,14 @@ footer a{color:#dbeafe;font-weight:800;margin-right:16px}
         <button class="btn secondary" type="submit" data-auth-action="signup">Create account</button>
       </div>
       <div class="message" id="authMessage"></div>
-      <div class="hint">This uses the same Supabase project as GhostNumber. If you already have a GhostNumber account, login with the same email and password.</div>
+      <div class="hint">This uses the same Supabase project as Get US Number. If you already have a Get US Number account, login with the same email and password.</div>
     </form>
   </div>
 </div>
 
 <footer>
   <div>
-    <strong>GhostNumber Community</strong><br>
+    <strong>Get US Number Community</strong><br>
     Customer discussions for virtual numbers, eSIM, calling and privacy.
   </div>
   <div>
@@ -589,7 +592,7 @@ let currentUser = null;
 
 const categories = [
   { id:"all", name:"All discussions", desc:"Everything" },
-  { id:"us-number", name:"US Number", desc:"US GhostNumber" },
+  { id:"us-number", name:"US Number", desc:"US Number" },
   { id:"international", name:"International Number", desc:"US and UK numbers" },
   { id:"esim", name:"eSIM and Travel", desc:"Data plans abroad" },
   { id:"sms-calling", name:"SMS and Calling", desc:"Calls, SMS, delivery" },
@@ -603,13 +606,13 @@ const seedTopics = [
     id:"welcome-international-number",
     category:"international",
     title:"How does International Number work for customers outside the US?",
-    author:"GhostNumber Team",
+    author:"Get US Number Team",
     country:"Global",
     createdAt:"2026-07-02T10:00:00.000Z",
     tags:["international","US number","call forwarding"],
     body:"International Number is for customers outside the United States who want a supported US or UK virtual number. You verify your real mobile phone, choose an available number, add wallet credit, and receive forwarded calls on your verified phone. Outgoing calls use wallet credit and current destination rates.",
     replies:[
-      { author:"GhostNumber Team", country:"Support", createdAt:"2026-07-02T10:15:00.000Z", text:"Tip: always keep enough wallet credit before starting or receiving forwarded calls. If balance is too low, calls may be blocked or ended for safety." }
+      { author:"Get US Number Team", country:"Support", createdAt:"2026-07-02T10:15:00.000Z", text:"Tip: always keep enough wallet credit before starting or receiving forwarded calls. If balance is too low, calls may be blocked or ended for safety." }
     ]
   },
   {
@@ -657,7 +660,7 @@ const seedTopics = [
     tags:["feature request","rates","wallet"],
     body:"It would help international users if the app showed the estimated call price before the call starts, including wallet balance and maximum possible minutes.",
     replies:[
-      { author:"GhostNumber Team", country:"Support", createdAt:"2026-06-29T12:10:00.000Z", text:"Good idea. Wallet safety and clear rate display are important for International Number." }
+      { author:"Get US Number Team", country:"Support", createdAt:"2026-06-29T12:10:00.000Z", text:"Good idea. Wallet safety and clear rate display are important for International Number." }
     ]
   },
   {
